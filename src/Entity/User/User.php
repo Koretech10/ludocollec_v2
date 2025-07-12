@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(readOnly: true)]
+#[ORM\Entity]
 #[ORM\Table(name: 'users')]
 #[ORM\UniqueConstraint(fields: ['username', 'email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -58,9 +58,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
+    /**
+     * @param non-empty-string $username
+     */
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getRoles(): array
@@ -70,6 +89,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
+    }
+
+    public function isCollectionHidden(): bool
+    {
+        return $this->hideCollection;
+    }
+
+    public function setHideCollection(bool $hideCollection): void
+    {
+        $this->hideCollection = $hideCollection;
+    }
+
+    public function isWishlistHidden(): bool
+    {
+        return $this->hideWishlist;
+    }
+
+    public function setHideWishlist(bool $hideWishlist): void
+    {
+        $this->hideWishlist = $hideWishlist;
     }
 
     public function getUserIdentifier(): string
