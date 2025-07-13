@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
+use App\Command\User\UserEditPasswordCommand;
 use App\Command\User\UserEditProfileCommand;
 use App\Entity\User\User;
+use App\Form\User\UserEditPasswordType;
 use App\Form\User\UserEditProfileType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +40,28 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/edit_profile.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/edit/{id}/password', name: 'user_edit_password')]
+    // ToDo IsGranted avec Voter pour vérif si User actuel
+    public function editPassword(Request $request, User $user): Response
+    {
+        $command = new UserEditPasswordCommand($user);
+
+        $form = $this->createForm(UserEditPasswordType::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->messageBus->dispatch($command);
+
+            // ToDo SuccessFlash
+
+            // ToDo Redirect vers action READ
+        }
+
+        return $this->render('user/edit_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }
