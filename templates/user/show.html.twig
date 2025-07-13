@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ user.username }}
+    {{ user.email }}
+    Visibilité de la collection : {% include 'user/_privacy_badge.html.twig' with { is_private: user.collectionHidden } only %}
+    Visibilité de la wishilst : {% include 'user/_privacy_badge.html.twig' with { is_private: user.wishlistHidden } only %}
+{% endblock %}

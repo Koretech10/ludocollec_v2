@@ -22,6 +22,15 @@ class UserController extends AbstractController
     {
     }
 
+    #[Route('/show/{id}', name: 'user_show')]
+    // ToDo IsGranted avec Voter pour vérif si Admin ou User actuel
+    public function show(User $user): Response
+    {
+        return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
     #[Route('/edit/{id}/profile', name: 'user_update_profile')]
     // ToDo IsGranted avec Voter pour vérif si Admin ou User actuel
     public function editProfile(Request $request, User $user): Response
@@ -36,7 +45,7 @@ class UserController extends AbstractController
 
             // ToDo SuccessFlash
 
-            // ToDo Redirect vers action READ
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit_profile.html.twig', [
@@ -58,7 +67,7 @@ class UserController extends AbstractController
 
             // ToDo SuccessFlash
 
-            // ToDo Redirect vers action READ
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit_password.html.twig', [
