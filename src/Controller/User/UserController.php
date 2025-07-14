@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
+use App\Command\User\UserDeleteCommand;
 use App\Command\User\UserEditPasswordCommand;
 use App\Command\User\UserEditProfileCommand;
 use App\Entity\User\User;
@@ -73,5 +74,25 @@ class UserController extends AbstractController
         return $this->render('user/edit_password.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'user_delete')]
+    // ToDo IsGranted avec Voter si Admin ou User actuel
+    // ToDo Cette méthode ne fonctionnera pas tant que les clés étrangères n'ont pas été mappés sur User
+    public function delete(User $user): Response
+    {
+        // ToDo Check CSRF
+
+        $command = new UserDeleteCommand($user);
+
+        $this->messageBus->dispatch($command);
+
+        // ToDo Success Flash
+
+        // ToDo Si User actuel -> redirect to logout
+
+        // ToDo Si Admin, redirect vers list
+
+        return $this->redirect('/'); // ToDo Placeholder
     }
 }

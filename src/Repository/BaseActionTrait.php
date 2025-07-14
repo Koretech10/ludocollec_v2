@@ -19,4 +19,12 @@ trait BaseActionTrait
     {
         $this->getEntityManager()->flush();
     }
+
+    /**
+     * @param T $entity
+     */
+    public function remove($entity): void
+    {
+        $this->getEntityManager()->remove($entity);
+    }
 }
