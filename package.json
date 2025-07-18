@@ -6,5 +6,12 @@
   },
   "scripts": {
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.php": [
+      "symfony php ./vendor/bin/php-cs-fixer fix --config=config/checkers/.php-cs-fixer.dist.php --cache-file=var/php_cs.cache",
+      "symfony php ./vendor/bin/phpstan analyse -c config/checkers/phpstan.neon"
+    ],
+    "templates/**/*.twig": "symfony console lint:twig"
   }
 }
