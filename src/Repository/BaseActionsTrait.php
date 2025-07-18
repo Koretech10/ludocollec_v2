@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\User;
+namespace App\Repository;
 
 /**
  * @template T
