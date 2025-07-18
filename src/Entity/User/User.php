@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\User;
 
+use App\Entity\UserList\UserList;
 use App\Enum\User\DisplayListType;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -113,13 +114,8 @@ class User
      */
     private Collection $toyWishlists;
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity List
-     * Cascade DELETE
-     * InversedBy user
-     */
-    private Collection $lists;
+    #[ORM\OneToMany(targetEntity: UserList::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $userLists;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isActive = false;
