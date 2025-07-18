@@ -1,0 +1,15 @@
+{#
+    PRIVACY BADGE
+
+    Paramètres :
+
+    - is_private : bool
+#}
+
+{% if is_private %}
+    {% set label = 'Privée' %}
+{% else %}
+    {% set label = 'Publique' %}
+{% endif %}
+
+<p>{{ label }}</p>
