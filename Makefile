@@ -1,3 +1,9 @@
+install-pnpm:
+	@echo 'La commande « corepack enable » a besoin des droits Administrateur sur Windows.'
+	npm install --global corepack@latest
+	corepack enable pnpm
+	corepack use pnpm@latest-10
+
 phpstan:
 	symfony php ./vendor/bin/phpstan analyse -c config/checkers/phpstan.neon
 
