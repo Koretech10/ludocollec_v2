@@ -38,7 +38,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity AccessoryCollection
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $accessoryCollections;
 
@@ -46,7 +46,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity AccessoryWishlist
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $accessoryWishlists;
 
@@ -54,7 +54,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ConsoleCollection
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $consoleCollections;
 
@@ -62,7 +62,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ConsoleWishlist
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $consoleWishlists;
 
@@ -70,7 +70,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity GameCollection
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $gameCollections;
 
@@ -78,7 +78,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity GameWishlist
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $gameWishlists;
 
@@ -86,7 +86,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ExtensionCollection
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $extensionCollections;
 
@@ -94,7 +94,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ExtensionWishlist
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $extensionWishlists;
 
@@ -102,7 +102,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ToyCollection
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $toyCollections;
 
@@ -110,7 +110,7 @@ class User
      * ToDo Relation OneToMany
      * TargetEntity ToyWishlist
      * Cascade DELETE
-     * InversedBy user
+     * InversedBy user.
      */
     private Collection $toyWishlists;
 

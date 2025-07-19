@@ -26,12 +26,7 @@ class UserList
     #[ORM\Column(name: 'user_list_color', length: 7)]
     private string $color;
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity UserListEntry
-     * Cascade DELETE
-     * InversedBy userList.
-     */
+    #[ORM\OneToMany(targetEntity: UserListEntry::class, mappedBy: 'userList', cascade: ['remove'])]
     private Collection $userListEntries;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userLists')]
