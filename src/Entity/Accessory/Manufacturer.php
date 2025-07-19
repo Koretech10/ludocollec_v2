@@ -21,10 +21,6 @@ class Manufacturer
     #[ORM\Column(name: 'is_accessory_manufacturer_new', type: 'boolean')]
     private bool $isNew;
 
-    /**
-     * ToDo
-     * Cascade REMOVE
-     * @ORM\OneToMany(targetEntity="App\Entity\Accessories", mappedBy="accessoryManufacturer")
-     */
-    private object $accessories;
+    #[ORM\OneToMany(targetEntity: Accessory::class, mappedBy: 'manufacturer', cascade: ['remove'])]
+    private Accessory $accessories;
 }
