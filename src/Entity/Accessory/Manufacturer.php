@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity\Accessory;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -21,6 +23,9 @@ class Manufacturer
     #[ORM\Column(name: 'is_accessory_manufacturer_new', type: 'boolean')]
     private bool $isNew;
 
+    /**
+     * @var ArrayCollection<Accessory>
+     */
     #[ORM\OneToMany(targetEntity: Accessory::class, mappedBy: 'manufacturer', cascade: ['remove'])]
-    private Accessory $accessories;
+    private Collection $accessories;
 }
