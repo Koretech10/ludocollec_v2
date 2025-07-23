@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Accessory;
 
+use App\Entity\Console\Console;
 use App\Entity\Creatable;
 use App\Entity\Lockable;
 use App\Entity\Validatable;
@@ -26,14 +27,9 @@ class Accessory
     #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Consoles", inversedBy="accessories")
-     *
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private object $console;
+    #[ORM\ManyToOne(targetEntity: Console::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private Console $console;
 
     #[ORM\ManyToOne(targetEntity: Manufacturer::class, inversedBy: 'accessories')]
     #[ORM\JoinColumn(name: 'accessory_manufacturer_id', nullable: false)]
