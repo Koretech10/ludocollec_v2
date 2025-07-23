@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity\Accessory;
 
-use App\Entity\User\User;
+use App\Entity\Creatable;
+use App\Entity\Lockable;
+use App\Entity\Validatable;
 use App\Enum\Accessory\Type;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,6 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'accessories')]
 class Accessory
 {
+    use Lockable;
+    use Creatable;
+    use Validatable;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
@@ -60,27 +66,6 @@ class Accessory
      * @ORM\OneToMany(targetEntity="App\Entity\AccessoriesWishlists", mappedBy="accessory")
      */
     private object $accessoriesWishlists;
-
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn]
-    private ?User $locker;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private \DateTime $lockTimestamp;
-
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn]
-    private ?User $createdBy;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private \DateTime $creationDate;
-
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn]
-    private ?User $validatedBy;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTime $validationDate;
 
     #[ORM\ManyToOne(targetEntity: Accessory::class, inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'accessory_family_parent_id')]
