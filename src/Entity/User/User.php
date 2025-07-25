@@ -48,13 +48,9 @@ class User
      */
     private Collection $accessoryWishlists;
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity ConsoleCollection
-     * Cascade DELETE
-     * InversedBy user.
-     */
-    private Collection $consoleCollections;
+    /** @var ArrayCollection<CollectionEntries\ConsoleEntry> $consoleCollectionEntries */
+    #[ORM\OneToMany(targetEntity: CollectionEntries\ConsoleEntry::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $consoleCollectionEntries;
 
     /**
      * ToDo Relation OneToMany
