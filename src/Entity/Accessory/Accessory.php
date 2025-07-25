@@ -47,22 +47,6 @@ class Accessory
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isAccessoryNew;
 
-    /**
-     * ToDo
-     * Cascade REMOVE.
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\AccessoriesCollections", mappedBy="accessory")
-     */
-    private object $accessoriesCollections;
-
-    /**
-     * ToDo
-     * Cascade REMOVE.
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\AccessoriesWishlists", mappedBy="accessory")
-     */
-    private object $accessoriesWishlists;
-
     #[ORM\ManyToOne(targetEntity: Accessory::class, inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'accessory_family_parent_id')]
     private Accessory $parent;

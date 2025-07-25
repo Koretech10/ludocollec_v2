@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity\User;
 
+use App\Entity\Collection as CollectionEntries;
 use App\Entity\UserList\UserList;
 use App\Enum\User\DisplayListType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -34,13 +36,9 @@ class User
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity AccessoryCollection
-     * Cascade DELETE
-     * InversedBy user.
-     */
-    private Collection $accessoryCollections;
+    /** @var ArrayCollection<CollectionEntries\AccessoryEntry> */
+    #[ORM\OneToMany(targetEntity: CollectionEntries\AccessoryEntry::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $accessoryCollectionEntries;
 
     /**
      * ToDo Relation OneToMany
