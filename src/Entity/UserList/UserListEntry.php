@@ -33,7 +33,9 @@ class UserListEntry
      *
      * @ORM\JoinColumn(nullable=true)
      */
-    private object $extensionCollection;
+    #[ORM\ManyToOne(targetEntity: Collection\ExtensionEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'extension_collection_id', nullable: false)]
+    private ?Collection\ExtensionEntry $extensionCollectionEntry;
 
     /**
      * ToDo.
@@ -63,7 +65,7 @@ class UserListEntry
     private object $gameWishlist;
 
     #[ORM\ManyToOne(targetEntity: Collection\ConsoleEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'console_collection_id')]
+    #[ORM\JoinColumn(name: 'console_collection_id', nullable: false)]
     private ?Collection\ConsoleEntry $consoleCollectionEntry;
 
     /**
@@ -76,7 +78,7 @@ class UserListEntry
     private object $consoleWishlist;
 
     #[ORM\ManyToOne(targetEntity: Collection\AccessoryEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'accessory_collection_id')]
+    #[ORM\JoinColumn(name: 'accessory_collection_id', nullable: false)]
     private ?Collection\AccessoryEntry $accessoryCollectionEntry;
 
     /**
