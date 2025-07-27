@@ -46,14 +46,9 @@ class UserListEntry
      */
     private object $extensionWishlist;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\GamesCollections", inversedBy="userListsContents")
-     *
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private object $gameCollection;
+    #[ORM\ManyToOne(targetEntity: Collection\GameEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'game_collection_id', nullable: false)]
+    private Collection\GameEntry $gameCollectionEntry;
 
     /**
      * ToDo.
