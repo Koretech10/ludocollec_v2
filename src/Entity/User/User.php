@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity\User;
 
 use App\Entity\Collection as CollectionEntries;
+use App\Entity\Wishlist as WishlistEntries;
 use App\Entity\UserList\UserList;
 use App\Enum\User\DisplayListType;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -52,13 +53,9 @@ class User
     #[ORM\OneToMany(targetEntity: CollectionEntries\ConsoleEntry::class, mappedBy: 'user', cascade: ['remove'])]
     private Collection $consoleCollectionEntries;
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity ConsoleWishlist
-     * Cascade DELETE
-     * InversedBy user.
-     */
-    private Collection $consoleWishlists;
+    /** @var ArrayCollection<WishlistEntries\ConsoleEntry> $consoleWishlistEntries */
+    #[ORM\OneToMany(targetEntity: WishlistEntries\ConsoleEntry::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $consoleWishlistEntries;
 
     /** @var ArrayCollection<CollectionEntries\GameEntry> $gameCollectionEntries */
     #[ORM\OneToMany(targetEntity: CollectionEntries\GameEntry::class, mappedBy: 'user', cascade: ['remove'])]

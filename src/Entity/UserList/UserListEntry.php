@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity\UserList;
 
-use App\Entity\Collection as Collection;
+use App\Entity\Collection;
+use App\Entity\Wishlist;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -56,14 +57,9 @@ class UserListEntry
     #[ORM\JoinColumn(name: 'console_collection_id')]
     private ?Collection\ConsoleEntry $consoleCollectionEntry;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\ConsolesWishlists", inversedBy="userListsContents")
-     *
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private object $consoleWishlist;
+    #[ORM\ManyToOne(targetEntity: Wishlist\ConsoleEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'console_wishlist_id')]
+    private ?Wishlist\ConsoleEntry $consoleWishlistEntry;
 
     #[ORM\ManyToOne(targetEntity: Collection\AccessoryEntry::class, inversedBy: 'userListEntries')]
     #[ORM\JoinColumn(name: 'accessory_collection_id')]
