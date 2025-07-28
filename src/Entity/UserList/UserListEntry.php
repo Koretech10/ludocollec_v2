@@ -26,15 +26,8 @@ class UserListEntry
     #[ORM\Column(type: 'integer')]
     private int $position;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\ExtensionsCollections", inversedBy="userListsContents")
-     *
-     * @ORM\JoinColumn(nullable=true)
-     */
     #[ORM\ManyToOne(targetEntity: Collection\ExtensionEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'extension_collection_id', nullable: false)]
+    #[ORM\JoinColumn(name: 'extension_collection_id')]
     private ?Collection\ExtensionEntry $extensionCollectionEntry;
 
     /**
@@ -47,8 +40,8 @@ class UserListEntry
     private object $extensionWishlist;
 
     #[ORM\ManyToOne(targetEntity: Collection\GameEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'game_collection_id', nullable: false)]
-    private Collection\GameEntry $gameCollectionEntry;
+    #[ORM\JoinColumn(name: 'game_collection_id')]
+    private ?Collection\GameEntry $gameCollectionEntry;
 
     /**
      * ToDo.
@@ -60,7 +53,7 @@ class UserListEntry
     private object $gameWishlist;
 
     #[ORM\ManyToOne(targetEntity: Collection\ConsoleEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'console_collection_id', nullable: false)]
+    #[ORM\JoinColumn(name: 'console_collection_id')]
     private ?Collection\ConsoleEntry $consoleCollectionEntry;
 
     /**
@@ -73,7 +66,7 @@ class UserListEntry
     private object $consoleWishlist;
 
     #[ORM\ManyToOne(targetEntity: Collection\AccessoryEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'accessory_collection_id', nullable: false)]
+    #[ORM\JoinColumn(name: 'accessory_collection_id')]
     private ?Collection\AccessoryEntry $accessoryCollectionEntry;
 
     /**
@@ -85,12 +78,9 @@ class UserListEntry
      */
     private object $accessoryWishlist;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\ToysCollections", inversedBy="userListsContents")
-     */
-    private object $toyCollection;
+    #[ORM\ManyToOne(targetEntity: Collection\ToyEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'toy_collection_id')]
+    private ?Collection\ToyEntry $toyCollectionEntry;
 
     /**
      * ToDo.
