@@ -41,13 +41,9 @@ class User
     #[ORM\OneToMany(targetEntity: CollectionEntries\AccessoryEntry::class, mappedBy: 'user', cascade: ['remove'])]
     private Collection $accessoryCollectionEntries;
 
-    /**
-     * ToDo Relation OneToMany
-     * TargetEntity AccessoryWishlist
-     * Cascade DELETE
-     * InversedBy user.
-     */
-    private Collection $accessoryWishlists;
+    /** @var ArrayCollection<WishlistEntries\AccessoryEntry> $accessoryWishlistEntries */
+    #[ORM\OneToMany(targetEntity: WishlistEntries\AccessoryEntry::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $accessoryWishlistEntries;
 
     /** @var ArrayCollection<CollectionEntries\ConsoleEntry> $consoleCollectionEntries */
     #[ORM\OneToMany(targetEntity: CollectionEntries\ConsoleEntry::class, mappedBy: 'user', cascade: ['remove'])]

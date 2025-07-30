@@ -45,7 +45,7 @@ class UserListEntry
     private ?Collection\GameEntry $gameCollectionEntry;
 
     #[ORM\ManyToOne(targetEntity: Wishlist\GameEntry::class, inversedBy: 'userListEntries')]
-    #[ORM\JoinColumn(name: 'game_wishlist_id', nullable: true)]
+    #[ORM\JoinColumn(name: 'game_wishlist_id')]
     private ?Wishlist\GameEntry $gameWishlistEntry;
 
     #[ORM\ManyToOne(targetEntity: Collection\ConsoleEntry::class, inversedBy: 'userListEntries')]
@@ -60,14 +60,9 @@ class UserListEntry
     #[ORM\JoinColumn(name: 'accessory_collection_id')]
     private ?Collection\AccessoryEntry $accessoryCollectionEntry;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\AccessoriesWishlists", inversedBy="userListsContents")
-     *
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private object $accessoryWishlist;
+    #[ORM\ManyToOne(targetEntity: Wishlist\AccessoryEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'accessory_wishlist_id')]
+    private ?Wishlist\AccessoryEntry $accessoryWishlistEntry;
 
     #[ORM\ManyToOne(targetEntity: Collection\ToyEntry::class, inversedBy: 'userListEntries')]
     #[ORM\JoinColumn(name: 'toy_collection_id')]
