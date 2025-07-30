@@ -31,14 +31,9 @@ class UserListEntry
     #[ORM\JoinColumn(name: 'extension_collection_id')]
     private ?Collection\ExtensionEntry $extensionCollectionEntry;
 
-    /**
-     * ToDo.
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\ExtensionsWishlists", inversedBy="userListsContents")
-     *
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private object $extensionWishlist;
+    #[ORM\ManyToOne(targetEntity: Wishlist\ExtensionEntry::class, inversedBy: 'userListEntries')]
+    #[ORM\JoinColumn(name: 'extension_wishlist_id')]
+    private ?Wishlist\ExtensionEntry $extensionWishlistEntry;
 
     #[ORM\ManyToOne(targetEntity: Collection\GameEntry::class, inversedBy: 'userListEntries')]
     #[ORM\JoinColumn(name: 'game_collection_id')]
