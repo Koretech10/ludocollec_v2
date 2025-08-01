@@ -6,10 +6,9 @@ namespace App\Entity\Game;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Table;
 
 #[ORM\Entity(readOnly: true)]
-#[Table(name: 'game_editors')]
+#[ORM\Table(name: 'game_editors')]
 class Editor
 {
     #[ORM\Id]
