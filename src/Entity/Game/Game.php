@@ -36,7 +36,7 @@ class Game
     private Developer $developer;
 
     #[ORM\Column(name: 'game_genre_id', enumType: Genre::class)]
-    private Genre $gameGenre;
+    private Genre $genre;
 
     #[ORM\Column(name: 'is_game_new', type: Types::BOOLEAN)]
     private bool $isNew;

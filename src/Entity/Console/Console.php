@@ -30,7 +30,7 @@ class Console
     private Manufacturer $manufacturer;
 
     #[ORM\Column(name: 'console_type_id', enumType: Type::class)]
-    private Type $consoleType;
+    private Type $type;
 
     #[ORM\Column(name: 'console_name')]
     private string $name;

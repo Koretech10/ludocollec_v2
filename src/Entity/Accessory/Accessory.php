@@ -36,7 +36,7 @@ class Accessory
     private Manufacturer $manufacturer;
 
     #[ORM\Column(name: 'accessory_type_id', enumType: Type::class)]
-    private Type $accessoryType;
+    private Type $type;
 
     #[ORM\Column(name: 'accessory_name')]
     private string $name;
@@ -44,8 +44,8 @@ class Accessory
     #[ORM\Column(name: 'accessory_release_date', type: Types::DATE_MUTABLE)]
     private \DateTime $releaseDate;
 
-    #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $isAccessoryNew;
+    #[ORM\Column(name: 'is_accessory_new', type: Types::BOOLEAN)]
+    private bool $isNew;
 
     #[ORM\ManyToOne(targetEntity: Accessory::class, inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'accessory_family_parent_id')]

@@ -18,7 +18,7 @@ class Series
     private int $id;
 
     #[ORM\Column(name: 'toy_brand_id', enumType: Brand::class)]
-    private Brand $toyBrand;
+    private Brand $brand;
 
     #[ORM\Column(name: 'toy_series_name')]
     private string $name;
