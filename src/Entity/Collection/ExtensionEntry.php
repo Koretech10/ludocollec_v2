@@ -53,7 +53,7 @@ class ExtensionEntry
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    #[ORM\Column(name: 'extension_out_date', type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name: 'extension_out_date', type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $exitDate;
 
     #[ORM\Column(enumType: Region::class)]
@@ -62,6 +62,6 @@ class ExtensionEntry
     #[ORM\Column(enumType: Preservation::class)]
     private Preservation $preservation;
 
-    #[ORM\Column(name: 'extension_medium', enumType: Medium::class)]
-    private Medium $medium;
+    #[ORM\Column(name: 'extension_medium', enumType: Medium::class, options: ['default' => Medium::UNSPECIFIED])]
+    private Medium $medium = Medium::UNSPECIFIED;
 }

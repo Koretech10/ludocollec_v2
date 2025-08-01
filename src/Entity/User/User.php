@@ -93,6 +93,6 @@ class User
     #[ORM\Column(type: 'boolean')]
     private bool $disableAds = false;
 
-    #[ORM\Column(enumType: DisplayListType::class)]
+    #[ORM\Column(enumType: DisplayListType::class, options: ['default' => DisplayListType::CARD_GRID])]
     private DisplayListType $displayListType = DisplayListType::CARD_GRID;
 }

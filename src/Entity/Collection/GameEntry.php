@@ -59,8 +59,8 @@ class GameEntry
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    #[ORM\Column(name: 'game_medium', enumType: Medium::class)]
-    private Medium $medium;
+    #[ORM\Column(name: 'game_medium', enumType: Medium::class, options: ['default' => Medium::UNSPECIFIED])]
+    private Medium $medium = Medium::UNSPECIFIED;
 
     #[ORM\Column(name: 'game_out_date', type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $exitDate;
