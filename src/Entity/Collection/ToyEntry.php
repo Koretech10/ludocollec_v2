@@ -47,7 +47,7 @@ class ToyEntry
     #[ORM\Column(name: 'toy_buying_price', type: Types::DECIMAL, precision: 11, scale: 2, nullable: true)]
     private ?string $purchasePrice;
 
-    #[ORM\Column(name: 'toy_collection_comment', nullable: true)]
+    #[ORM\Column(name: 'toy_collection_comment', type: Types::TEXT, nullable: true)]
     private ?string $comment;
 
     /** @var ArrayCollection<UserListEntry> $userListEntries */
