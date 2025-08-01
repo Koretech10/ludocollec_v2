@@ -80,16 +80,16 @@ class User
     private Collection $userLists;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $isActive = false;
+    private bool $isActive;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $hideCollection = false;
+    private bool $hideCollection;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $hideWishlist = false;
+    private bool $hideWishlist;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $disableAds = false;
+    private bool $disableAds;
 
     #[ORM\Column(enumType: DisplayListType::class, options: ['default' => DisplayListType::CARD_GRID])]
     private DisplayListType $displayListType = DisplayListType::CARD_GRID;
