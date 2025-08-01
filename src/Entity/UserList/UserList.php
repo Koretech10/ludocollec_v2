@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity\UserList;
 
 use App\Entity\User\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,6 +28,7 @@ class UserList
     #[ORM\Column(name: 'user_list_color', length: 7)]
     private string $color;
 
+    /** @var ArrayCollection<UserListEntry> $userListEntries */
     #[ORM\OneToMany(targetEntity: UserListEntry::class, mappedBy: 'userList', cascade: ['remove'])]
     private Collection $userListEntries;
 

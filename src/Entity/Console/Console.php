@@ -8,6 +8,7 @@ use App\Entity\Creatable;
 use App\Entity\Lockable;
 use App\Entity\Validatable;
 use App\Enum\Console\Type;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,6 +50,7 @@ class Console
     #[ORM\JoinColumn(name: 'console_family_parent_id')]
     private Console $parent;
 
+    /** @var ArrayCollection<Console> $children */
     #[ORM\OneToMany(targetEntity: Console::class, mappedBy: 'parent')]
     private Collection $children;
 }
