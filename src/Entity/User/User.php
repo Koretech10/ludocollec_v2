@@ -11,12 +11,9 @@ use App\Enum\User\DisplayListType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(readOnly: true)]
 #[ORM\Table(name: 'users')]
-#[UniqueEntity(fields: 'email')]
-#[UniqueEntity(fields: 'username')]
 class User
 {
     #[ORM\Id]
@@ -24,10 +21,10 @@ class User
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column]
+    #[ORM\Column(unique: true)]
     private string $username;
 
-    #[ORM\Column]
+    #[ORM\Column(unique: true)]
     private string $email;
 
     #[ORM\Column]
