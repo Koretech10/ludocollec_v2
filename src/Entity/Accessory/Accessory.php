@@ -31,7 +31,7 @@ class Accessory
     #[ORM\JoinColumn(nullable: false)]
     private Console $console;
 
-    #[ORM\ManyToOne(targetEntity: Manufacturer::class, inversedBy: 'accessories')]
+    #[ORM\ManyToOne(targetEntity: Manufacturer::class)]
     #[ORM\JoinColumn(name: 'accessory_manufacturer_id', nullable: false)]
     private Manufacturer $manufacturer;
 
