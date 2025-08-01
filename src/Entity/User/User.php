@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Entity\User;
 
 use App\Entity\Collection as CollectionEntries;
-use App\Entity\Wishlist as WishlistEntries;
 use App\Entity\UserList\UserList;
+use App\Entity\Wishlist as WishlistEntries;
 use App\Enum\User\DisplayListType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -18,7 +19,7 @@ class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\Column(unique: true)]
@@ -31,7 +32,7 @@ class User
     private string $password;
 
     /** @var list<string> $roles */
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 
     /** @var ArrayCollection<CollectionEntries\AccessoryEntry> */
@@ -78,16 +79,16 @@ class User
     #[ORM\OneToMany(targetEntity: UserList::class, mappedBy: 'user', cascade: ['remove'])]
     private Collection $userLists;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isActive = false;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $hideCollection = false;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $hideWishlist = false;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $disableAds = false;
 
     #[ORM\Column(enumType: DisplayListType::class, options: ['default' => DisplayListType::CARD_GRID])]

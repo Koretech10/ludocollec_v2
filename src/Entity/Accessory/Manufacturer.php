@@ -6,6 +6,7 @@ namespace App\Entity\Accessory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -14,13 +15,13 @@ class Manufacturer
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\Column(name: 'accessory_manufacturer_name')]
     private string $name;
 
-    #[ORM\Column(name: 'is_accessory_manufacturer_new', type: 'boolean')]
+    #[ORM\Column(name: 'is_accessory_manufacturer_new', type: Types::BOOLEAN)]
     private bool $isNew;
 
     /**

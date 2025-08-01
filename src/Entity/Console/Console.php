@@ -22,7 +22,7 @@ class Console
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Manufacturer::class, inversedBy: 'consoles')]

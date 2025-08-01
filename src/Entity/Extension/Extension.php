@@ -24,7 +24,7 @@ class Extension
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\Column(name: 'extension_type_id', enumType: Type::class)]

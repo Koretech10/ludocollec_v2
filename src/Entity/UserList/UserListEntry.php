@@ -6,6 +6,7 @@ namespace App\Entity\UserList;
 
 use App\Entity\Collection;
 use App\Entity\Wishlist;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -14,17 +15,17 @@ class UserListEntry
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: UserList::class, inversedBy: 'userListEntries')]
     #[ORM\JoinColumn(nullable: false)]
     private UserList $userList;
 
-    #[ORM\Column(name: 'user_list_content_comment', type: 'text', nullable: true)]
+    #[ORM\Column(name: 'user_list_content_comment', type: Types::TEXT, nullable: true)]
     private ?string $comment;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $position;
 
     #[ORM\ManyToOne(targetEntity: Collection\ExtensionEntry::class, inversedBy: 'userListEntries')]

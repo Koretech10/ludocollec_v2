@@ -6,6 +6,7 @@ namespace App\Entity\UserList;
 
 use App\Entity\User\User;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
@@ -14,7 +15,7 @@ class UserList
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
     #[ORM\Column(name: 'user_list_name')]
@@ -33,9 +34,9 @@ class UserList
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isPrivate;
 
-    #[ORM\Column(name: 'numbered_user_list', type: 'boolean')]
+    #[ORM\Column(name: 'numbered_user_list', type: Types::BOOLEAN)]
     private bool $isNumbered;
 }
