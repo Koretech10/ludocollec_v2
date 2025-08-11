@@ -99,6 +99,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(enumType: DisplayListType::class, options: ['default' => DisplayListType::CARD_GRID])]
     private DisplayListType $displayListType = DisplayListType::CARD_GRID;
 
+    /**
+     * Hache le hash du mot de passe pour éviter qu'il soit accessible dans le session storage.
+     *
+     * @see https://symfony.com/doc/current/security.html#understanding-how-users-are-refreshed-from-the-session
+     */
     public function __serialize(): array
     {
         $data = (array) $this;
