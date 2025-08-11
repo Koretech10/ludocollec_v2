@@ -13,7 +13,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'security.login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $form = $this->createForm(LoginType::class, null, [
+        $form = $this->createForm(LoginType::class, options: [
             'lastUsername' => $authenticationUtils->getLastUsername(),
         ]);
 
