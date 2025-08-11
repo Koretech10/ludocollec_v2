@@ -12,16 +12,21 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(readOnly: true)]
 #[ORM\Table(name: 'users')]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
+    /**
+     * @var non-empty-string
+     */
     #[ORM\Column(unique: true)]
     private string $username;
 
@@ -93,4 +98,39 @@ class User
 
     #[ORM\Column(enumType: DisplayListType::class, options: ['default' => DisplayListType::CARD_GRID])]
     private DisplayListType $displayListType = DisplayListType::CARD_GRID;
+
+    /**
+     * Hache le hash du mot de passe pour éviter qu'il soit accessible dans le session storage.
+     *
+     * @see https://symfony.com/doc/current/security.html#understanding-how-users-are-refreshed-from-the-session
+     */
+    public function __serialize(): array
+    {
+        $data = (array) $this;
+        $data[\sprintf("\0%s\0password", self::class)] = hash('crc32c', $this->password);
+
+        return $data;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+
+        return \array_unique($roles);
+    }
+
+    #[\Deprecated('to be removed when upgrading to Symfony 8')]
+    public function eraseCredentials(): void
+    {
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->username;
+    }
 }
