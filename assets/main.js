@@ -1,3 +1,2 @@
 import "./style/main.scss";
-
-require('bootstrap');
+import { Dropdown } from 'bootstrap';
