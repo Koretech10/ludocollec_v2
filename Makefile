@@ -15,3 +15,9 @@ start:
 
 stop:
 	symfony server:stop
+
+outdated:
+	symfony composer outdated --direct
+
+upgrade:
+	symfony composer update
