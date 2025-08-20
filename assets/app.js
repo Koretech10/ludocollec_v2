@@ -1,3 +1,3 @@
-import "./app.css";
+import "./app.scss";
 
-console.log("Happy coding !!");
+require('bootstrap');
