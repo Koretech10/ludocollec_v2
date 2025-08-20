@@ -24,3 +24,8 @@
 ###> node_modules ###
 /node_modules/
 ###< node_modules ###
+
+###> pentatrion/vite-bundle ###
+/node_modules/
+/public/build/
+###< pentatrion/vite-bundle ###

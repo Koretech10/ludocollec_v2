@@ -13,6 +13,9 @@ php-cs-fixer:
 start:
 	symfony server:start -d
 
+vite:
+	pnpm run dev
+
 stop:
 	symfony server:stop
 
