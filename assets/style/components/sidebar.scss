@@ -104,8 +104,12 @@
     }
 }
 
-.sidebar-icon-color-games {
-    > i {
-        color: get-color('game', 100);
+$entities: game, extension, console, accessory, toy;
+
+@each $entity in $entities {
+    .sidebar-icon-color-#{$entity} {
+        > i {
+            color: get-color($entity, 200);
+        }
     }
 }
