@@ -1,2 +1,2 @@
 import "./style/main.scss";
-import { Dropdown } from 'bootstrap';
+import { Dropdown } from "bootstrap";

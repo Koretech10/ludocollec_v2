@@ -5,6 +5,7 @@
     "bootstrap-icons": "^1.13.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
     "sass": "^1.90.0",
     "vite": "^6.0",
     "vite-plugin-symfony": "^8.2"
@@ -19,6 +20,7 @@
       "symfony php ./vendor/bin/php-cs-fixer fix --config=config/checkers/.php-cs-fixer.dist.php --cache-file=var/php_cs.cache",
       "symfony php ./vendor/bin/phpstan analyse -c config/checkers/phpstan.neon"
     ],
-    "templates/**/*.twig": "symfony console lint:twig"
+    "templates/**/*.twig": "symfony console lint:twig",
+    "assets/*": "prettier --write --ignore-unknown"
   }
 }
