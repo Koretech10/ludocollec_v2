@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-            {{ vite_entry_link_tags('app') }}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>{{ block('title') }} | LudoCollec</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ vite_entry_link_tags('app') }}
+    {% block additional_css %}{% endblock %}
+</head>
 
-        {% block javascripts %}
-            {{ vite_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<body>
+<div class="container-fluid overflow-hidden">
+    <div class="row vh-100 overflow-auto">
+        {% include 'layout/sidebar/sidebar.html.twig' %}
+
+        <div class="col d-flex flex-column h-100">
+            <main class="row">
+                <div class="col pt-4">
+                    <h1>Content here</h1>
+                    {% block body %}{% endblock %}
+                </div>
+            </main>
+
+            <footer class="row bg-light py-4 mt-auto">
+                <div class="col">
+                    <h1>Footer here</h1>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+    {{ vite_entry_script_tags('app') }}
+    {% block additional_js %}{% endblock %}
+</body>
 </html>

@@ -1,0 +1,47 @@
+{#
+    DROPDOWN DE LA SIDEBAR
+
+    Paramètres :
+        title: Nom du dropdown (string),
+        icon: Classe de l'icône Bootstrap Icons (string),
+        additional_classes: Classes CSS à appliquer sur le dropdown (string),
+        items: Éléments du dropdown (array) [
+            {
+                title: Nom de l'élément (string),
+                icon: Classe de l'icône Bootstrap Icons (string),
+                href: Lien de l'élément (string),
+                additional_classes: Classes CSS à appliquer sur l'élément (string) (facultatif),
+                when: Condition pour afficher l'élément (bool),
+            },
+        ],
+#}
+
+<li class="sidebar-dropdown {{ additional_classes }}">
+    <a href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-{{ icon }}"></i>
+        <span>
+            {{ title }}
+        </span>
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdown">
+        {% for item in items %}
+            {% if item.when is not defined %}
+                {% set when = true %}
+            {% else %}
+                {% set when = item.when %}
+            {% endif %}
+
+            {% if when is true %}
+                <li>
+                    <a class="dropdown-item {{ item.additional_classes|default('') }}" href="{{ item.href }}">
+                        <i class="bi bi-{{ item.icon }}"></i>
+                        <span>
+                            {{ item.title }}
+                        </span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>

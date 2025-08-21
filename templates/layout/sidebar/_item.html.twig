@@ -1,0 +1,18 @@
+{#
+    ELEMENT DE LA SIDEBAR
+
+    Paramètres :
+        title: Nom de l'élément (string),
+        icon: Classe de l'icône Bootstrap Icons (string),
+        href: Lien de l'élément (string),
+        additional_classes: Classes CSS à appliquer sur l'élément (string),
+#}
+
+<li class="sidebar-item {{ additional_classes }}">
+    <a href="{{ href }}">
+        <i class="bi bi-{{ icon }}"></i>
+        <span>
+            {{ title }}
+        </span>
+    </a>
+</li>
