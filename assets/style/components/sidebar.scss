@@ -22,6 +22,10 @@
 
     background-color: get-color('sidebar');
 
+    @media(min-width: 576px) {
+        width: fit-content;
+    }
+
     .nav-link {
         color: get-color('sidebar', 50);
     }
