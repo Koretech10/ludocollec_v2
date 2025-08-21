@@ -1,4 +1,5 @@
 @import "bootstrap/scss/bootstrap";
+@import "../colors";
 
 @mixin sidebar-hide-on-mobile {
     @extend .d-none;
@@ -100,5 +101,11 @@
 
         @extend .dropdown-menu-dark;
         @extend .shadow;
+    }
+}
+
+.sidebar-icon-color-games {
+    > i {
+        color: get-color('game', 100);
     }
 }
