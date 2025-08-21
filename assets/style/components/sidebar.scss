@@ -17,9 +17,14 @@
     @extend .col-xl-2;
     @extend .px-sm-2;
     @extend .px-0;
-    @extend .bg-dark;
     @extend .d-flex;
     @extend .sticky-top;
+
+    background-color: get-color('sidebar');
+
+    .nav-link {
+        color: get-color('sidebar', 50);
+    }
 }
 
 .sidebar-content {
@@ -96,11 +101,15 @@
         }
     }
 
-    > ul {
-        // .dropdown-menu doit être explicitement appelé pour permettre au dropdown de fonctionner
+    .dropdown-menu {
+        //@extend .shadow;
 
-        @extend .dropdown-menu-dark;
-        @extend .shadow;
+        background-color: get-color('sidebar', 400);
+        border: solid 2px get-color('sidebar', 600);
+    }
+
+    .dropdown-item {
+        color: white;
     }
 }
 
