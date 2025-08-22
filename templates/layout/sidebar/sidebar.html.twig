@@ -95,6 +95,51 @@
     },
 ] %}
 
+{% set user_items = [
+    {
+        title: 'Connexion/Inscription',
+        icon: 'box-arrow-in-right',
+        href: path('security.login'),
+        when: true,
+    },
+    {
+        title: 'Username',
+        icon: 'person-circle',
+        sub_items: [
+            {
+                title: 'Ma collection',
+                icon: 'collection-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Ma wishlist',
+                icon: 'bookmarks-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mes listes',
+                icon: 'journals',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mon profil',
+                icon: 'person-lines-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mes statistiques',
+                icon: 'graph-up',
+                href: '#ToDo',
+            },
+            {
+                title: 'Déconnexion',
+                icon: 'box-arrow-left',
+                href: path('security.logout'),
+            },
+        ],
+    },
+] %}
+
 <div class="sidebar-wrapper">
     <div class="sidebar-content">
         <a href="/" class="sidebar-brand">
@@ -127,6 +172,34 @@
                     {% endif %}
                 {% endif %}
             {% endfor %}
+        </ul>
+
+        <ul class="sidebar-menu sidebar-menu-bottom">
+        {% for item in user_items %}
+            {% if item.when is not defined %}
+                {% set when = true %}
+            {% else %}
+                {% set when = item.when %}
+            {% endif %}
+
+            {% if when is true %}
+                {% if item.sub_items is not defined %}
+                    {% include 'layout/sidebar/_item.html.twig' with {
+                        title: item.title,
+                        icon: item.icon,
+                        href: item.href,
+                        additional_classes: item.additional_classes|default(),
+                    } only %}
+                {% else %}
+                    {% include 'layout/sidebar/_dropdown.html.twig' with {
+                        title: item.title,
+                        icon: item.icon,
+                        additional_classes: item.additional_classes|default(),
+                        items: item.sub_items,
+                    } only %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
         </ul>
     </div>
 </div>

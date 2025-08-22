@@ -79,6 +79,15 @@
     @extend .align-items-sm-start;
 }
 
+.sidebar-menu-bottom {
+    @extend .mt-auto;
+
+    // Desktop
+    @media(min-width: 576px) {
+        margin-bottom: 2em !important;
+    }
+}
+
 .sidebar-item {
     @extend .nav-item;
 
