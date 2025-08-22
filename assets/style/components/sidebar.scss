@@ -21,6 +21,7 @@
     @extend .sticky-top;
 
     background-color: get-color('sidebar');
+    box-shadow: 0 0 15px 3px get-color('sidebar');
 
     // Desktop
     @media(min-width: 576px) {
