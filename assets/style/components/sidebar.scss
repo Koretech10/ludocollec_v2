@@ -11,6 +11,14 @@
     @extend .px-2;
 }
 
+@mixin sidebar-icon-size {
+    @media(min-width: 576px) {
+        font-size: 1.25rem !important;
+    }
+
+    font-size: 1.7rem !important;
+}
+
 .sidebar-wrapper {
     @extend .col-12;
     @extend .col-sm-3;
@@ -98,7 +106,7 @@
         @include sidebar-item-title;
 
         > i {
-            @extend .fs-5;
+            @include sidebar-icon-size;
         }
 
         > span {
@@ -119,7 +127,7 @@
         @include sidebar-item-title;
 
         > i {
-            @extend .fs-5;
+            @include sidebar-icon-size;
         }
 
         > span {
