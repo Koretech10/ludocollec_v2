@@ -12,11 +12,13 @@
 }
 
 @mixin sidebar-icon-size {
+    // Mobile
+    font-size: 1.7rem !important;
+
+    // Desktop
     @media(min-width: 576px) {
         font-size: 1.25rem !important;
     }
-
-    font-size: 1.7rem !important;
 }
 
 .sidebar-wrapper {
@@ -58,13 +60,13 @@
     @extend .pb-sm-3;
 
     > img { // Logo
+        // Mobile
+        height: 40px;
+
         // Desktop
         @media(min-width: 576px) {
             height: 100%;
         }
-
-        // Mobile
-        height: 40px;
     }
 
     > span {

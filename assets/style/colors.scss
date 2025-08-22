@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:color';
+
 ////////////////////////
 // COULEURS BOOTSTRAP //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +49,7 @@ $colors: (
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     sidebar: #334f80,
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////
@@ -94,16 +97,12 @@ $color-steps: (
 );
 
 @function shade($color, $percentage) {
-    @if $percentage >= 0 {
-        @return lighten($color, $percentage);
-    } @else {
-        @return darken($color, abs($percentage));
-    }
+    @return color.adjust($color, $lightness: $percentage);
 }
 
 @function get-color($color, $step: 500) {
-    $value: map-get($colors, $color);
-    $percentage: map-get($color-steps, $step);
+    $value: map.get($colors, $color);
+    $percentage: map.get($color-steps, $step);
 
     @return shade($value, $percentage);
 }
