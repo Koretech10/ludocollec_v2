@@ -22,6 +22,7 @@
 
     background-color: get-color('sidebar');
 
+    // Desktop
     @media(min-width: 576px) {
         width: fit-content;
     }
@@ -44,13 +45,18 @@
 }
 
 .sidebar-brand {
-    @extend .d-flex;
-    @extend .align-items-center;
+    @extend .align-self-center;
     @extend .pb-sm-3;
-    @extend .mb-md-0;
-    @extend .me-md-auto;
-    @extend .text-white;
-    @extend .text-decoration-none;
+
+    > img { // Logo
+        // Desktop
+        @media(min-width: 576px) {
+            height: 100%;
+        }
+
+        // Mobile
+        height: 40px;
+    }
 
     > span {
         @include sidebar-hide-on-mobile;
@@ -81,6 +87,10 @@
 
         @include sidebar-item-title;
 
+        > i {
+            @extend .fs-5;
+        }
+
         > span {
             @extend .ms-1;
 
@@ -98,6 +108,10 @@
 
         @include sidebar-item-title;
 
+        > i {
+            @extend .fs-5;
+        }
+
         > span {
             @extend .ms-1;
 
@@ -106,8 +120,6 @@
     }
 
     .dropdown-menu {
-        //@extend .shadow;
-
         background-color: get-color('sidebar', 400);
         border: solid 2px get-color('sidebar', 600);
     }
