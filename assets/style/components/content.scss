@@ -1,0 +1,43 @@
+@use "../legacy_vendors/bootstrap" as *;
+
+body {
+    @extend .bg-primary;
+}
+
+.content-wrapper {
+    @extend .container-fluid;
+    @extend .overflow-hidden;
+}
+
+.content-container {
+    @extend .row;
+    @extend .vh-100;
+    @extend .overflow-auto;
+}
+
+.content-body {
+    @extend .col;
+    @extend .d-flex;
+    @extend .flex-column;
+    @extend .h-100;
+
+    > header {
+        @extend .row;
+        @extend .bg-warning;
+        @extend .py-2;
+        @extend .ps-sm-2;
+    }
+
+    > main {
+        @extend .row;
+        @extend .ps-sm-2;
+    }
+
+    > footer {
+        @extend .row;
+        @extend .bg-info;
+        @extend .py-2;
+        @extend .mt-auto;
+        @extend .ps-sm-2;
+    }
+}

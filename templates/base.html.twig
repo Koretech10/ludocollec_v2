@@ -9,26 +9,32 @@
 </head>
 
 <body>
-<div class="container-fluid overflow-hidden">
-    <div class="row vh-100 overflow-auto">
-        {% include 'layout/sidebar/sidebar.html.twig' %}
+    <div class="content-wrapper">
+        <div class="content-container">
+            {% include 'layout/sidebar/sidebar.html.twig' %}
 
-        <div class="col d-flex flex-column h-100 ms-sm-3">
-            <main class="row">
-                <div class="col pt-4">
-                    <h1>Content here</h1>
-                    {% block body %}{% endblock %}
-                </div>
-            </main>
+            <div class="content-body">
+                <header>
+                    <div class="col">
+                        <h1>Header here</h1>
+                    </div>
+                </header>
 
-            <footer class="row bg-light py-4 mt-auto">
-                <div class="col">
-                    <h1>Footer here</h1>
-                </div>
-            </footer>
+                <main>
+                    <div class="col pt-4">
+                        <h1>Content here</h1>
+                        {% block body %}{% endblock %}
+                    </div>
+                </main>
+
+                <footer>
+                    <div class="col">
+                        <h1>Footer here</h1>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
-</div>
 
     {{ vite_entry_script_tags('app') }}
     {% block additional_js %}{% endblock %}
