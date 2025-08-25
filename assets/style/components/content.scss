@@ -2,7 +2,7 @@
 @use '../colors' as colors;
 
 body {
-    @extend .bg-primary;
+    background-color: colors.get-color('body');
 }
 
 .content-wrapper {
@@ -21,9 +21,16 @@ body {
     @extend .h-100;
 
     > header {
-        @extend .bg-warning;
         @extend .py-2;
         @extend .ps-sm-2;
+        @extend .row;
+
+        background-color: colors.get-color('header');
+        box-shadow: 0 0 15px 6px colors.get-color('header');
+
+        .breadcrumb {
+            @extend .my-2;
+        }
     }
 
     > main {
