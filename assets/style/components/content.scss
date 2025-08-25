@@ -1,4 +1,5 @@
 @use "../legacy_vendors/bootstrap" as *;
+@use '../colors' as colors;
 
 body {
     @extend .bg-primary;
@@ -10,34 +11,52 @@ body {
 }
 
 .content-container {
-    @extend .row;
     @extend .vh-100;
     @extend .overflow-auto;
 }
 
 .content-body {
-    @extend .col;
     @extend .d-flex;
     @extend .flex-column;
     @extend .h-100;
 
     > header {
-        @extend .row;
         @extend .bg-warning;
         @extend .py-2;
         @extend .ps-sm-2;
     }
 
     > main {
-        @extend .row;
         @extend .ps-sm-2;
     }
 
     > footer {
-        @extend .row;
-        @extend .bg-info;
         @extend .py-2;
         @extend .mt-auto;
         @extend .ps-sm-2;
+        @extend .d-flex;
+        @extend .align-items-center;
+
+        background-color: colors.get-color('footer');
+        box-shadow: 0 0 15px 3px colors.get-color('footer');
+        color: colors.get-color('footer', 50);
+
+        div {
+        }
+
+        a {
+            color: colors.get-color('primary', 100);
+        }
+
+        .social-links {
+            @extend .mb-1;
+            @extend .mb-sm-0;
+
+            a {
+                @extend .text-decoration-none;
+                @extend .me-1;
+                @extend .fs-4;
+            }
+        }
     }
 }
