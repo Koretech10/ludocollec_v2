@@ -1,5 +1,5 @@
-@import "bootstrap/scss/bootstrap";
-@import "../colors";
+@use "../legacy_vendors/bootstrap" as *;
+@use "../colors" as colors;
 
 @mixin sidebar-hide-on-mobile {
     @extend .d-none;
@@ -30,8 +30,8 @@
     @extend .d-flex;
     @extend .sticky-top;
 
-    background-color: get-color('sidebar');
-    box-shadow: 0 0 15px 3px get-color('sidebar');
+    background-color: colors.get-color('sidebar');
+    box-shadow: 0 0 15px 3px colors.get-color('sidebar');
 
     // Desktop
     @media(min-width: 576px) {
@@ -39,7 +39,7 @@
     }
 
     .nav-link {
-        color: get-color('sidebar', 50);
+        color: colors.get-color('sidebar', 50);
     }
 }
 
@@ -140,8 +140,8 @@
     }
 
     .dropdown-menu {
-        background-color: get-color('sidebar', 400);
-        border: solid 2px get-color('sidebar', 600);
+        background-color: colors.get-color('sidebar', 400);
+        border: solid 2px colors.get-color('sidebar', 600);
     }
 
     .dropdown-item {
@@ -154,7 +154,7 @@ $entities: game, extension, console, accessory, toy;
 @each $entity in $entities {
     .sidebar-icon-color-#{$entity} {
         > i {
-            color: get-color($entity, 200);
+            color: colors.get-color($entity, 200);
         }
     }
 }
