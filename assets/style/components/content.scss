@@ -31,6 +31,24 @@ body {
         .breadcrumb {
             @extend .my-2;
         }
+
+        .breadcrumb-item {
+            color: colors.get-color('primary');
+
+            a {
+                @extend .text-decoration-none;
+
+                color: inherit;
+            }
+        }
+
+        .active {
+            color: colors.get-color('dark', 300);
+
+            a {
+                color: inherit;
+            }
+        }
     }
 
     > main {
@@ -52,6 +70,8 @@ body {
         }
 
         a {
+            @extend .text-decoration-none;
+
             color: colors.get-color('primary', 100);
         }
 
