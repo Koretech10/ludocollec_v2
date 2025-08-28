@@ -28,8 +28,11 @@
                 </header>
 
                 <main class="row">
-                    <div class="col pt-4">
-                        <h1>Content here</h1>
+                    <div class="action-bar">
+                        {% block action_bar %}{% endblock %}
+                    </div>
+
+                    <div class="main-body">
                         {% block body %}{% endblock %}
                     </div>
                 </main>

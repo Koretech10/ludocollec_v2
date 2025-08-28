@@ -53,6 +53,25 @@ body {
 
     > main {
         @extend .ps-sm-2;
+
+        .action-bar {
+            @extend .d-flex;
+            @extend .flex-row-reverse;
+            @extend .mt-4;
+
+            @media(max-width: 576px) {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            > * {
+                @extend .mx-1;
+            }
+        }
+
+        .main-body {
+            @extend .mt-4;
+        }
     }
 
     > footer {
