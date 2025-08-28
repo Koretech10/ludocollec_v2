@@ -93,9 +93,27 @@ $color-steps: (
     @return color.adjust($color, $lightness: $percentage);
 }
 
+@function get-brightness($color) {
+    @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+}
+
 @function get-color($color, $step: 500) {
     $value: map.get($colors, $color);
     $percentage: map.get($color-steps, $step);
 
     @return shade($value, $percentage);
+}
+
+@function get-foreground-for-background($background-color) {
+    $light: get-color('light');
+    $dark: get-color('dark');
+
+    $background-brightness: get-brightness($background-color);
+    $light-brightness: get-brightness($light);
+    $dark-brightness: get-brightness($dark);
+
+    @return if(abs($background-brightness - $light-brightness) > abs($background-brightness - $dark-brightness),
+        $light,
+        $dark,
+    );
 }
