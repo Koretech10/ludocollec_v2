@@ -11,11 +11,20 @@
 <body>
     <div class="content-wrapper">
         <div class="content-container row">
-            {% include 'layout/sidebar/sidebar.html.twig' %}
+            {% include 'layout/sidebar.html.twig' %}
 
             <div class="content-body col">
                 <header>
-                    {% include 'layout/header/header.html.twig' %}
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            {% block header_breadcrumb %}
+                                {# ToDo A supprimer quand le fil d'ariane sera fonctionnel #}
+                                <li class="breadcrumb-item" aria-current="page">Accueil</li>
+                                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                            {% endblock %}
+                        </ol>
+                    </nav>
                 </header>
 
                 <main class="row">
@@ -26,7 +35,7 @@
                 </main>
 
                 <footer class="row">
-                    {% include 'layout/footer/footer.html.twig' %}
+                    {% include 'layout/footer.html.twig' %}
                 </footer>
             </div>
         </div>
