@@ -33,7 +33,7 @@ body {
         }
 
         .breadcrumb-item {
-            color: colors.get-color('primary');
+            color: colors.get-color('primary', 700);
 
             a {
                 @extend .text-decoration-none;
@@ -43,7 +43,7 @@ body {
         }
 
         .active {
-            color: colors.get-color('dark', 300);
+            color: colors.get-color('dark', 400);
 
             a {
                 color: inherit;
@@ -83,7 +83,7 @@ body {
 
         background-color: colors.get-color('footer');
         box-shadow: 0 0 15px 3px colors.get-color('footer');
-        color: colors.get-color('footer', 50);
+        color: colors.get-color('light', 800);
 
         div {
         }
@@ -91,7 +91,7 @@ body {
         a {
             @extend .text-decoration-none;
 
-            color: colors.get-color('primary', 100);
+            color: colors.get-color('primary', 50);
         }
 
         .social-links {

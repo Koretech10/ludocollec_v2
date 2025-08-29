@@ -39,7 +39,7 @@
     }
 
     .nav-link {
-        color: colors.get-color('sidebar', 50);
+        color: colors.get-color('primary', 50);
     }
 }
 
@@ -140,12 +140,12 @@
     }
 
     .dropdown-menu {
-        background-color: colors.get-color('sidebar', 400);
-        border: solid 2px colors.get-color('sidebar', 600);
+        background-color: colors.get-color('sidebar', 600);
+        border: solid 2px colors.get-color('sidebar', 400);
     }
 
     .dropdown-item {
-        color: white;
+        color: colors.get-color('primary', 50);
     }
 }
 
