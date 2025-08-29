@@ -91,7 +91,7 @@
         title: 'Administration',
         icon: 'kanban-fill',
         href: '#ToDo',
-        when: true,
+        when: is_granted('ROLE_ADMIN'),
     },
 ] %}
 
@@ -100,11 +100,12 @@
         title: 'Connexion/Inscription',
         icon: 'box-arrow-in-right',
         href: path('security.login'),
-        when: true,
+        when: app.user is null,
     },
     {
-        title: 'Username',
+        title: app.user.username|default(),
         icon: 'person-circle',
+        when: app.user is not null,
         sub_items: [
             {
                 title: 'Ma collection',
