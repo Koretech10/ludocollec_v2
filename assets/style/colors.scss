@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:color';
+@use 'sass:math';
 @use 'legacy_vendors/bootstrap' as *;
 
 $colors: (
@@ -67,9 +68,9 @@ $colors: (
     // COULEURS DIVERSES //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    purple: #7a00b3,
-    orange: #ff8000,
-    gold: #ffdf00,
+    "purple": #7a00b3,
+    "orange": #ff8000,
+    "gold": #ffdf00,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 );
@@ -94,7 +95,14 @@ $color-steps: (
 }
 
 @function get-brightness($color) {
-    @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+    @return (
+        calc(
+            (color.channel($color, "red") * 0.299) +
+            (color.channel($color, "green") * 0.587) +
+            (color.channel($color, "blue") * 0.114) /
+            255
+        ) * 100%
+    );
 }
 
 @function get-color($color, $step: 500) {
@@ -112,7 +120,8 @@ $color-steps: (
     $light-brightness: get-brightness($light);
     $dark-brightness: get-brightness($dark);
 
-    @return if(abs($background-brightness - $light-brightness) > abs($background-brightness - $dark-brightness),
+    @return if(
+        math.abs($background-brightness - $light-brightness) > math.abs($background-brightness - $dark-brightness),
         $light,
         $dark,
     );
