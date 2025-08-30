@@ -10,8 +10,13 @@ phpstan:
 php-cs-fixer:
 	symfony php ./vendor/bin/php-cs-fixer fix --config=config/checkers/.php-cs-fixer.dist.php --cache-file=var/php_cs.cache
 
-start:
+start: symfony-start vite
+
+symfony-start:
 	symfony server:start -d
+
+vite:
+	pnpm run dev
 
 stop:
 	symfony server:stop

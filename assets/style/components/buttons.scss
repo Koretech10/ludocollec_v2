@@ -1,0 +1,45 @@
+@use "../legacy_vendors/bootstrap" as *;
+@use '../colors' as *;
+
+.btn {
+    @extend .btn;
+    @extend .fw-bold;
+}
+
+@each $color, $value in $colors {
+    $normal-background: $value;
+    $normal-color: get-foreground-for-background($normal-background);
+    $hover-background: get-color($color, 600);
+    $hover-color: get-foreground-for-background($hover-background);
+    $active-background: get-color($color, 700);
+    $active-color: get-foreground-for-background($active-background);
+    $disable-background: get-color($color, 400);
+    $disable-color: get-foreground-for-background($disable-background);
+
+    .btn-#{$color} {
+        @include button-variant(
+            $normal-background,
+            $normal-background,
+            $normal-color,
+            $hover-background,
+            $hover-background,
+            $hover-color,
+            $active-background,
+            $active-background,
+            $active-color,
+            $disable-background,
+            $disable-background,
+            $disable-color
+        );
+    }
+
+    .btn-outline-#{$color} {
+        @include button-outline-variant(
+            $normal-background,
+            $hover-color,
+            $hover-background,
+            $hover-background,
+            $active-background,
+        );
+    }
+}

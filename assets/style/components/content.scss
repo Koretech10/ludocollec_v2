@@ -1,0 +1,105 @@
+@use "../legacy_vendors/bootstrap" as *;
+@use '../colors' as colors;
+
+body {
+    background-color: colors.get-color('body');
+}
+
+.content-wrapper {
+    @extend .container-fluid;
+    @extend .overflow-hidden;
+}
+
+.content-container {
+    @extend .vh-100;
+    @extend .overflow-auto;
+}
+
+.content-body {
+    @extend .d-flex;
+    @extend .flex-column;
+    @extend .h-100;
+
+    > header {
+        @extend .py-2;
+        @extend .ps-sm-2;
+        @extend .row;
+
+        background-color: colors.get-color('header');
+        box-shadow: 0 0 15px 6px colors.get-color('header');
+
+        .breadcrumb {
+            @extend .my-2;
+        }
+
+        .breadcrumb-item {
+            a {
+                @extend .link-primary;
+                @extend .text-decoration-none;
+            }
+        }
+
+        .active {
+            color: colors.get-color('dark', 400);
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+    > main {
+        @extend .ps-sm-2;
+
+        .action-bar {
+            @extend .d-flex;
+            @extend .flex-row-reverse;
+            @extend .mt-4;
+
+            @media(max-width: 576px) {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            > * {
+                @extend .mx-1;
+            }
+        }
+
+        .main-body {
+            @extend .mt-4;
+        }
+    }
+
+    > footer {
+        @extend .py-2;
+        @extend .mt-auto;
+        @extend .ps-sm-2;
+        @extend .d-flex;
+        @extend .align-items-center;
+
+        background-color: colors.get-color('footer');
+        box-shadow: 0 0 15px 3px colors.get-color('footer');
+        color: colors.get-color('light', 800);
+
+        div {
+        }
+
+        a {
+            @extend .text-decoration-none;
+
+            color: colors.get-color('primary', 50);
+        }
+
+        .social-links {
+            @extend .mb-1;
+            @extend .mb-sm-0;
+
+            a {
+                @extend .text-decoration-none;
+                @extend .me-1;
+                @extend .fs-4;
+            }
+        }
+    }
+}

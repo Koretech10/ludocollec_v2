@@ -1,0 +1,9 @@
+@use '../colors' as colors;
+
+$social-medias: twitter-x, youtube, twitch, discord, github;
+
+@each $name in $social-medias {
+    .text-#{$name} {
+        color: colors.get-color($name) !important;
+    }
+}

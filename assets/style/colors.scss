@@ -1,0 +1,128 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:math';
+@use 'legacy_vendors/bootstrap' as *;
+
+$colors: (
+    ////////////////////////
+    // COULEURS BOOTSTRAP //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+    light: $light,
+    dark: $dark,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////
+    // COULEURS D'ENTITÉ //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    game: #28a745,
+    extension: #b000ff,
+    console: #ff8000,
+    accessory: #007bff,
+    toy: #dc3545,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////
+    // COULEURS COMPOSANTS //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    sidebar: #334f80,
+    footer: #2a4068,
+    body: #edf1f7,
+    header: #dbe2f0,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////
+    // COULEURS EXTERNES //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    twitter-x: #ffffff,
+    youtube: #ff0000,
+    twitch: #9146ff,
+    discord: #5865f2,
+    github: #fafafa,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////
+    // COULEURS UTILISATEURS //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    vip: #ff2f48,
+    moderator: #ff8533,
+    administrator: #ffe033,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////
+    // COULEURS DIVERSES //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    "purple": #7a00b3,
+    "orange": #ff8000,
+    "gold": #ffdf00,
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+);
+
+$color-steps: (
+    // 50 < Plus clair ---- Base > 500 < Base ---- Plus sombre > 950
+    50: 32.4%,
+    100: 25.92%,
+    200: 19.44%,
+    300: 12.96%,
+    400: 6.48%,
+    500: 0%,
+    600: -6.48%,
+    700: -12.96%,
+    800: -19.44%,
+    900: -25.92%,
+    950: -32.4%
+);
+
+@function shade($color, $percentage) {
+    @return color.adjust($color, $lightness: $percentage);
+}
+
+@function get-brightness($color) {
+    @return (
+        calc(
+            (color.channel($color, "red") * 0.299) +
+            (color.channel($color, "green") * 0.587) +
+            (color.channel($color, "blue") * 0.114) /
+            255
+        ) * 100%
+    );
+}
+
+@function get-color($color, $step: 500) {
+    $value: map.get($colors, $color);
+    $percentage: map.get($color-steps, $step);
+
+    @return shade($value, $percentage);
+}
+
+@function get-foreground-for-background($background-color) {
+    $light: get-color('light');
+    $dark: get-color('dark');
+
+    $background-brightness: get-brightness($background-color);
+    $light-brightness: get-brightness($light);
+    $dark-brightness: get-brightness($dark);
+
+    @return if(
+        math.abs($background-brightness - $light-brightness) > math.abs($background-brightness - $dark-brightness),
+        $light,
+        $dark,
+    );
+}

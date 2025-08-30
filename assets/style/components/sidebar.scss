@@ -1,0 +1,160 @@
+@use "../legacy_vendors/bootstrap" as *;
+@use "../colors" as colors;
+
+@mixin sidebar-hide-on-mobile {
+    @extend .d-none;
+    @extend .d-sm-inline;
+}
+
+@mixin sidebar-item-title {
+    @extend .px-sm-0;
+    @extend .px-2;
+}
+
+@mixin sidebar-icon-size {
+    // Mobile
+    font-size: 1.7rem !important;
+
+    // Desktop
+    @media(min-width: 576px) {
+        font-size: 1.25rem !important;
+    }
+}
+
+.sidebar-wrapper {
+    @extend .col-12;
+    @extend .col-sm-3;
+    @extend .col-xl-2;
+    @extend .px-sm-2;
+    @extend .px-0;
+    @extend .d-flex;
+    @extend .sticky-top;
+
+    background-color: colors.get-color('sidebar');
+    box-shadow: 0 0 15px 3px colors.get-color('sidebar');
+
+    // Desktop
+    @media(min-width: 576px) {
+        width: fit-content;
+    }
+
+    .nav-link {
+        color: colors.get-color('primary', 50);
+    }
+}
+
+.sidebar-content {
+    @extend .d-flex;
+    @extend .flex-sm-column;
+    @extend .flex-row;
+    @extend .flex-grow-1;
+    @extend .align-items-center;
+    @extend .align-items-sm-start;
+    @extend .px-3;
+    @extend .pt-2;
+    @extend .text-white;
+}
+
+.sidebar-brand {
+    @extend .align-self-center;
+    @extend .pb-sm-3;
+
+    > img { // Logo
+        // Mobile
+        height: 40px;
+
+        // Desktop
+        @media(min-width: 576px) {
+            height: 100%;
+        }
+    }
+
+    > span {
+        @include sidebar-hide-on-mobile;
+    }
+}
+
+.sidebar-menu {
+    @extend .nav;
+    @extend .nav-pills;
+    @extend .flex-sm-column;
+    @extend .flex-row;
+    @extend .flex-nowrap;
+    @extend .flex-shrink-1;
+    @extend .flex-sm-grow-0;
+    @extend .flex-grow-1;
+    @extend .mb-sm-auto;
+    @extend .mb-0;
+    @extend .justify-content-end;
+    @extend .align-items-center;
+    @extend .align-items-sm-start;
+}
+
+.sidebar-menu-bottom {
+    @extend .mt-auto;
+
+    // Desktop
+    @media(min-width: 576px) {
+        margin-bottom: 2em !important;
+    }
+}
+
+.sidebar-item {
+    @extend .nav-item;
+
+    > a {
+        @extend .nav-link;
+
+        @include sidebar-item-title;
+
+        > i {
+            @include sidebar-icon-size;
+        }
+
+        > span {
+            @extend .ms-1;
+
+            @include sidebar-hide-on-mobile;
+        }
+    }
+}
+
+.sidebar-dropdown {
+    @extend .dropdown;
+
+    > a {
+        @extend .nav-link;
+        @extend .dropdown-toggle;
+
+        @include sidebar-item-title;
+
+        > i {
+            @include sidebar-icon-size;
+        }
+
+        > span {
+            @extend .ms-1;
+
+            @include sidebar-hide-on-mobile;
+        }
+    }
+
+    .dropdown-menu {
+        background-color: colors.get-color('sidebar', 600);
+        border: solid 2px colors.get-color('sidebar', 400);
+    }
+
+    .dropdown-item {
+        color: colors.get-color('primary', 50);
+    }
+}
+
+$entities: game, extension, console, accessory, toy;
+
+@each $entity in $entities {
+    .sidebar-icon-color-#{$entity} {
+        > i {
+            color: colors.get-color($entity, 200);
+        }
+    }
+}

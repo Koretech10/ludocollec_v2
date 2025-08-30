@@ -1,0 +1,206 @@
+{#
+    menu_items: [
+        {
+            title: Nom du lien (string),
+            icon: Classe de l'icône Bootstrap Icons (string),
+            href: Chemin du lien (string) (facultatif si sub_items est défini),
+            additional_classes: Classes CSS à appliquer sur l'élément (string) (facultatif),
+            when: Condition pour afficher l'élément (bool),
+            sub_items: Sous-éléments à afficher en dropdown (array) (facultatif) [
+                {
+                    title: Nom du sous-lien (string),
+                    icon: Classe de l'icône Bootstrap Icons (string),
+                    href: Chemin du lien (string),
+                    additional_classes: Classes CSS à appliquer sur le sous élément (string) (facultatif),
+                    when: Condition pour afficher le sous-élément (bool),
+                },
+            ],
+        },
+    ]
+#}
+
+{% set menu_items = [
+    {
+        title: 'Base de données',
+        icon: 'database-fill',
+        sub_items: [
+            {
+                title: 'Jeux vidéo',
+                icon: 'dpad-fill',
+                href: '#ToDo',
+                additional_classes: 'sidebar-icon-color-game',
+            },
+            {
+                title: 'Extensions',
+                icon: 'puzzle-fill',
+                href: '#ToDo',
+                additional_classes: 'sidebar-icon-color-extension',
+            },
+            {
+                title: 'Plateformes',
+                icon: 'hdd-fill',
+                href: '#ToDo',
+                additional_classes: 'sidebar-icon-color-console',
+            },
+            {
+                title: 'Accessoires',
+                icon: 'joystick',
+                href: '#ToDo',
+                additional_classes: 'sidebar-icon-color-accessory',
+            },
+            {
+                title: 'Jouets vidéo',
+                icon: 'person-walking',
+                href: '#ToDo',
+                additional_classes: 'sidebar-icon-color-toy',
+            },
+        ],
+    },
+    {
+        title: 'Membres',
+        icon: 'people-fill',
+        sub_items: [
+            {
+                title: 'Collections',
+                icon: 'collection-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Wishlists',
+                icon: 'bookmarks-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Listes',
+                icon: 'journals',
+                href: '#ToDo',
+            },
+        ],
+    },
+    {
+        title: 'Hall of Fame',
+        icon: 'heart-fill',
+        href: '#ToDo',
+    },
+    {
+        title: 'Aide',
+        icon: 'question-circle-fill',
+        href: '#ToDo',
+    },
+    {
+        title: 'Administration',
+        icon: 'kanban-fill',
+        href: '#ToDo',
+        when: is_granted('ROLE_ADMIN'),
+    },
+] %}
+
+{% set user_items = [
+    {
+        title: 'Connexion/Inscription',
+        icon: 'box-arrow-in-right',
+        href: path('security.login'),
+        when: app.user is null,
+    },
+    {
+        title: app.user.username|default(),
+        icon: 'person-circle',
+        when: app.user is not null,
+        sub_items: [
+            {
+                title: 'Ma collection',
+                icon: 'collection-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Ma wishlist',
+                icon: 'bookmarks-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mes listes',
+                icon: 'journals',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mon profil',
+                icon: 'person-lines-fill',
+                href: '#ToDo',
+            },
+            {
+                title: 'Mes statistiques',
+                icon: 'graph-up',
+                href: '#ToDo',
+            },
+            {
+                title: 'Déconnexion',
+                icon: 'box-arrow-left',
+                href: path('security.logout'),
+            },
+        ],
+    },
+] %}
+
+<div class="sidebar-wrapper">
+    <div class="sidebar-content">
+        <a href="/" class="sidebar-brand">
+            <img src="{{ asset('images/logo100px.png') }}" alt="LudoCollec" />
+        </a>
+
+        <ul class="sidebar-menu" id="menu">
+            {% for item in menu_items %}
+                {% if item.when is not defined %}
+                    {% set when = true %}
+                {% else %}
+                    {% set when = item.when %}
+                {% endif %}
+
+                {% if when is true %}
+                    {% if item.sub_items is not defined %}
+                        {% include 'layout/sidebar/_item.html.twig' with {
+                            title: item.title,
+                            icon: item.icon,
+                            href: item.href,
+                            additional_classes: item.additional_classes|default(),
+                        } only %}
+                    {% else %}
+                        {% include 'layout/sidebar/_dropdown.html.twig' with {
+                            title: item.title,
+                            icon: item.icon,
+                            additional_classes: item.additional_classes|default(),
+                            items: item.sub_items,
+                        } only %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <ul class="sidebar-menu sidebar-menu-bottom">
+        {% for item in user_items %}
+            {% if item.when is not defined %}
+                {% set when = true %}
+            {% else %}
+                {% set when = item.when %}
+            {% endif %}
+
+            {% if when is true %}
+                {% if item.sub_items is not defined %}
+                    {% include 'layout/sidebar/_item.html.twig' with {
+                        title: item.title,
+                        icon: item.icon,
+                        href: item.href,
+                        additional_classes: item.additional_classes|default(),
+                    } only %}
+                {% else %}
+                    {% include 'layout/sidebar/_dropdown.html.twig' with {
+                        title: item.title,
+                        icon: item.icon,
+                        additional_classes: item.additional_classes|default(),
+                        items: item.sub_items,
+                    } only %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>

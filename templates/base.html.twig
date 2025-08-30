@@ -1,16 +1,51 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>{{ block('title') }} | LudoCollec</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo100px.png') }}" />
+    {{ vite_entry_link_tags('app') }}
+    {% block additional_css %}{% endblock %}
+</head>
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<body>
+    <div class="content-wrapper">
+        <div class="content-container row">
+            {% include 'layout/sidebar.html.twig' %}
+
+            <div class="content-body col">
+                <header>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            {% block header_breadcrumb %}
+                                {# ToDo A supprimer quand le fil d'ariane sera fonctionnel #}
+                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                            {% endblock %}
+                        </ol>
+                    </nav>
+                </header>
+
+                <main class="row">
+                    <div class="action-bar">
+                        {% block action_bar %}{% endblock %}
+                    </div>
+
+                    <div class="main-body">
+                        {% block body %}{% endblock %}
+                    </div>
+                </main>
+
+                <footer class="row">
+                    {% include 'layout/footer.html.twig' %}
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    {{ vite_entry_script_tags('app') }}
+    {% block additional_js %}{% endblock %}
+</body>
 </html>
