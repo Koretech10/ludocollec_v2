@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enum\Collection;
 
-use App\Enum\LabeledEnum;
+use App\Enum\Core\LabeledEnum;
 
 enum Preservation: int implements LabeledEnum
 {

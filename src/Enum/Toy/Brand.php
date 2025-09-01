@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enum\Toy;
 
-use App\Enum\LabeledEnum;
+use App\Enum\Core\LabeledEnum;
 
 enum Brand: int implements LabeledEnum
 {

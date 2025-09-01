@@ -22,35 +22,35 @@
 {% set menu_items = [
     {
         title: 'Base de données',
-        icon: 'database-fill',
+        icon: 'database',
         sub_items: [
             {
                 title: 'Jeux vidéo',
-                icon: 'dpad-fill',
+                icon: 'game',
                 href: '#ToDo',
                 additional_classes: 'sidebar-icon-color-game',
             },
             {
                 title: 'Extensions',
-                icon: 'puzzle-fill',
+                icon: 'extension',
                 href: '#ToDo',
                 additional_classes: 'sidebar-icon-color-extension',
             },
             {
                 title: 'Plateformes',
-                icon: 'hdd-fill',
+                icon: 'console',
                 href: '#ToDo',
                 additional_classes: 'sidebar-icon-color-console',
             },
             {
                 title: 'Accessoires',
-                icon: 'joystick',
+                icon: 'accessory',
                 href: '#ToDo',
                 additional_classes: 'sidebar-icon-color-accessory',
             },
             {
                 title: 'Jouets vidéo',
-                icon: 'person-walking',
+                icon: 'toy',
                 href: '#ToDo',
                 additional_classes: 'sidebar-icon-color-toy',
             },
@@ -58,38 +58,38 @@
     },
     {
         title: 'Membres',
-        icon: 'people-fill',
+        icon: 'members',
         sub_items: [
             {
                 title: 'Collections',
-                icon: 'collection-fill',
+                icon: 'collection',
                 href: '#ToDo',
             },
             {
                 title: 'Wishlists',
-                icon: 'bookmarks-fill',
+                icon: 'wishlist',
                 href: '#ToDo',
             },
             {
                 title: 'Listes',
-                icon: 'journals',
+                icon: 'user_list',
                 href: '#ToDo',
             },
         ],
     },
     {
         title: 'Hall of Fame',
-        icon: 'heart-fill',
+        icon: 'hall_of_fame',
         href: '#ToDo',
     },
     {
         title: 'Aide',
-        icon: 'question-circle-fill',
+        icon: 'help',
         href: '#ToDo',
     },
     {
         title: 'Administration',
-        icon: 'kanban-fill',
+        icon: 'administration',
         href: '#ToDo',
         when: is_granted('ROLE_ADMIN'),
     },
@@ -98,43 +98,43 @@
 {% set user_items = [
     {
         title: 'Connexion/Inscription',
-        icon: 'box-arrow-in-right',
+        icon: 'log_sign_in',
         href: path('security.login'),
         when: app.user is null,
     },
     {
         title: app.user.username|default(),
-        icon: 'person-circle',
+        icon: 'logged_in_user',
         when: app.user is not null,
         sub_items: [
             {
                 title: 'Ma collection',
-                icon: 'collection-fill',
+                icon: 'collection',
                 href: '#ToDo',
             },
             {
                 title: 'Ma wishlist',
-                icon: 'bookmarks-fill',
+                icon: 'wishlist',
                 href: '#ToDo',
             },
             {
                 title: 'Mes listes',
-                icon: 'journals',
+                icon: 'user_list',
                 href: '#ToDo',
             },
             {
                 title: 'Mon profil',
-                icon: 'person-lines-fill',
+                icon: 'profile',
                 href: '#ToDo',
             },
             {
                 title: 'Mes statistiques',
-                icon: 'graph-up',
+                icon: 'stats',
                 href: '#ToDo',
             },
             {
                 title: 'Déconnexion',
-                icon: 'box-arrow-left',
+                icon: 'log_out',
                 href: path('security.logout'),
             },
         ],
