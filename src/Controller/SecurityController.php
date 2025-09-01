@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\LoginType;
+use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,6 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'security.login')]
+    #[Breadcrumb(['label' => 'Connexion', 'route' => 'security.login'])]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $form = $this->createForm(LoginType::class, options: [
