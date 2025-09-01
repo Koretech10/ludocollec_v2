@@ -1,0 +1,2 @@
+slope_it_breadcrumb:
+    template: 'layout/breadcrumb.html.twig'
