@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Exception\Icon;
+namespace App\Exception\Core;
 
-use App\Enum\Icon\Icon;
+use App\Enum\Core\Icon;
 
 class IconNotFoundException extends \Exception
 {

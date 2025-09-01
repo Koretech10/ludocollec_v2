@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Enum\Icon;
+namespace App\Enum\Core;
 
-use App\Exception\Icon\IconNotFoundException;
+use App\Exception\Core\IconNotFoundException;
 
 enum Icon: string
 {
