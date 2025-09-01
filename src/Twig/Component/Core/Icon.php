@@ -8,7 +8,7 @@ use App\Enum\Core\Icon as IconEnum;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent(
-    name: 'Icon',
+    name: 'icon',
     template: 'component/core/icon.html.twig',
 )]
 class Icon
