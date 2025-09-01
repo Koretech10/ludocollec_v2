@@ -16,16 +16,7 @@
 
             <div class="content-body col">
                 <header>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            {% block header_breadcrumb %}
-                                {# ToDo A supprimer quand le fil d'ariane sera fonctionnel #}
-                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Data</li>
-                            {% endblock %}
-                        </ol>
-                    </nav>
+                    {{ slope_it_breadcrumb() }}
                 </header>
 
                 <main class="row">
