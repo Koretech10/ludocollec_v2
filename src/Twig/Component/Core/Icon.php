@@ -13,11 +13,11 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 )]
 class Icon
 {
-    public string $iconName;
-    public string $classes = '';
+    public string $name;
+    public string $class = '';
 
     public function getIcon(): string
     {
-        return IconEnum::fromName($this->iconName)->value;
+        return IconEnum::fromName($this->name)->value;
     }
 }
