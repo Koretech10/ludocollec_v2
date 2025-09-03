@@ -1,8 +1,15 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="/">Accueil</a>
-        </li>
+        {% if not slope_it_is_breadcrumb_empty() %}
+            <li class="breadcrumb-item">
+                <a href="/">Accueil</a>
+            </li>
+        {% else %}
+            <li class="breadcrumb-item active" aria-current="page">
+                Accueil
+            </li>
+        {% endif %}
+
         {% for item in items %}
             {# @var item SlopeIt\BreadcrumbBundle\Model\ProcessedBreadcrumbItem #}
 
