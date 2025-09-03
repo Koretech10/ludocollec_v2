@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-6">
+            <div class="col-12 my-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Bienvenue sur LudoCollec</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <iframe
+                            height="400px"
+                            style="width: 100%"
+                            src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 row">
+            <div class="col-12 col-sm-6 my-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Statistiques</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div>
+                            <b>Jeux vidéo :</b> 10 046
+                        </div>
+
+                        <div>
+                            <b>Plateformes :</b> 649
+                        </div>
+
+                        <div>
+                            <b>Accessoires :</b> 912
+                        </div>
+
+                        <div>
+                            <b>Jouets vidéo :</b> 1 040
+                        </div>
+                        <div>
+                            <b>Membres :</b> 122
+                        </div>
+
+                        <div>
+                            <b>Entrées de collection :</b> 17 468
+                        </div>
+
+                        <div>
+                            <b>Entrées de wishlist :</b> 1 234
+                        </div>
+
+                        <div>
+                            <b>Listes personnalisées :</b> 149
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 my-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Aidez LudoCollec</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <a class="btn btn-youtube" href="https://fr.tipeee.com/ludocollec" style="width: 100%;">
+                            <twig:icon name="hall_of_fame" class="fs-1"></twig:icon>
+                            <br />
+                            <span class="fs-3">Faites un don sur Tipeee</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 my-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Derniers ajouts</h5>
+                    </div>
+
+                    <div class="card-body row">
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-12 col-sm-6">
+                            <div class="card-body row g-0">
+                                <div class="col-2">
+                                    <img src="{{ asset('images/logo100px.png') }}" class="img-fluid rounded-start">
+                                </div>
+
+                                <div class="col">
+                                    <p class="card-title">
+                                        <a class="text-decoration-none" href="#ToDo">Jeu vidéo</a>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Créé le {{ 'now'|date('d/m/Y H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
