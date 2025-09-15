@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-12 col-sm-6">
             <div class="col-12 my-3">
-                <div class="card">
-                    <div class="card-header">
+                <twig:card>
+                    <twig:block name="header">
                         <h5 class="card-title">Bienvenue sur LudoCollec</h5>
-                    </div>
+                    </twig:block>
 
-                    <div class="card-body">
+                    <twig:block name="body">
                         <iframe
                             height="400px"
                             style="width: 100%"
@@ -20,18 +20,18 @@
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                         ></iframe>
-                    </div>
-                </div>
+                    </twig:block>
+                </twig:card>
             </div>
 
             <div class="row">
                 <div class="col-12 col-sm-6 my-3">
-                    <div class="card">
-                        <div class="card-header">
+                    <twig:card>
+                        <twig:block name="header">
                             <h5 class="card-title">Statistiques</h5>
-                        </div>
+                        </twig:block>
 
-                        <div class="card-body">
+                        <twig:block name="body">
                             <twig:info label="Jeux vidéo" value="10 465" />
 
                             <twig:info label="Plateformes" value="649" />
@@ -47,41 +47,42 @@
                             <twig:info label="Entrées de wishlist" value="1 234" />
 
                             <twig:info label="Listes personnalisées" value="149" />
-                        </div>
-                    </div>
+
+                        </twig:block>
+                    </twig:card>
                 </div>
 
                 <div class="col-12 col-sm-6 my-3">
-                    <div class="card">
-                        <div class="card-header">
+                    <twig:card>
+                        <twig:block name="header">
                             <h5 class="card-title">Aidez LudoCollec</h5>
-                        </div>
+                        </twig:block>
 
-                        <div class="card-body">
+                        <twig:block name="body">
                             <a class="btn btn-youtube" href="https://fr.tipeee.com/ludocollec" style="width: 100%;">
                                 <twig:icon name="hall_of_fame" class="fs-1"></twig:icon>
                                 <br />
                                 <span class="fs-3">Faites un don sur Tipeee</span>
                             </a>
-                        </div>
-                    </div>
+                        </twig:block>
+                    </twig:card>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-sm-6">
             <div class="col-12 my-3">
-                <div class="card">
-                    <div class="card-header">
+                <twig:card bodyClass="row">
+                    <twig:block name="header">
                         <h5 class="card-title">Derniers ajouts</h5>
-                    </div>
+                    </twig:block>
 
-                    <div class="card-body row" style="box-sizing: border-box;">
+                    <twig:block name="body">
                         {% for i in 1..16 %}
                             {% include 'static/home/_card_placeholder.html.twig' %}
                         {% endfor %}
-                    </div>
-                </div>
+                    </twig:block>
+                </twig:card>
             </div>
         </div>
     </div>
