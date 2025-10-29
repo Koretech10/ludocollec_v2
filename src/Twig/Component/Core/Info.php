@@ -13,5 +13,4 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class Info
 {
     public string $label;
-    public string $value;
 }
