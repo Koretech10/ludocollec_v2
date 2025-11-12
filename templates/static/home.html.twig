@@ -11,16 +11,14 @@
                         <h5 class="card-title">Bienvenue sur LudoCollec</h5>
                     </twig:block>
 
-                    <twig:block name="body">
-                        <iframe
-                            height="400px"
-                            style="width: 100%"
-                            src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
-                    </twig:block>
+                    <iframe
+                        height="400px"
+                        style="width: 100%"
+                        src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
                 </twig:card>
             </div>
 
@@ -31,23 +29,21 @@
                             <h5 class="card-title">Statistiques</h5>
                         </twig:block>
 
-                        <twig:block name="body">
-                            <twig:info label="Jeux vidéo">10 465</twig:info>
+                        <twig:info label="Jeux vidéo">10 465</twig:info>
 
-                            <twig:info label="Plateformes">649</twig:info>
+                        <twig:info label="Plateformes">649</twig:info>
 
-                            <twig:info label="Accessoires">912</twig:info>
+                        <twig:info label="Accessoires">912</twig:info>
 
-                            <twig:info label="Jouets vidéo">1 040</twig:info>
+                        <twig:info label="Jouets vidéo">1 040</twig:info>
 
-                            <twig:info label="Membres">122</twig:info>
+                        <twig:info label="Membres">122</twig:info>
 
-                            <twig:info label="Entrées de collection">17 468</twig:info>
+                        <twig:info label="Entrées de collection">17 468</twig:info>
 
-                            <twig:info label="Entrées de wishlist">1 234</twig:info>
+                        <twig:info label="Entrées de wishlist">1 234</twig:info>
 
-                            <twig:info label="Listes personnalisées">149</twig:info>
-                        </twig:block>
+                        <twig:info label="Listes personnalisées">149</twig:info>
                     </twig:card>
                 </div>
 
@@ -57,13 +53,11 @@
                             <h5 class="card-title">Aidez LudoCollec</h5>
                         </twig:block>
 
-                        <twig:block name="body">
-                            <a class="btn btn-youtube" href="https://fr.tipeee.com/ludocollec" style="width: 100%;">
-                                <twig:icon name="hall_of_fame" class="fs-1"></twig:icon>
-                                <br />
-                                <span class="fs-3">Faites un don sur Tipeee</span>
-                            </a>
-                        </twig:block>
+                        <a class="btn btn-youtube" href="https://fr.tipeee.com/ludocollec" style="width: 100%;">
+                            <twig:icon name="hall_of_fame" class="fs-1"></twig:icon>
+                            <br />
+                            <span class="fs-3">Faites un don sur Tipeee</span>
+                        </a>
                     </twig:card>
                 </div>
             </div>
@@ -76,11 +70,9 @@
                         <h5 class="card-title">Derniers ajouts</h5>
                     </twig:block>
 
-                    <twig:block name="body">
-                        {% for i in 1..16 %}
-                            {% include 'static/home/_card_placeholder.html.twig' %}
-                        {% endfor %}
-                    </twig:block>
+                    {% for i in 1..16 %}
+                        {% include 'static/home/_card_placeholder.html.twig' %}
+                    {% endfor %}
                 </twig:card>
             </div>
         </div>

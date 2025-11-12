@@ -14,6 +14,6 @@ class Card
 {
     public string $cardClass = '';
     public string $headerClass = '';
-    public string $bodyClass = '';
+    public string $contentClass = '';
     public string $footerClass = '';
 }

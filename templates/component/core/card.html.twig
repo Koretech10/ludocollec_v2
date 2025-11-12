@@ -5,8 +5,8 @@
         </div>
     {% endif %}
 
-    <div class="card-body {{ this.bodyClass }}">
-        {% block body %}{% endblock %}
+    <div class="card-body {{ this.contentClass }}">
+        {% block content %}{% endblock %}
     </div>
 
     {% if block('footer') is not empty %}
