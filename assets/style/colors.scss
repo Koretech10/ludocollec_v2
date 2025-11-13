@@ -126,3 +126,10 @@ $color-steps: (
         $dark,
     );
 }
+
+@each $color, $value in $colors {
+    .bg-#{$color} {
+        background-color: $value;
+        color: get-foreground-for-background($value);
+    }
+}

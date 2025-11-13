@@ -1,0 +1,7 @@
+@use '../../legacy_vendors/bootstrap' as *;
+
+.home-entries-counter {
+    @extend .col-12;
+    @extend .col-sm-4;
+    @extend .my-1;
+}
