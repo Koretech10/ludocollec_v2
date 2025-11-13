@@ -27,6 +27,8 @@ install:
 
 outdated:
 	symfony composer outdated --direct
+	pnpm outdated
 
 upgrade:
 	symfony composer update
+	pnpm update
