@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-9">
+            <div class="row justify-content-center">
+                <div class="home-entries-counter">
+                    <twig:card contentClass="bg-game">
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <twig:icon name="game" class="fs-1 d-flex align-items-center"></twig:icon>
+                            </div>
+                            <div class="col-10">
+                                <h1>10 465</h1>
+                                <h3>Jeux vidéo</h3>
+                            </div>
+                        </div>
+                    </twig:card>
+                </div>
+
+                <div class="home-entries-counter">
+                    <twig:card contentClass="bg-extension">
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <twig:icon name="extension" class="fs-1 d-flex align-items-center"></twig:icon>
+                            </div>
+                            <div class="col-10">
+                                <h1>122</h1>
+                                <h3>Extensions</h3>
+                            </div>
+                        </div>
+                    </twig:card>
+                </div>
+
+                <div class="home-entries-counter">
+                    <twig:card contentClass="bg-console">
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <twig:icon name="console" class="fs-1 d-flex align-items-center"></twig:icon>
+                            </div>
+                            <div class="col-10">
+                                <h1>649</h1>
+                                <h3>Plateformes</h3>
+                            </div>
+                        </div>
+                    </twig:card>
+                </div>
+
+                <div class="home-entries-counter">
+                    <twig:card contentClass="bg-accessory">
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <twig:icon name="accessory" class="fs-1 d-flex align-items-center"></twig:icon>
+                            </div>
+                            <div class="col-10">
+                                <h1>912</h1>
+                                <h3>Accessoires</h3>
+                            </div>
+                        </div>
+                    </twig:card>
+                </div>
+
+                <div class="home-entries-counter">
+                    <twig:card contentClass="bg-toy">
+                        <div class="row">
+                            <div class="col-2 d-flex">
+                                <twig:icon name="toy" class="fs-1 d-flex align-items-center"></twig:icon>
+                            </div>
+                            <div class="col-10">
+                                <h1>1 040</h1>
+                                <h3>Jouets vidéo</h3>
+                            </div>
+                        </div>
+                    </twig:card>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <twig:card>
+                    <twig:block name="header">
+                        <h5 class="card-title">Bienvenue sur LudoCollec</h5>
+                    </twig:block>
+
+                    <div class="row">
+                        <div class="col-12 col-sm-5">
+                            <iframe
+                                height="400px"
+                                style="width: 100%"
+                                src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+
+                        <div class="col">
+                            <p>
+                                LudoCollec est une application web de gestion de collection de jeux vidéo basée sur une
+                                base de données communautaire. Cela veut dire que la communauté est libre d'ajouter de
+                                nouvelles entrées dans cette base de données. Ces entrées sont ensuite vérifiées par
+                                l'équipe d'administration de LudoCollec.
+                            </p>
+
+                            <p>
+                                LudoCollec vous permet de gérer votre collection de jeux vidéo au sens large du terme.
+                                Vous pouvez gérer vos jeux mais aussi vos plateformes, vos accessoires, vos extensions
+                                et même vos jouets vidéo !
+                            </p>
+
+                            <p>
+                                Et ce n'est pas tout car vous pouvez aussi gérer votre wishlist (votre liste d'envies)
+                                pour vos futurs achats et même créer des listes personnalisées pour mettre en avant
+                                certaines pièces de votre collection !
+                            </p>
+
+                            <p>
+                                LudoCollec vous permet également de consulter les collections, wishlists et les listes
+                                personnalisées d'autres membres à condition qu'ils souhaient les rendre visible pour
+                                tous les utilisateurs de LudoCollec.
+                            </p>
+                        </div>
+                    </div>
+                </twig:card>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-3 mb-3 mb-sm-3 mt-3 mt-sm-0">
+            <twig:card cardClass="mb-3">
+                <twig:block name="header">
+                    <h5 class="card-title">Aidez LudoCollec</h5>
+                </twig:block>
+
+                <a class="btn btn-youtube" href="https://fr.tipeee.com/ludocollec" style="width: 100%;">
+                    <twig:icon name="hall_of_fame" class="fs-1"></twig:icon>
+                    <br />
+                    <span class="fs-3">Faites un don sur Tipeee</span>
+                </a>
+            </twig:card>
+
+            <twig:card>
+                <twig:block name="header">
+                    <h5 class="card-title">Derniers ajouts</h5>
+                </twig:block>
+
+                {% for i in 1..5 %}
+                    {% include 'static/home/_card_placeholder.html.twig' %}
+                {% endfor %}
+            </twig:card>
+        </div>
+    </div>
+{% endblock %}

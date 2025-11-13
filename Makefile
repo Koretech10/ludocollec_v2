@@ -21,6 +21,10 @@ vite:
 stop:
 	symfony server:stop
 
+install:
+	symfony composer install
+	pnpm install
+
 outdated:
 	symfony composer outdated --direct
 

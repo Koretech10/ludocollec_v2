@@ -1,0 +1,17 @@
+<div class="card {{ this.cardClass }}">
+    {% if block('header') is not empty %}
+        <div class="card-header {{ this.headerClass }}">
+            {% block header %}{% endblock %}
+        </div>
+    {% endif %}
+
+    <div class="card-body {{ this.contentClass }}">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% if block('footer') is not empty %}
+        <div class="card-footer {{ this.footerClass }}">
+            {% block footer %}{% endblock %}
+        </div>
+    {% endif %}
+</div>
