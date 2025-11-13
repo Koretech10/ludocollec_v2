@@ -83,14 +83,45 @@
                         <h5 class="card-title">Bienvenue sur LudoCollec</h5>
                     </twig:block>
 
-                    <iframe
-                        height="400px"
-                        style="width: 100%"
-                        src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
+                    <div class="row">
+                        <div class="col-12 col-sm-5">
+                            <iframe
+                                height="400px"
+                                style="width: 100%"
+                                src="https://www.youtube.com/embed/TWdfc6kjizo?autoplay=1&mute=1&cc_load_policy=1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+
+                        <div class="col">
+                            <p>
+                                LudoCollec est une application web de gestion de collection de jeux vidéo basée sur une
+                                base de données communautaire. Cela veut dire que la communauté est libre d'ajouter de
+                                nouvelles entrées dans cette base de données. Ces entrées sont ensuite vérifiées par
+                                l'équipe d'administration de LudoCollec.
+                            </p>
+
+                            <p>
+                                LudoCollec vous permet de gérer votre collection de jeux vidéo au sens large du terme.
+                                Vous pouvez gérer vos jeux mais aussi vos plateformes, vos accessoires, vos extensions
+                                et même vos jouets vidéo !
+                            </p>
+
+                            <p>
+                                Et ce n'est pas tout car vous pouvez aussi gérer votre wishlist (votre liste d'envies)
+                                pour vos futurs achats et même créer des listes personnalisées pour mettre en avant
+                                certaines pièces de votre collection !
+                            </p>
+
+                            <p>
+                                LudoCollec vous permet également de consulter les collections, wishlists et les listes
+                                personnalisées d'autres membres à condition qu'ils souhaient les rendre visible pour
+                                tous les utilisateurs de LudoCollec.
+                            </p>
+                        </div>
+                    </div>
                 </twig:card>
             </div>
         </div>
@@ -113,7 +144,7 @@
                     <h5 class="card-title">Derniers ajouts</h5>
                 </twig:block>
 
-                {% for i in 1..10 %}
+                {% for i in 1..5 %}
                     {% include 'static/home/_card_placeholder.html.twig' %}
                 {% endfor %}
             </twig:card>
