@@ -39,7 +39,11 @@
     }
 
     .nav-link {
-        color: colors.get-color('primary', 50);
+        color: colors.get-color('sidebar-link');
+
+        &:hover {
+            color: colors.get-color('sidebar-link', 300);
+        }
     }
 }
 
@@ -145,7 +149,12 @@
     }
 
     .dropdown-item {
-        color: colors.get-color('primary', 50);
+        color: colors.get-color('sidebar-link');
+
+        &:hover {
+            background-color: colors.get-color('sidebar', 300);
+            color: colors.get-color('sidebar-link', 300);
+        }
     }
 }
 
