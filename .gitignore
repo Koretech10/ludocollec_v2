@@ -28,3 +28,5 @@
 ###> pentatrion/vite-bundle ###
 /public/build/
 ###< pentatrion/vite-bundle ###
+
+/config/reference.php
