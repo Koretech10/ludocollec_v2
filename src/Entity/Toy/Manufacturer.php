@@ -21,4 +21,19 @@ class Manufacturer
 
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isNew;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isNew(): bool
+    {
+        return $this->isNew;
+    }
 }

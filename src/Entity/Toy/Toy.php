@@ -39,4 +39,34 @@ class Toy
 
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isNew;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getManufacturer(): Manufacturer
+    {
+        return $this->manufacturer;
+    }
+
+    public function getSeries(): Series
+    {
+        return $this->series;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getReleaseDate(): \DateTime
+    {
+        return $this->releaseDate;
+    }
+
+    public function isNew(): bool
+    {
+        return $this->isNew;
+    }
 }
