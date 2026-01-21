@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jouets vidéo{% endblock %}
+
+{% block body %}
+    {{ knp_pagination_rel_links(pagination) }}
+
+    <table>
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'Nom', 'toy.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Série', 'series.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Fabricant', 'manufacturer.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Sortie', 'toy.releaseDate') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for toy in pagination %}
+            {# @var toy App\Entity\Toy\Toy #}
+            <tr>
+                <td>{{ toy.name }}</td>
+                <td>{{ toy.series.name }} ({{ toy.series.brand.label }})</td>
+                <td>{{ toy.manufacturer.name }}</td>
+                <td>{{ toy.releaseDate|date('d/m/Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}
