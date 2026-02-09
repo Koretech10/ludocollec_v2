@@ -25,6 +25,7 @@ class ToyRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('toy')
             ->innerJoin('toy.series', 'series')
             ->innerJoin('toy.manufacturer', 'manufacturer')
+            ->addOrderBy('toy.name')
         ;
     }
 }

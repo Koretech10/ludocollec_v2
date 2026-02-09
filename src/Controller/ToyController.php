@@ -29,6 +29,9 @@ class ToyController extends AbstractController
             $this->toyRepository->findForListQueryBuilder(),
             $request->query->getInt('page', 1),
             25,
+            [
+                'defaultSortFieldName' => 'toy.releaseDate',
+            ],
         );
 
         return $this->render('toy/list.html.twig', [
