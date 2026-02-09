@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\Toy\ToyRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Util\DataGrid\DataGridBuilder;
+use App\Util\DataGrid\DataGridConfig;
 use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,24 +19,22 @@ class ToyController extends AbstractController
 {
     public function __construct(
         private readonly ToyRepository $toyRepository,
-        private readonly PaginatorInterface $paginator,
+        private readonly DataGridBuilder $dataGridBuilder,
     ) {
     }
 
     #[Route('/list', name: 'toy.list')]
     public function list(Request $request): Response
     {
-        $pagination = $this->paginator->paginate(
-            $this->toyRepository->findForListQueryBuilder(),
-            $request->query->getInt('page', 1),
-            25,
-            [
-                'defaultSortFieldName' => 'toy.releaseDate',
-            ],
+        $config = new DataGridConfig(
+            queryBuilder: $this->toyRepository->findForListQueryBuilder(),
+            defaultSortField: 'releaseDate',
         );
 
+        $dataGrid = $this->dataGridBuilder->build($config, $request);
+
         return $this->render('toy/list.html.twig', [
-            'pagination' => $pagination,
+            'pagination' => $dataGrid->pager,
         ]);
     }
 }
