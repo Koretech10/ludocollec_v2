@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Builder\Core\DataGrid\DataGridBuilder;
+use App\Collection\Core\DataGridHeaderCollection;
+use App\Model\Core\DataGrid\DataGridConfig;
+use App\Model\Core\DataGrid\DataGridHeader;
 use App\Repository\Toy\ToyRepository;
-use App\Util\DataGrid\DataGridBuilder;
-use App\Util\DataGrid\DataGridConfig;
 use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +35,6 @@ class ToyController extends AbstractController
                 new DataGridHeader('Série', 'series.name'),
                 new DataGridHeader('Fabricant', 'manufacturer.name'),
                 new DataGridHeader('Sortie', 'toy.releaseDate'),
-                new DataGridHeader('dummy'),
             ]),
             defaultSortField: 'releaseDate',
         );
@@ -41,7 +42,7 @@ class ToyController extends AbstractController
         $dataGrid = $this->dataGridBuilder->build($config, $request);
 
         return $this->render('toy/list.html.twig', [
-            'pagination' => $dataGrid->pager,
+            'data_grid' => $dataGrid,
         ]);
     }
 }
