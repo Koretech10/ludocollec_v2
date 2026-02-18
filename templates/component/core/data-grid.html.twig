@@ -3,20 +3,21 @@
 <table>
     <thead>
     <tr>
-        <th>{{ knp_pagination_sortable(this.pager, 'Nom', 'toy.name') }}</th>
-        <th>{{ knp_pagination_sortable(this.pager, 'Série', 'series.name') }}</th>
-        <th>{{ knp_pagination_sortable(this.pager, 'Fabricant', 'manufacturer.name') }}</th>
-        <th>{{ knp_pagination_sortable(this.pager, 'Sortie', 'toy.releaseDate') }}</th>
+        {% for header in this.headers %}
+            {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
+
+            {% if header.key is null %}
+                <th>{{ header.label }}</th>
+            {% else %}
+                <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
+            {% endif %}
+        {% endfor %}
     </tr>
     </thead>
     <tbody>
-    {% for toy in this.pager %}
-        {# @var toy App\Entity\Toy\Toy #}
+    {% for item in this.pager %}
         <tr>
-            <td>{{ toy.name }}</td>
-            <td>{{ toy.series.name }} ({{ toy.series.brand.label }})</td>
-            <td>{{ toy.manufacturer.name }}</td>
-            <td>{{ toy.releaseDate|date('d/m/Y') }}</td>
+            {% block table_body %}{% endblock %}
         </tr>
     {% endfor %}
     </tbody>
