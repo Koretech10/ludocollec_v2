@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Component\Core;
 
-use App\Util\DataGrid\DataGrid as DataGridModel;
+use App\Model\Core\DataGrid\DataGrid as DataGridModel;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 

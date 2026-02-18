@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Util\DataGrid;
+namespace App\Builder\Core\DataGrid;
 
+use App\Model\Core\DataGrid\DataGrid;
+use App\Model\Core\DataGrid\DataGridConfig;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 

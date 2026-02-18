@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Util\DataGrid;
+namespace App\Model\Core\DataGrid;
 
 use Doctrine\ORM\QueryBuilder;
 
