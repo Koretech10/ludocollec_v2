@@ -6,10 +6,7 @@ namespace App\Twig\Component\Core;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent(
-    name: 'card',
-    template: 'component/core/card.html.twig',
-)]
+#[AsTwigComponent(name: 'card')]
 class Card
 {
     public string $cardClass = '';

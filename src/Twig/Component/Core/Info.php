@@ -6,10 +6,7 @@ namespace App\Twig\Component\Core;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent(
-    name: 'info',
-    template: 'component/core/info.html.twig',
-)]
+#[AsTwigComponent(name: 'info')]
 class Info
 {
     public string $label;
