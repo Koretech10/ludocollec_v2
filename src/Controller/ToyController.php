@@ -28,6 +28,13 @@ class ToyController extends AbstractController
     {
         $config = new DataGridConfig(
             queryBuilder: $this->toyRepository->findForListQueryBuilder(),
+            headers: new DataGridHeaderCollection([
+                new DataGridHeader('Nom', 'toy.name'),
+                new DataGridHeader('Série', 'series.name'),
+                new DataGridHeader('Fabricant', 'manufacturer.name'),
+                new DataGridHeader('Sortie', 'toy.releaseDate'),
+                new DataGridHeader('dummy'),
+            ]),
             defaultSortField: 'releaseDate',
         );
 

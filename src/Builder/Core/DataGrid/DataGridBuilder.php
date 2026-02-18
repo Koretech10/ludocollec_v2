@@ -30,7 +30,7 @@ readonly class DataGridBuilder
             ],
         );
 
-        return new DataGrid($paginator);
+        return new DataGrid($paginator, $config->headers);
     }
 
     /**
