@@ -1,30 +1,48 @@
 {{ knp_pagination_rel_links(this.pager) }}
 
-<table class="table">
-    <thead>
-    <tr>
-        {% for header in this.headers %}
-            {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
+<div class="row">
+    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-start">
+        Filtres
+    </div>
 
-            {% if header.key is null %}
-                <th>{{ header.label }}</th>
-            {% else %}
-                <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
-            {% endif %}
-        {% endfor %}
-
-        {% if not this.hideActions %}
-            <th>&nbsp;</th>
+    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-center">
+        {% if this.pager.totalItemCount == 1 %}
+            Résultat 1 à 1 sur 1 entrée
+        {% else %}
+            Résultats {{ this.firstResultNumber }} à {{ this.lastResultNumber }} sur {{ this.pager.totalItemCount }} entrées
         {% endif %}
-    </tr>
-    </thead>
-    <tbody>
-    {% for item in this.pager %}
-        <tr>
-            {% block table_body %}{% endblock %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    </div>
 
-{{ knp_pagination_render(this.pager) }}
+    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-end">
+        {{ knp_pagination_render(this.pager) }}
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            {% for header in this.headers %}
+                {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
+
+                {% if header.key is null %}
+                    <th>{{ header.label }}</th>
+                {% else %}
+                    <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
+                {% endif %}
+            {% endfor %}
+
+            {% if not this.hideActions %}
+                <th>&nbsp;</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in this.pager %}
+            <tr>
+                {% block table_body %}{% endblock %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
