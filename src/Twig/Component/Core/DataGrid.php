@@ -13,6 +13,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class DataGrid
 {
     public DataGridModel $dataGrid;
+    public bool $hideActions = false;
 
     public function getPager(): PaginationInterface
     {

@@ -12,6 +12,10 @@
                 <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
             {% endif %}
         {% endfor %}
+
+        {% if not this.hideActions %}
+            <th>&nbsp;</th>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
