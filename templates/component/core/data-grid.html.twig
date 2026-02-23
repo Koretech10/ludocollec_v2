@@ -1,22 +1,6 @@
 {{ knp_pagination_rel_links(this.pager) }}
 
-<div class="row">
-    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-start">
-        Filtres
-    </div>
-
-    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-center">
-        {% if this.pager.totalItemCount == 1 %}
-            Résultat 1 à 1 sur 1 entrée
-        {% else %}
-            Résultats {{ this.firstResultNumber }} à {{ this.lastResultNumber }} sur {{ this.pager.totalItemCount }} entrées
-        {% endif %}
-    </div>
-
-    <div class="col-12 col-sm d-flex justify-content-center mb-3 mb-sm-0 justify-content-sm-end">
-        {{ knp_pagination_render(this.pager) }}
-    </div>
-</div>
+<twig:data-grid-pagination :pager="this.pager" />
 
 <div class="table-responsive">
     <table class="table">
@@ -46,3 +30,5 @@
         </tbody>
     </table>
 </div>
+
+<twig:data-grid-pagination :pager="this.pager" />

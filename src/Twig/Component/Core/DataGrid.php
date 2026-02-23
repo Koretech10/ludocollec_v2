@@ -24,19 +24,4 @@ class DataGrid
     {
         return $this->dataGrid->headers;
     }
-
-    public function getFirstResultNumber(): int
-    {
-        $itemsPerPage = $this->getPager()->getItemNumberPerPage();
-        $page = $this->getPager()->getCurrentPageNumber();
-
-        return ($itemsPerPage * $page) - ($itemsPerPage - 1);
-    }
-
-    public function getLastResultNumber(): int
-    {
-        $count = $this->getPager()->count();
-
-        return $this->getFirstResultNumber() + $count - 1;
-    }
 }
