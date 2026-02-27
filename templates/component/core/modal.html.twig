@@ -1,0 +1,22 @@
+<div class="modal fade" id="{{ this.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{% block title %}{% endblock %}</h4>
+            </div>
+
+            <div class="modal-body">
+                {% block content %}{% endblock %}
+            </div>
+
+            <div class="modal-footer">
+                <twig:button
+                    :type="Type.LIGHT"
+                    additionalAttributes="data-bs-dismiss='modal'"
+                >
+                    ← Retour
+                </twig:button>
+            </div>
+        </div>
+    </div>
+</div>
