@@ -10,13 +10,13 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('button')]
 class Button
 {
+    private array $attributes = [];
+
     public Type $type = Type::PRIMARY;
     public ?string $href = null;
     public bool $outlined = false;
     public ?string $modalTarget = null;
     public ?string $additionalAttributes = null;
-
-    private array $attributes = [];
 
     public function getClasses(): string
     {
