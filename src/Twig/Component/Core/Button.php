@@ -27,7 +27,7 @@ class Button
             $classes[] = \sprintf('btn-%s', $this->type->value);
         }
 
-        return \sprintf(' class="%s" ', implode(' ', $classes));
+        return \sprintf(' class="%s" ', \implode(' ', $classes));
     }
 
     public function getTag(): string
