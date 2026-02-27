@@ -47,6 +47,9 @@
             "./.php-cs-fixer.dist.php"
         ]
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v6.10.0"
+    },
     "pentatrion/vite-bundle": {
         "version": "8.2",
         "recipe": {

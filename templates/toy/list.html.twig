@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jouets vidéo{% endblock %}
+
+{% block body %}
+    <twig:data-grid :dataGrid="data_grid">
+        <twig:block name="table_body">
+            {% set toy = item %}
+            {# @var toy \App\Entity\Toy\Toy #}
+
+            <td>{{ toy.name }}</td>
+            <td>{{ toy.series.name }} ({{ toy.series.brand.label }})</td>
+            <td>{{ toy.manufacturer.name }}</td>
+            <td>{{ toy.releaseDate|date('d/m/Y') }}</td>
+        </twig:block>
+    </twig:data-grid>
+{% endblock %}

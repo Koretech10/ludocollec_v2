@@ -1,0 +1,19 @@
+<div class="data-grid-pagination">
+    <div class="data-grid-pagination-element">
+        <twig:button :type="Type.PRIMARY" outlined :modalTarget="this.filterModalId">
+            <twig:icon :icon="Icon.filter" /> Filtrer
+        </twig:button>
+    </div>
+
+    <div class="data-grid-pagination-element d-flex justify-content-center justify-content-sm-center">
+        {% if this.totalItemCount == 1 %}
+            Résultat 1 à 1 sur 1 entrée
+        {% else %}
+            Résultats {{ this.firstResultNumber }} à {{ this.lastResultNumber }} sur {{ this.totalItemCount }} entrées
+        {% endif %}
+    </div>
+
+    <div class="data-grid-pagination-element d-flex justify-content-center justify-content-sm-end">
+        {{ knp_pagination_render(this.pager) }}
+    </div>
+</div>

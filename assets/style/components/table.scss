@@ -1,0 +1,31 @@
+@use "@/style/legacy_vendors/bootstrap" as bootstrap;
+@use "@/style/colors" as colors;
+
+$table-header-color: colors.get-color('table-header');
+
+.table {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-hover;
+
+
+    th {
+        background-color: $table-header-color;
+        color: colors.get-foreground-for-background($table-header-color);
+        border-bottom-width: 2px;
+        border-color: colors.get-color('table-header', 700);
+
+        a {
+            @extend .text-decoration-none;
+            color: inherit;
+
+            &.asc, &.desc {
+                color: colors.get-color('primary', 700);
+            }
+        }
+    }
+
+    td {
+        background-color: colors.get-color('body');
+    }
+}

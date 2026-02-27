@@ -1,0 +1,9 @@
+<{{ this.tag }}
+    {% if this.href is not null %}
+        href="{{ this.href }}"
+    {% endif %}
+    {{ this.classes|raw }}
+    {{ this.attributes|raw }}
+>
+    {% block content %}{% endblock %}
+</{{ this.tag }}>

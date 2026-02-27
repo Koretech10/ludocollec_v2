@@ -1,0 +1,44 @@
+{% set pagination %}
+    <twig:data-grid-pagination :pager="this.pager" :filterModalId="this.filterModalId" />
+{% endset %}
+
+{{ knp_pagination_rel_links(this.pager) }}
+
+<twig:modal :id="this.filterModalId">
+    <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
+
+    {# ToDo Insert Filter Form Here #}
+</twig:modal>
+
+{{ pagination }}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            {% for header in this.headers %}
+                {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
+
+                {% if header.key is null %}
+                    <th>{{ header.label }}</th>
+                {% else %}
+                    <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
+                {% endif %}
+            {% endfor %}
+
+            {% if not this.hideActions %}
+                <th>&nbsp;</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in this.pager %}
+            <tr>
+                {% block table_body %}{% endblock %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{{ pagination }}

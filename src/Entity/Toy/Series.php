@@ -25,4 +25,24 @@ class Series
 
     #[ORM\Column]
     private bool $isNew;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getBrand(): Brand
+    {
+        return $this->brand;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isNew(): bool
+    {
+        return $this->isNew;
+    }
 }

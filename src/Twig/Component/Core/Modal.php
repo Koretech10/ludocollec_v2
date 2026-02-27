@@ -6,8 +6,8 @@ namespace App\Twig\Component\Core;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent(name: 'info')]
-class Info
+#[AsTwigComponent('modal')]
+class Modal
 {
-    public string $label;
+    public string $id;
 }

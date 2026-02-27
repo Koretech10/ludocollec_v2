@@ -7,17 +7,9 @@ namespace App\Twig\Component\Core;
 use App\Enum\Core\Icon as IconEnum;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent(
-    name: 'icon',
-    template: 'component/core/icon.html.twig',
-)]
+#[AsTwigComponent(name: 'icon')]
 class Icon
 {
-    public string $name;
+    public IconEnum $icon;
     public string $class = '';
-
-    public function getIcon(): string
-    {
-        return IconEnum::fromName($this->name)->value;
-    }
 }
