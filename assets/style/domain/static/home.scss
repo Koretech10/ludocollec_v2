@@ -1,4 +1,4 @@
-@use '../../legacy_vendors/bootstrap' as *;
+@use '@/style/legacy_vendors/bootstrap';
 
 .home-entries-counter {
     @extend .col-12;

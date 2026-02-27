@@ -1,5 +1,5 @@
-@use "@/style/legacy_vendors/bootstrap" as bootstrap;
-@use "@/style/colors" as colors;
+@use "@/style/legacy_vendors/bootstrap";
+@use "@/style/colors";
 
 $table-header-color: colors.get-color('table-header');
 

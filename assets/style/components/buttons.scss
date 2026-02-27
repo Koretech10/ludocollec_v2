@@ -1,23 +1,23 @@
-@use "../legacy_vendors/bootstrap" as *;
-@use '../colors' as *;
+@use "@/style/legacy_vendors/bootstrap";
+@use '@/style/colors';
 
 .btn {
     @extend .btn;
     @extend .fw-bold;
 }
 
-@each $color, $value in $colors {
+@each $color, $value in colors.$colors {
     $normal-background: $value;
-    $normal-color: get-foreground-for-background($normal-background);
-    $hover-background: get-color($color, 600);
-    $hover-color: get-foreground-for-background($hover-background);
-    $active-background: get-color($color, 700);
-    $active-color: get-foreground-for-background($active-background);
-    $disable-background: get-color($color, 400);
-    $disable-color: get-foreground-for-background($disable-background);
+    $normal-color: colors.get-foreground-for-background($normal-background);
+    $hover-background: colors.get-color($color, 600);
+    $hover-color: colors.get-foreground-for-background($hover-background);
+    $active-background: colors.get-color($color, 700);
+    $active-color: colors.get-foreground-for-background($active-background);
+    $disable-background: colors.get-color($color, 400);
+    $disable-color: colors.get-foreground-for-background($disable-background);
 
     .btn-#{$color} {
-        @include button-variant(
+        @include bootstrap.button-variant(
             $normal-background,
             $normal-background,
             $normal-color,
@@ -34,7 +34,7 @@
     }
 
     .btn-outline-#{$color} {
-        @include button-outline-variant(
+        @include bootstrap.button-outline-variant(
             $normal-background,
             $hover-color,
             $hover-background,

@@ -1,21 +1,21 @@
 @use 'sass:map';
 @use 'sass:color';
 @use 'sass:math';
-@use 'legacy_vendors/bootstrap' as *;
+@use 'legacy_vendors/bootstrap';
 
 $colors: (
     ////////////////////////
     // COULEURS BOOTSTRAP //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    primary: $primary,
-    secondary: $secondary,
-    success: $success,
-    info: $info,
-    warning: $warning,
-    danger: $danger,
-    light: $light,
-    dark: $dark,
+    primary: bootstrap.$primary,
+    secondary: bootstrap.$secondary,
+    success: bootstrap.$success,
+    info: bootstrap.$info,
+    warning: bootstrap.$warning,
+    danger: bootstrap.$danger,
+    light: bootstrap.$light,
+    dark: bootstrap.$dark,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
