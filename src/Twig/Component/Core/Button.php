@@ -14,6 +14,7 @@ class Button
     public ?string $href = null;
     public bool $outlined = false;
     public ?string $modalTarget = null;
+    public ?string $additionalAttributes = null;
 
     private array $attributes = [];
 
@@ -41,12 +42,12 @@ class Button
             $this->setupModal();
         }
 
-        return \implode(' ', $this->attributes);
+        return \sprintf('%s %s', \implode(' ', $this->attributes), $this->additionalAttributes);
     }
 
     public function setupModal(): void
     {
-        $this->attributes[] = 'data-toggle="modal"';
-        $this->attributes[] = \sprintf('data-target="#%s"', $this->modalTarget);
+        $this->attributes[] = 'data-bs-toggle="modal"';
+        $this->attributes[] = \sprintf('data-bs-target="#%s"', $this->modalTarget);
     }
 }
