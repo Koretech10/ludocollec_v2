@@ -10,11 +10,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent(name: 'icon')]
 class Icon
 {
-    public string $name;
+    public IconEnum $icon;
     public string $class = '';
-
-    public function getIcon(): string
-    {
-        return IconEnum::fromName($this->name)->value;
-    }
 }

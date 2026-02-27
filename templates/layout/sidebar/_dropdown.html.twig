@@ -3,12 +3,12 @@
 
     Paramètres :
         title: Nom du dropdown (string),
-        icon: Classe de l'icône Bootstrap Icons (string),
+        icon: Classe de l'icône Bootstrap Icons (Icon),
         additional_classes: Classes CSS à appliquer sur le dropdown (string),
         items: Éléments du dropdown (array) [
             {
                 title: Nom de l'élément (string),
-                icon: Classe de l'icône Bootstrap Icons (string),
+                icon: Classe de l'icône Bootstrap Icons (Icon),
                 href: Lien de l'élément (string),
                 additional_classes: Classes CSS à appliquer sur l'élément (string) (facultatif),
                 when: Condition pour afficher l'élément (bool),
@@ -18,7 +18,7 @@
 
 <li class="sidebar-dropdown {{ additional_classes }}">
     <a href="#" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <twig:icon :name="icon" />
+        <twig:icon :icon="icon" />
         <span>
             {{ title }}
         </span>
@@ -35,7 +35,7 @@
             {% if when is true %}
                 <li>
                     <a class="dropdown-item {{ item.additional_classes|default('') }}" href="{{ item.href }}">
-                        <twig:icon :name="item.icon" />
+                        <twig:icon :icon="item.icon" />
                         <span>
                             {{ item.title }}
                         </span>

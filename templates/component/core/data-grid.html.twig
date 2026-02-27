@@ -5,7 +5,7 @@
 {{ knp_pagination_rel_links(this.pager) }}
 
 <twig:modal :id="this.filterModalId">
-    <twig:block name="title"><twig:icon name="filter" /> Filtrer</twig:block>
+    <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
 
     {# ToDo Insert Filter Form Here #}
 </twig:modal>
