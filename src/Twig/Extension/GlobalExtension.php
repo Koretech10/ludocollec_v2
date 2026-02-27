@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
+use App\Enum\Core\Icon;
 use App\Enum\Core\Type;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
@@ -15,6 +16,7 @@ class GlobalExtension extends AbstractExtension implements GlobalsInterface
      */
     private iterable $enums = [
         'Type' => Type::class,
+        'Icon' => Icon::class,
     ];
 
     public function getGlobals(): array
