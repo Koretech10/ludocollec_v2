@@ -12,6 +12,8 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent(name: 'data-grid')]
 class DataGrid
 {
+    private string $filterModalId = 'filter_modal';
+
     public DataGridModel $dataGrid;
     public bool $hideActions = false;
 
@@ -23,5 +25,10 @@ class DataGrid
     public function getHeaders(): DataGridHeaderCollection
     {
         return $this->dataGrid->headers;
+    }
+
+    public function getFilterModalId(): string
+    {
+        return $this->filterModalId;
     }
 }

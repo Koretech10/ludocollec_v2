@@ -11,6 +11,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 class DataGridPagination
 {
     public PaginationInterface $pager;
+    public string $filterModalId;
 
     public function getFirstResultNumber(): int
     {
