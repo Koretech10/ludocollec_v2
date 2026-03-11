@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity\Toy;
 
-use App\Entity\Entity;
 use App\Enum\Toy\Brand;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
 #[ORM\Table(name: 'toy_series')]
-class Series implements Entity
+class Series
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

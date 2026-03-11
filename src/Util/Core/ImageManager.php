@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Util;
 
-use App\Entity\Entity;
+use App\Entity\ImageableEntity;
 use App\Enum\Core\EntityToImageDir;
 use App\Exception\Core\EntityNotManagedException;
 use Symfony\Component\Filesystem\Filesystem;
-use Twig\Attribute\AsTwigFunction;
 
 readonly class ImageManager
 {
@@ -28,8 +27,7 @@ readonly class ImageManager
     /**
      * @throws EntityNotManagedException
      */
-    #[AsTwigFunction('get_image_path_from_entity')]
-    public function getImagePath(Entity $entity): string // ToDo Test unitaire
+    public function getImagePath(ImageableEntity $entity): string
     {
         $entityImageDir = EntityToImageDir::fromEntityClass($entity::class);
         $imagePath = \sprintf('%s/%s/%s.jpg', self::IMAGE_ROOT, $entityImageDir->value, $entity->getId());

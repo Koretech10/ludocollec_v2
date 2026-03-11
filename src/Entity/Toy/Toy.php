@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Entity\Toy;
 
 use App\Entity\Creatable;
-use App\Entity\Entity;
+use App\Entity\ImageableEntity;
 use App\Entity\Lockable;
 use App\Entity\Validatable;
 use Doctrine\DBAL\Types\Types;
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(readOnly: true)]
 #[ORM\Table(name: 'toys')]
-class Toy implements Entity
+class Toy implements ImageableEntity
 {
     use Lockable;
     use Creatable;
