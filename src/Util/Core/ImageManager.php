@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Util;
+namespace App\Util\Core;
 
 use App\Entity\ImageableEntity;
 use App\Enum\Core\EntityToImageDir;
