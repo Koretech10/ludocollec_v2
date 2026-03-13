@@ -17,3 +17,28 @@
         {{ knp_pagination_render(this.pager) }}
     </div>
 </div>
+
+{% set displayListTypes = enum('App\\Enum\\User\\DisplayListType') %}
+
+<div class="data-grid-display-list-type-selector">
+    <a
+        class="{% if displayListTypes.CARD_GRID == this.selectedDisplayListType %}selected{% endif %}"
+        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value }) }}"
+    >
+        <twig:icon :icon="Icon.grid" />
+    </a>
+
+    <a
+        class="{% if displayListTypes.IMAGED_TABLE == this.selectedDisplayListType %}selected{% endif %}"
+        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.IMAGED_TABLE.value }) }}"
+    >
+        <twig:icon :icon="Icon.imaged_list" />
+    </a>
+
+    <a
+        class="{% if displayListTypes.TEXT_TABLE == this.selectedDisplayListType %}selected{% endif %}"
+        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.TEXT_TABLE.value }) }}"
+    >
+        <twig:icon :icon="Icon.list" />
+    </a>
+</div>

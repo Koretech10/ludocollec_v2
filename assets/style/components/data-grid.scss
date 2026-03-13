@@ -1,4 +1,5 @@
 @use "@/style/legacy_vendors/bootstrap";
+@use "@/style/colors";
 
 .data-grid-pagination {
     @extend .row;
@@ -8,5 +9,24 @@
         @extend .col-sm;
         @extend .mb-3;
         @extend .mt-3;
+    }
+}
+
+.data-grid-display-list-type-selector {
+    @extend .mb-2;
+    @extend .d-flex;
+    @extend .justify-content-end;
+
+    a {
+        @extend .text-decoration-none;
+
+        .bi {
+            @extend .fs-3;
+            @extend .mx-2;
+        }
+
+        &.selected {
+            color: colors.get-color('primary', 900);
+        }
     }
 }

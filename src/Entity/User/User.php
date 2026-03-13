@@ -143,4 +143,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->displayListType;
     }
+
+    public function setDisplayListType(DisplayListType $displayListType): void
+    {
+        $this->displayListType = $displayListType;
+    }
 }
