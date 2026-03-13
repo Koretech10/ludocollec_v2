@@ -12,33 +12,35 @@
 
 {{ pagination }}
 
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-        <tr>
-            {% for header in this.headers %}
-                {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
-
-                {% if header.key is null %}
-                    <th>{{ header.label }}</th>
-                {% else %}
-                    <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
-                {% endif %}
-            {% endfor %}
-
-            {% if not this.hideActions %}
-                <th>&nbsp;</th>
-            {% endif %}
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in this.pager %}
+{% if this.displayListType.isTable %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
             <tr>
-                {% block table_body %}{% endblock %}
+                {% for header in this.headers %}
+                    {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
+
+                    {% if header.key is null %}
+                        <th>{{ header.label }}</th>
+                    {% else %}
+                        <th>{{ knp_pagination_sortable(this.pager, header.label, header.key) }}</th>
+                    {% endif %}
+                {% endfor %}
+
+                {% if not this.hideActions %}
+                    <th>&nbsp;</th>
+                {% endif %}
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+            {% for item in this.pager %}
+                <tr>
+                    {% block table_body %}{% endblock %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
 
 {{ pagination }}
