@@ -1,3 +1,15 @@
+<twig:modal :id="this.modalId">
+    <twig:block name="title">{{ outerScope.this.entity.title }}</twig:block>
+
+    <img
+        style="max-width: 100%;"
+        src="{{ outerScope.this.imagePath }}"
+    />
+</twig:modal>
+
 <img
+    class="{{ this.classes }}"
     src="{{ this.imagePath }}"
+    data-bs-toggle="modal"
+    data-bs-target="#{{ this.modalId }}"
 />

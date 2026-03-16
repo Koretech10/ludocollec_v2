@@ -16,6 +16,7 @@ class EntityImage
     private string $imagePath;
 
     public ImageableEntity $entity;
+    public string $classes = '';
 
     public function __construct(
         private readonly ImageManager $imageManager,
@@ -34,5 +35,13 @@ class EntityImage
     public function getImagePath(): string
     {
         return $this->imagePath;
+    }
+
+    public function getModalId(): string
+    {
+        $class = explode('\\', $this->entity::class);
+        $classBaseName = end($class);
+
+        return \sprintf('%s%s', $classBaseName, $this->entity->getId());
     }
 }
