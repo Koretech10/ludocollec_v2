@@ -7,4 +7,6 @@ namespace App\Entity;
 interface ImageableEntity
 {
     public function getId(): int;
+
+    public function title(): string;
 }
