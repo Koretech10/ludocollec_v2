@@ -14,4 +14,9 @@ enum DisplayListType: int
     {
         return self::TEXT_TABLE === $this || self::IMAGED_TABLE === $this;
     }
+
+    public function isImagedTable(): bool
+    {
+        return self::IMAGED_TABLE === $this;
+    }
 }

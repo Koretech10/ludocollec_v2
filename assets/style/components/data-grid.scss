@@ -30,3 +30,18 @@
         }
     }
 }
+
+.data-grid-table {
+    tr {
+        td {
+            @extend .align-middle;
+        }
+    }
+}
+
+.data-grid-imaged-table-image {
+    @extend .img-thumbnail;
+
+    max-width: 8rem !important;
+    max-height: 8rem !important;
+}

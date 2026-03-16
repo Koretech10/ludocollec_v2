@@ -14,9 +14,13 @@
 
 {% if this.displayListType.isTable %}
     <div class="table-responsive">
-        <table class="table">
+        <table class="table data-grid-table">
             <thead>
             <tr>
+                {% if this.displayListType.isImagedTable %}
+                    <th>&nbsp;</th>
+                {% endif %}
+
                 {% for header in this.headers %}
                     {# @var header \App\Model\Core\DataGrid\DataGridHeader #}
 
@@ -35,6 +39,15 @@
             <tbody>
             {% for item in this.pager %}
                 <tr>
+                    {% if this.displayListType.isImagedTable %}
+                        <td class="text-center">
+                            <twig:entity-image
+                                :entity="item"
+                                classes="data-grid-imaged-table-image"
+                            />
+                        </td>
+                    {% endif %}
+
                     {% block table_body %}{% endblock %}
                 </tr>
             {% endfor %}
