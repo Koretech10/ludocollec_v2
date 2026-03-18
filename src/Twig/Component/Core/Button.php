@@ -17,10 +17,11 @@ class Button
     public bool $outlined = false;
     public ?string $modalTarget = null;
     public ?string $additionalAttributes = null;
+    public ?string $additionalClasses = null;
 
     public function getClasses(): string
     {
-        $classes = ['btn'];
+        $classes = ['btn', $this->additionalClasses];
 
         if (true === $this->outlined) {
             $classes[] = \sprintf('btn-outline-%s', $this->type->value);
