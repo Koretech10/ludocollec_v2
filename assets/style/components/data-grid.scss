@@ -18,15 +18,10 @@
     @extend .justify-content-end;
 
     a {
-        @extend .text-decoration-none;
+        @extend .fs-4;
 
-        .bi {
-            @extend .fs-3;
-            @extend .mx-2;
-        }
-
-        &.selected {
-            color: colors.get-color('primary', 900);
+        &.active {
+            color: colors.get-color('light');
         }
     }
 }

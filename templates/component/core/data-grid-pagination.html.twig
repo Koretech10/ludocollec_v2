@@ -21,24 +21,30 @@
 {% set displayListTypes = enum('App\\Enum\\User\\DisplayListType') %}
 
 <div class="data-grid-display-list-type-selector">
-    <a
-        class="{% if displayListTypes.CARD_GRID == this.selectedDisplayListType %}selected{% endif %}"
-        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value }) }}"
-    >
-        <twig:icon :icon="Icon.grid" />
-    </a>
+    <div class="btn-group" role="group">
+        <twig:button
+            :additionalClasses="displayListTypes.CARD_GRID == this.selectedDisplayListType ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.grid" />
+        </twig:button>
 
-    <a
-        class="{% if displayListTypes.IMAGED_TABLE == this.selectedDisplayListType %}selected{% endif %}"
-        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.IMAGED_TABLE.value }) }}"
-    >
-        <twig:icon :icon="Icon.imaged_list" />
-    </a>
+        <twig:button
+            :additionalClasses="displayListTypes.IMAGED_TABLE == this.selectedDisplayListType ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.IMAGED_TABLE.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.imaged_list" />
+        </twig:button>
 
-    <a
-        class="{% if displayListTypes.TEXT_TABLE == this.selectedDisplayListType %}selected{% endif %}"
-        href="{{ path('user.set_display_list_type', { displayListType: displayListTypes.TEXT_TABLE.value }) }}"
-    >
-        <twig:icon :icon="Icon.list" />
-    </a>
+        <twig:button
+            :additionalClasses="displayListTypes.TEXT_TABLE == this.selectedDisplayListType ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.TEXT_TABLE.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.list" />
+        </twig:button>
+
+    </div>
 </div>
