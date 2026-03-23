@@ -23,7 +23,7 @@
 <div class="data-grid-display-list-type-selector">
     <div class="btn-group col col-sm-3" role="group">
         <twig:button
-            :additionalClasses="displayListTypes.CARD_GRID == this.selectedDisplayListType ? 'active' : null"
+            :additionalClasses="this.selectedDisplayListType.isCardGrid ? 'active' : null"
             :href="path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value })"
             outlined
         >
@@ -31,7 +31,7 @@
         </twig:button>
 
         <twig:button
-            :additionalClasses="displayListTypes.IMAGED_TABLE == this.selectedDisplayListType ? 'active' : null"
+            :additionalClasses="this.selectedDisplayListType.isImagedTable ? 'active' : null"
             :href="path('user.set_display_list_type', { displayListType: displayListTypes.IMAGED_TABLE.value })"
             outlined
         >
@@ -39,7 +39,7 @@
         </twig:button>
 
         <twig:button
-            :additionalClasses="displayListTypes.TEXT_TABLE == this.selectedDisplayListType ? 'active' : null"
+            :additionalClasses="this.selectedDisplayListType.isTextTable ? 'active' : null"
             :href="path('user.set_display_list_type', { displayListType: displayListTypes.TEXT_TABLE.value })"
             outlined
         >
