@@ -12,7 +12,7 @@ class Button
 {
     private array $attributes = [];
 
-    public Type $type = Type::PRIMARY;
+    public Type $type = Type::SECONDARY;
     public ?string $href = null;
     public bool $outlined = false;
     public ?string $modalTarget = null;
