@@ -13,12 +13,16 @@
 }
 
 .data-grid-display-list-type-selector {
-    @extend .mb-2;
+    @extend .mb-3;
     @extend .d-flex;
     @extend .justify-content-end;
 
     a {
-        @extend .fs-4;
+        @extend .fs-6;
+
+        @include bootstrap.media-breakpoint-down(sm) {
+            font-size: 1.5rem !important;
+        }
 
         &.active {
             color: colors.get-color('light');
