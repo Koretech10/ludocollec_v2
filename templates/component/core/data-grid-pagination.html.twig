@@ -17,3 +17,32 @@
         {{ knp_pagination_render(this.pager) }}
     </div>
 </div>
+
+<div class="data-grid-display-list-type-selector">
+    <div class="btn-group col col-sm-3" role="group">
+        <twig:button
+            :additionalClasses="this.selectedDisplayListType.isCardGrid ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.grid" />
+        </twig:button>
+
+        <twig:button
+            :additionalClasses="this.selectedDisplayListType.isImagedTable ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.IMAGED_TABLE.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.imaged_list" />
+        </twig:button>
+
+        <twig:button
+            :additionalClasses="this.selectedDisplayListType.isTextTable ? 'active' : null"
+            :href="path('user.set_display_list_type', { displayListType: displayListTypes.TEXT_TABLE.value })"
+            outlined
+        >
+            <twig:icon :icon="Icon.list" />
+        </twig:button>
+
+    </div>
+</div>

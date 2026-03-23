@@ -135,4 +135,8 @@ $color-steps: (
         background-color: $value;
         color: get-foreground-for-background($value);
     }
+
+    .border-#{$color} {
+        border-color: $value;
+    }
 }

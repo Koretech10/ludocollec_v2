@@ -16,6 +16,8 @@ class EntityImage
     private string $imagePath;
 
     public ImageableEntity $entity;
+    public string $classes = '';
+    public bool $noBorder = false;
 
     public function __construct(
         private readonly ImageManager $imageManager,
@@ -29,10 +31,29 @@ class EntityImage
     public function postMount(): void
     {
         $this->imagePath = $this->imageManager->getImagePath($this->entity);
+
+        if (!$this->noBorder) {
+            $this->classes .= \sprintf(' border-%s', \strtolower($this->getClassBaseName($this->entity::class)));
+        }
     }
 
     public function getImagePath(): string
     {
         return $this->imagePath;
+    }
+
+    public function getModalId(): string
+    {
+        return \sprintf('%s%s', $this->getClassBaseName($this->entity::class), $this->entity->getId());
+    }
+
+    /**
+     * @param class-string $className
+     */
+    private function getClassBaseName(string $className): string
+    {
+        $class = \explode('\\', $className);
+
+        return \end($class);
     }
 }

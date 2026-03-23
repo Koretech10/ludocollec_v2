@@ -22,6 +22,9 @@ enum Icon: string
     case logged_in_user = 'person-circle';
     case profile = 'person-lines-fill';
     case stats = 'graph-up';
+    case grid = 'file-image-fill';
+    case imaged_list = 'file-richtext-fill';
+    case list = 'file-text-fill';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';

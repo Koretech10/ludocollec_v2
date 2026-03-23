@@ -1,4 +1,5 @@
 @use "@/style/legacy_vendors/bootstrap";
+@use "@/style/colors";
 
 .data-grid-pagination {
     @extend .row;
@@ -9,4 +10,37 @@
         @extend .mb-3;
         @extend .mt-3;
     }
+}
+
+.data-grid-display-list-type-selector {
+    @extend .mb-3;
+    @extend .d-flex;
+    @extend .justify-content-end;
+
+    a {
+        @extend .fs-6;
+
+        @include bootstrap.media-breakpoint-down(sm) {
+            font-size: 1.5rem !important;
+        }
+
+        &.active {
+            color: colors.get-color('light');
+        }
+    }
+}
+
+.data-grid-table {
+    tr {
+        td {
+            @extend .align-middle;
+        }
+    }
+}
+
+.data-grid-imaged-table-image {
+    @extend .img-thumbnail;
+
+    max-width: 8rem !important;
+    max-height: 8rem !important;
 }

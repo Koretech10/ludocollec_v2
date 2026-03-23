@@ -41,6 +41,11 @@ class Toy implements ImageableEntity
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isNew;
 
+    public function title(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): int
     {
         return $this->id;
