@@ -1,6 +1,6 @@
 <div class="data-grid-pagination">
     <div class="data-grid-pagination-element">
-        <twig:button :type="Type.PRIMARY" outlined :modalTarget="this.filterModalId">
+        <twig:button outlined :modalTarget="this.filterModalId">
             <twig:icon :icon="Icon.filter" /> Filtrer
         </twig:button>
     </div>
@@ -17,6 +17,8 @@
         {{ knp_pagination_render(this.pager) }}
     </div>
 </div>
+
+{% set displayListTypes = enum('App\\Enum\\User\\DisplayListType') %}
 
 <div class="data-grid-display-list-type-selector">
     <div class="btn-group col col-sm-3" role="group">
