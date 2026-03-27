@@ -21,7 +21,7 @@
 {% set displayListTypes = enum('App\\Enum\\User\\DisplayListType') %}
 
 <div class="data-grid-display-list-type-selector">
-    <div class="btn-group col col-sm-3" role="group">
+    <div class="btn-group col col-sm-2" role="group">
         <twig:button
             :additionalClasses="this.selectedDisplayListType.isCardGrid ? 'active' : null"
             :href="path('user.set_display_list_type', { displayListType: displayListTypes.CARD_GRID.value })"
