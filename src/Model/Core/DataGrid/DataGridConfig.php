@@ -9,7 +9,7 @@ use Doctrine\ORM\QueryBuilder;
 
 readonly class DataGridConfig
 {
-    private const int DEFAULT_LIMIT = 25;
+    private const int DEFAULT_LIMIT = 30;
     private const string DEFAULT_SORT_FIELD = 'id';
     private const string DEFAULT_SORT_DIRECTION = 'ASC';
 
