@@ -6,6 +6,7 @@ namespace App\Twig\Component\Core;
 
 use App\Entity\ImageableEntity;
 use App\Exception\Core\EntityNotManagedException;
+use App\Util\Core\ClassNameExtractor;
 use App\Util\Core\ImageManager;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
@@ -33,7 +34,9 @@ class EntityImage
         $this->imagePath = $this->imageManager->getImagePath($this->entity);
 
         if (!$this->noBorder) {
-            $this->classes .= \sprintf(' border-%s', \strtolower($this->getClassBaseName($this->entity::class)));
+            $this->classes .= \sprintf(' border-%s', \strtolower(
+                ClassNameExtractor::getClassBaseName($this->entity::class))
+            );
         }
     }
 
@@ -44,16 +47,6 @@ class EntityImage
 
     public function getModalId(): string
     {
-        return \sprintf('%s%s', $this->getClassBaseName($this->entity::class), $this->entity->getId());
-    }
-
-    /**
-     * @param class-string $className
-     */
-    private function getClassBaseName(string $className): string
-    {
-        $class = \explode('\\', $className);
-
-        return \end($class);
+        return \sprintf('%s%s', ClassNameExtractor::getClassBaseName($this->entity::class), $this->entity->getId());
     }
 }

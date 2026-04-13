@@ -34,4 +34,4 @@ upgrade:
 	pnpm update
 
 tests:
-	symfony php vendor/bin/phpunit -c config/tests/phpunit.xml.dist 
+	symfony php vendor/bin/phpunit -c config/tests/phpunit.xml.dist
