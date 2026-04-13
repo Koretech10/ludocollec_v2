@@ -22,19 +22,9 @@
             {%- endset -%}
 
             <div class="col">
-                <twig:card cardClass="h-100">
-                    <twig:block name="header"><h5>{{ item.title }}</h5></twig:block>
-
-                    <div class="row gy-0 gx-5 gx-sm-2">
-                        <div class="col-4">
-                            <twig:entity-image :entity="item" classes="data-grid-card-image d-block mx-auto" noBorder />
-                        </div>
-
-                        <div class="col">
-                            {{ card_body }}
-                        </div>
-                    </div>
-                </twig:card>
+                <twig:entity-card cardClass="h-100" :entity="item">
+                    {{ card_body }}
+                </twig:entity-card>
             </div>
         {% endfor %}
     </div>
