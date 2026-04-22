@@ -10,7 +10,7 @@
 
             <twig:info label="Série">{{ toy.series.name }} ({{ toy.series.brand.label }})</twig:info>
             <twig:info label="Fabricant">{{ toy.manufacturer.name }}</twig:info>
-            <twig:info label="Sortie">{{ toy.releaseDate|date('d/m/Y') }}</twig:info>
+            <twig:info label="Sortie"><twig:date :date="toy.releaseDate" /></twig:info>
         </twig:block>
 
         <twig:block name="table_body">
@@ -20,7 +20,7 @@
             <td>{{ toy.name }}</td>
             <td>{{ toy.series.name }} ({{ toy.series.brand.label }})</td>
             <td>{{ toy.manufacturer.name }}</td>
-            <td>{{ toy.releaseDate|date('d/m/Y') }}</td>
+            <td><twig:date :date="toy.releaseDate" /></td>
             <td>{# ToDo #}</td>
         </twig:block>
     </twig:data-grid>
