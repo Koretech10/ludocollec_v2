@@ -32,3 +32,6 @@ outdated:
 upgrade:
 	symfony composer update
 	pnpm update
+
+tests:
+	symfony php vendor/bin/phpunit -c config/tests/phpunit.xml.dist

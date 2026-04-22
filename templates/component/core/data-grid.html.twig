@@ -12,6 +12,24 @@
 
 {{ pagination }}
 
+{% if this.displayListType.isCardGrid %}
+    <div class="row row-cols-1 row-cols-sm-3 g-2">
+        {% for item in this.pager %}
+            {# @var item \App\Entity\ImageableEntity #}
+
+            {%- set card_body -%}
+                {% block card_body %}{% endblock %}
+            {%- endset -%}
+
+            <div class="col">
+                <twig:entity-card cardClass="h-100" :entity="item">
+                    {{ card_body }}
+                </twig:entity-card>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% if this.displayListType.isTable %}
     <div class="table-responsive">
         <table class="table data-grid-table">
@@ -38,6 +56,10 @@
             </thead>
             <tbody>
             {% for item in this.pager %}
+                {%- set table_body -%}
+                    {% block table_body %}{% endblock %}
+                {%- endset -%}
+
                 <tr>
                     {% if this.displayListType.isImagedTable %}
                         <td class="text-center">
@@ -48,7 +70,7 @@
                         </td>
                     {% endif %}
 
-                    {% block table_body %}{% endblock %}
+                    {{ table_body }}
                 </tr>
             {% endfor %}
             </tbody>

@@ -4,6 +4,15 @@
 
 {% block body %}
     <twig:data-grid :dataGrid="data_grid">
+        <twig:block name="card_body">
+            {% set toy = item %}
+            {# @var toy \App\Entity\Toy\Toy #}
+
+            <twig:info label="Série">{{ toy.series.name }} ({{ toy.series.brand.label }})</twig:info>
+            <twig:info label="Fabricant">{{ toy.manufacturer.name }}</twig:info>
+            <twig:info label="Sortie">{{ toy.releaseDate|date('d/m/Y') }}</twig:info>
+        </twig:block>
+
         <twig:block name="table_body">
             {% set toy = item %}
             {# @var toy \App\Entity\Toy\Toy #}
