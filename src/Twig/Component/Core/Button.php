@@ -10,6 +10,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('button')]
 class Button
 {
+    /** @var list<string> */
     private array $attributes = [];
 
     public Type $type = Type::SECONDARY;
