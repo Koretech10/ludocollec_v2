@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\LoginType;
+use App\Form\Core\LoginType;
 use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
