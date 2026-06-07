@@ -7,18 +7,35 @@ namespace App\Builder\Core\DataGrid;
 use App\Model\Core\DataGrid\DataGrid;
 use App\Model\Core\DataGrid\DataGridConfig;
 use Knp\Component\Pager\PaginatorInterface;
+use Spiriit\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 readonly class DataGridBuilder
 {
     public function __construct(
         private PaginatorInterface $paginator,
+        private FilterBuilderUpdaterInterface $filterBuilderUpdater,
+        private FormFactoryInterface $formFactory,
     ) {
     }
 
     public function build(DataGridConfig $config, Request $request): DataGrid
     {
         $defaultSortField = $this->getDefaultSortFieldName($config);
+
+        $dataGrid = new DataGrid($config->headers);
+
+        if (null !== $config->filterType) {
+            $filterType = $this->formFactory->create($config->filterType, options: $config->filterOptions);
+            $filterType->handleRequest($request);
+
+            if ($filterType->isSubmitted() && $filterType->isValid()) {
+                $this->filterBuilderUpdater->addFilterConditions($filterType, $config->queryBuilder);
+            }
+
+            $dataGrid->setFilterType($filterType->createView());
+        }
 
         $paginator = $this->paginator->paginate(
             $config->queryBuilder,
@@ -30,7 +47,9 @@ readonly class DataGridBuilder
             ],
         );
 
-        return new DataGrid($paginator, $config->headers);
+        $dataGrid->setPager($paginator);
+
+        return $dataGrid;
     }
 
     /**

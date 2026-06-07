@@ -1,14 +1,16 @@
 {% set pagination %}
-    <twig:data-grid-pagination :pager="this.pager" :filterModalId="this.filterModalId" />
+    <twig:data-grid-pagination :pager="this.pager" :filterModalId="this.filterModalId" :hasFilterType="this.hasFilterType" />
 {% endset %}
 
 {{ knp_pagination_rel_links(this.pager) }}
 
-<twig:modal :id="this.filterModalId">
-    <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
+{% if this.hasFilterType %}
+    <twig:modal :id="this.filterModalId">
+        <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
 
-    {# ToDo Insert Filter Form Here #}
-</twig:modal>
+        {{ form(outerScope.this.filterType) }}
+    </twig:modal>
+{% endif %}
 
 {{ pagination }}
 

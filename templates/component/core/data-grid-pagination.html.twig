@@ -1,8 +1,10 @@
 <div class="data-grid-pagination">
     <div class="data-grid-pagination-element">
-        <twig:button outlined :modalTarget="this.filterModalId">
-            <twig:icon :icon="Icon.filter" /> Filtrer
-        </twig:button>
+        {% if this.hasFilterType %}
+            <twig:button outlined :modalTarget="this.filterModalId">
+                <twig:icon :icon="Icon.filter" /> Filtrer
+            </twig:button>
+        {% endif %}
     </div>
 
     <div class="data-grid-pagination-element d-flex justify-content-center justify-content-sm-center">

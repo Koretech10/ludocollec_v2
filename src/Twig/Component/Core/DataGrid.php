@@ -9,6 +9,7 @@ use App\Cookie\DisplayListTypeCookie;
 use App\Enum\User\DisplayListType;
 use App\Model\Core\DataGrid\DataGrid as DataGridModel;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
@@ -35,7 +36,7 @@ class DataGrid
 
     public function getPager(): PaginationInterface
     {
-        return $this->dataGrid->pager;
+        return $this->dataGrid->getPager();
     }
 
     public function getHeaders(): DataGridHeaderCollection
@@ -51,6 +52,16 @@ class DataGrid
     public function getDisplayListType(): DisplayListType
     {
         return $this->displayListType;
+    }
+
+    public function getFilterType(): ?FormView
+    {
+        return $this->dataGrid->getFilterType();
+    }
+
+    public function hasFilterType(): bool
+    {
+        return null !== $this->dataGrid->getFilterType();
     }
 
     private function setDisplayListType(): void

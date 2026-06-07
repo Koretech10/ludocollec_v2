@@ -18,6 +18,7 @@ class DataGridPagination
 
     public PaginationInterface $pager;
     public string $filterModalId;
+    public bool $hasFilterType;
 
     public function __construct(
         private readonly RequestStack $requestStack,
