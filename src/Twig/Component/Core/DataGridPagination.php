@@ -33,6 +33,10 @@ class DataGridPagination
 
     public function getFirstResultNumber(): int
     {
+        if (0 === $this->getTotalItemCount()) {
+            return 0;
+        }
+
         $itemsPerPage = $this->pager->getItemNumberPerPage();
         $page = $this->pager->getCurrentPageNumber();
 
@@ -41,6 +45,10 @@ class DataGridPagination
 
     public function getLastResultNumber(): int
     {
+        if (0 === $this->getTotalItemCount()) {
+            return 0;
+        }
+
         $count = $this->pager->count();
 
         return $this->getFirstResultNumber() + $count - 1;
