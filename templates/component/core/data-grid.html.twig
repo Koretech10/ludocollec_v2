@@ -10,6 +10,8 @@
 
         {% set filterType = outerScope.this.filterType %}
 
+        {% form_theme filterType 'form/filter_type_theme.html.twig' %}
+
         {{ form_start(filterType) }}
         {{ form_rest(filterType) }}
         <twig:button submit>Filtrer</twig:button>

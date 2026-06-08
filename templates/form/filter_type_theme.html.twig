@@ -1,0 +1,35 @@
+{% extends 'bootstrap_5_layout.html.twig' %}
+
+{%- block form_row -%}
+    {%- set widget_attr = {} -%}
+    <div class="mb-3">
+        {{- form_label(form) -}}
+        {{- form_widget(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock form_row -%}
+
+{% block filter_text_widget %}
+    {% if compound %}
+        <div class="input-group">
+            {{ form_widget(form.condition_pattern) }}
+            {{ form_widget(form.text) }}
+        </div>
+    {% else %}
+        {{ block('form_widget_simple') }}
+    {% endif %}
+{% endblock filter_text_widget %}
+
+{% block filter_date_range_widget %}
+    <div class="d-flex align-items-center filters-period">
+        <div class="flex-grow-1" title="Du">
+            {{ form_widget(form.left_date, {'attr': attr|merge({'class': attr.class|default('') ~ 'input-block-level'})}) }}
+        </div>
+        <div class="flex-shrink-1 mx-1">
+            <twig:icon :icon="Icon.arrow_right" />
+        </div>
+        <div class="flex-grow-1" title="Au">
+            {{ form_widget(form.right_date, {'attr': attr|merge({'class': attr.class|default('') ~ 'input-block-level'})}) }}
+        </div>
+    </div>
+{% endblock filter_date_range_widget %}
