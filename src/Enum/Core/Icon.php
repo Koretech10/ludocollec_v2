@@ -26,6 +26,8 @@ enum Icon: string
     case grid = 'file-image-fill';
     case imaged_list = 'file-richtext-fill';
     case list = 'file-text-fill';
+    case arrow_left = 'arrow-left';
+    case arrow_right = 'arrow-right';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';
