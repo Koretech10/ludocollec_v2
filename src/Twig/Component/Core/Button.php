@@ -19,6 +19,7 @@ class Button
     public ?string $modalTarget = null;
     public ?string $additionalAttributes = null;
     public ?string $additionalClasses = null;
+    public bool $submit = false;
 
     public function getClasses(): string
     {
@@ -45,6 +46,11 @@ class Button
         }
 
         return \sprintf('%s %s', \implode(' ', $this->attributes), $this->additionalAttributes);
+    }
+
+    public function getButtonType(): string
+    {
+        return \sprintf(' type="%s" ', true === $this->submit ? 'submit' : 'button');
     }
 
     public function setupModal(): void
