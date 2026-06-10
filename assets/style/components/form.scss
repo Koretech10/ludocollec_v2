@@ -3,9 +3,3 @@
 .col-form-label {
     @extend .fw-bold;
 }
-
-// Pour gérer l'affichage des choix de filtrage de Spiirit
-.form-select[id*="_name_condition_pattern"] {
-    width: 0 !important;
-    margin-bottom: 0 !important;
-}

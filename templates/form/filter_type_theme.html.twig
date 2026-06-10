@@ -11,9 +11,13 @@
 
 {% block filter_text_widget %}
     {% if compound %}
-        <div class="input-group">
-            {{ form_widget(form.condition_pattern) }}
-            {{ form_widget(form.text) }}
+        <div class="row gx-2">
+            <div class="col-12 col-sm-5">
+                {{ form_widget(form.condition_pattern) }}
+            </div>
+            <div class="col-12 col-sm">
+                {{ form_widget(form.text) }}
+            </div>
         </div>
     {% else %}
         {{ block('form_widget_simple') }}
