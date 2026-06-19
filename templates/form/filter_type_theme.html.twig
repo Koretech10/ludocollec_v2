@@ -16,15 +16,15 @@
 {% endblock filter_text_widget %}
 
 {% block filter_date_range_widget %}
-    <div class="d-flex align-items-center filters-period">
+    <div class="d-flex align-items-center">
         <div class="flex-grow-1" title="Du">
-            {{ form_widget(form.left_date, {'attr': attr|merge({'class': attr.class|default('') ~ 'input-block-level'})}) }}
+            {{ form_widget(form.left_date) }}
         </div>
         <div class="flex-shrink-1 mx-1">
             <twig:icon :icon="Icon.arrow_right" />
         </div>
         <div class="flex-grow-1" title="Au">
-            {{ form_widget(form.right_date, {'attr': attr|merge({'class': attr.class|default('') ~ 'input-block-level'})}) }}
+            {{ form_widget(form.right_date) }}
         </div>
     </div>
 {% endblock filter_date_range_widget %}
