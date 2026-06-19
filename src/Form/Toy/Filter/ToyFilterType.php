@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Toy\Filter;
 
 use App\Form\Core\Filter\FilterType;
+use App\Form\Toy\Filter\Type\ManufacturerFilterType;
+use App\Form\Toy\Filter\Type\SeriesFilterType;
 use Spiriit\Bundle\FormFilterBundle\Filter\FilterOperands;
 use Spiriit\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType;
 use Spiriit\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType;
@@ -24,6 +26,10 @@ class ToyFilterType extends FilterType
                 'translation_domain' => self::TRANSLATION_DOMAIN,
             ],
         ]);
+
+        $builder->add('manufacturer', ManufacturerFilterType::class);
+
+        $builder->add('series', SeriesFilterType::class);
 
         $builder->add('releaseDate', DateRangeFilterType::class, [
             'label' => 'Date de sortie',
