@@ -14,15 +14,21 @@
 
         {{ form_start(filterType) }}
         {{ form_rest(filterType) }}
-        <twig:button submit>Filtrer</twig:button>
+        <div class="row g-2">
+            <div class="col-12">
+                <twig:button additionalClasses="btn-auto" submit>
+                    <twig:icon :icon="Icon.filter" />
+                    Filtrer
+                </twig:button>
+            </div>
+            <div class="col-12">
+                <twig:button additionalClasses="btn-auto" :type="Type.DANGER" :href="path(app.current_route)" outlined>
+                    <twig:icon :icon="Icon.cancel" />
+                    Annuler la recherche
+                </twig:button>
+            </div>
+        </div>
         {{ form_end(filterType) }}
-
-        <twig:block name="footer">
-            <twig:button :type="Type.DANGER" :href="path(app.current_route)" outlined>
-                <twig:icon :icon="Icon.cancel" />
-                Annuler la recherche
-            </twig:button>
-        </twig:block>
     </twig:modal>
 {% endif %}
 
