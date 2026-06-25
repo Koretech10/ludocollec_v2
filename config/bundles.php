@@ -15,4 +15,5 @@ return [
     Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
     SlopeIt\BreadcrumbBundle\SlopeItBreadcrumbBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    Spiriit\Bundle\FormFilterBundle\SpiriitFormFilterBundle::class => ['all' => true],
 ];

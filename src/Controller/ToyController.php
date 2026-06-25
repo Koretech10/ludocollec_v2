@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Builder\Core\DataGrid\DataGridBuilder;
 use App\Collection\Core\DataGridHeaderCollection;
+use App\Form\Toy\Filter\ToyFilterType;
 use App\Model\Core\DataGrid\DataGridConfig;
 use App\Model\Core\DataGrid\DataGridHeader;
 use App\Repository\Toy\ToyRepository;
@@ -36,7 +37,8 @@ class ToyController extends AbstractController
                 new DataGridHeader('Fabricant', 'manufacturer.name'),
                 new DataGridHeader('Sortie', 'toy.releaseDate'),
             ]),
-            defaultSortField: 'releaseDate',
+            defaultSortField: 'toy.releaseDate',
+            filterType: ToyFilterType::class,
         );
 
         $dataGrid = $this->dataGridBuilder->build($config, $request);

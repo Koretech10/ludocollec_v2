@@ -12,6 +12,9 @@ enum Icon: string
     case log_sign_in = 'box-arrow-in-right';
     case log_out = 'box-arrow-left';
     case filter = 'funnel';
+    case filter_active = 'funnel-fill';
+    case sort = 'sort-down';
+    case cancel = 'x-lg';
 
     /** ICÔNES GÉNÉRIQUES */
     case hall_of_fame = 'heart-fill';
@@ -25,6 +28,8 @@ enum Icon: string
     case grid = 'file-image-fill';
     case imaged_list = 'file-richtext-fill';
     case list = 'file-text-fill';
+    case arrow_left = 'arrow-left';
+    case arrow_right = 'arrow-right';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';

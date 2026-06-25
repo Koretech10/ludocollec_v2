@@ -25,6 +25,7 @@
         "phpdocumentor/reflection-docblock": "^6.0.3",
         "phpstan/phpdoc-parser": "^2.3.2",
         "slope-it/breadcrumb-bundle": "^2.1.2",
+        "spiriitlabs/form-filter-bundle": "^12.1",
         "symfony/asset": "7.4.*",
         "symfony/console": "7.4.*",
         "symfony/doctrine-messenger": "7.4.*",

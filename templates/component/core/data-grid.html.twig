@@ -1,14 +1,24 @@
 {% set pagination %}
-    <twig:data-grid-pagination :pager="this.pager" :filterModalId="this.filterModalId" />
+    <twig:data-grid-pagination
+        :pager="this.pager"
+        :filterModalId="this.filterModalId"
+        :hasFilterType="this.hasFilterType"
+        :isFiltered="this.dataGrid.isFiltered"
+    />
 {% endset %}
 
 {{ knp_pagination_rel_links(this.pager) }}
 
-<twig:modal :id="this.filterModalId">
-    <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
+{% if this.displayListType.isCardGrid %}
+    {% include 'component/core/_data_grid_sort_modal.html.twig' with { sort_type: this.sortType } only %}
+{% endif %}
 
-    {# ToDo Insert Filter Form Here #}
-</twig:modal>
+{% if this.hasFilterType %}
+    {% include 'component/core/_data_grid_filter_modal.html.twig' with {
+        filter_modal_id: this.filterModalId,
+        filter_type: this.filterType
+    } only %}
+{% endif %}
 
 {{ pagination }}
 

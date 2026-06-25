@@ -4,33 +4,44 @@ declare(strict_types=1);
 
 namespace App\Builder\Core\DataGrid;
 
+use App\Form\Core\SortType;
 use App\Model\Core\DataGrid\DataGrid;
 use App\Model\Core\DataGrid\DataGridConfig;
 use Knp\Component\Pager\PaginatorInterface;
+use Spiriit\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 readonly class DataGridBuilder
 {
     public function __construct(
         private PaginatorInterface $paginator,
+        private FilterBuilderUpdaterInterface $filterBuilderUpdater,
+        private FormFactoryInterface $formFactory,
     ) {
     }
 
     public function build(DataGridConfig $config, Request $request): DataGrid
     {
-        $defaultSortField = $this->getDefaultSortFieldName($config);
+        $dataGrid = new DataGrid($config->headers);
+
+        $this->setupFilterType($request, $config, $dataGrid);
+
+        $this->setupSortType($request, $config, $dataGrid);
 
         $paginator = $this->paginator->paginate(
             $config->queryBuilder,
             $request->query->getInt('page', 1),
             $config->limit,
             [
-                'defaultSortFieldName' => $defaultSortField,
-                'defaultSortDirection' => $config->defaultSortOrder,
+                PaginatorInterface::DEFAULT_SORT_FIELD_NAME => $this->getDefaultSortFieldName($config),
+                PaginatorInterface::DEFAULT_SORT_DIRECTION => $this->getDefaultSortOrder($config),
             ],
         );
 
-        return new DataGrid($paginator, $config->headers);
+        $dataGrid->setPager($paginator);
+
+        return $dataGrid;
     }
 
     /**
@@ -53,5 +64,43 @@ readonly class DataGridBuilder
         }
 
         return $config->defaultSortField;
+    }
+
+    private function getDefaultSortOrder(DataGridConfig $config): string
+    {
+        return \strtolower($config->defaultSortOrder);
+    }
+
+    private function setupFilterType(Request $request, DataGridConfig $config, DataGrid $dataGrid): void
+    {
+        if (null !== $config->filterType) {
+            $filterType = $this->formFactory->create($config->filterType, options: $config->filterOptions);
+            $filterType->handleRequest($request);
+
+            if ($filterType->isSubmitted() && $filterType->isValid()) {
+                $this->filterBuilderUpdater->addFilterConditions($filterType, $config->queryBuilder);
+
+                $dataGrid->setIsFiltered(true);
+            }
+
+            $dataGrid->setFilterType($filterType->createView());
+        }
+    }
+
+    private function setupSortType(Request $request, DataGridConfig $config, DataGrid $dataGrid): void
+    {
+        $defaultField = $config->headers->getForKey($this->getDefaultSortFieldName($config));
+
+        $sortType = $this->formFactory->create(
+            SortType::class,
+            [
+                'field' => $defaultField,
+                'direction' => $this->getDefaultSortOrder($config),
+            ],
+            options: ['headers' => $config->headers]
+        );
+        $sortType->handleRequest($request);
+
+        $dataGrid->setSortType($sortType->createView());
     }
 }

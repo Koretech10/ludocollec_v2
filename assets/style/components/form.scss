@@ -1,0 +1,28 @@
+@use "@/style/legacy_vendors/bootstrap";
+@use "@/style/colors";
+
+.col-form-label, .form-label {
+    @extend .fw-bold;
+}
+
+.fieldset-filter {
+    margin-left: -0.6rem;
+    border-left: 0.2rem solid colors.get-color('secondary');
+
+    &-label {
+        legend {
+            @extend .px-2;
+        }
+    }
+
+    &-content {
+        @extend .px-3;
+
+        fieldset {
+            @extend .px-0;
+
+            all: revert;
+            border: 0;
+        }
+    }
+}
