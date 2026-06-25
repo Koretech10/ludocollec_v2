@@ -1,7 +1,7 @@
 {# @var sort_type Symfony\Component\Form\FormView #}
 
 <twig:modal id="sort_modal">
-    <twig:block name="title">Trier</twig:block>
+    <twig:block name="title"><twig:icon :icon="Icon.sort" /> Trier</twig:block>
 
     {{ form_start(sort_type) }}
     <div class="d-flex mb-2">
