@@ -1,0 +1,24 @@
+{# @var filter_modal_id string #}
+{# @var filter_type Symfony\Component\Form\FormView #}
+
+<twig:modal :id="filter_modal_id">
+    <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
+
+    {% form_theme filter_type 'form/filter_type_theme.html.twig' %}
+
+    {{ form_start(filter_type) }}
+    {{ form_rest(filter_type) }}
+    <div class="row g-2">
+        <div class="col-12">
+            <twig:button additionalClasses="btn-auto" submit>
+                <twig:icon :icon="Icon.filter" /> Filtrer
+            </twig:button>
+        </div>
+        <div class="col-12">
+            <twig:button additionalClasses="btn-auto" :type="Type.DANGER" :href="path(app.current_route)" outlined>
+                <twig:icon :icon="Icon.cancel" /> Annuler la recherche
+            </twig:button>
+        </div>
+    </div>
+    {{ form_end(filter_type) }}
+</twig:modal>

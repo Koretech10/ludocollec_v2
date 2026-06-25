@@ -34,31 +34,10 @@
 {% endif %}
 
 {% if this.hasFilterType %}
-    <twig:modal :id="this.filterModalId">
-        <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>
-
-        {% set filterType = outerScope.this.filterType %}
-
-        {% form_theme filterType 'form/filter_type_theme.html.twig' %}
-
-        {{ form_start(filterType) }}
-        {{ form_rest(filterType) }}
-        <div class="row g-2">
-            <div class="col-12">
-                <twig:button additionalClasses="btn-auto" submit>
-                    <twig:icon :icon="Icon.filter" />
-                    Filtrer
-                </twig:button>
-            </div>
-            <div class="col-12">
-                <twig:button additionalClasses="btn-auto" :type="Type.DANGER" :href="path(app.current_route)" outlined>
-                    <twig:icon :icon="Icon.cancel" />
-                    Annuler la recherche
-                </twig:button>
-            </div>
-        </div>
-        {{ form_end(filterType) }}
-    </twig:modal>
+    {% include 'component/core/_data_grid_filter_modal.html.twig' with {
+        filter_modal_id: this.filterModalId,
+        filter_type: this.filterType
+    } only %}
 {% endif %}
 
 {{ pagination }}
