@@ -9,6 +9,30 @@
 
 {{ knp_pagination_rel_links(this.pager) }}
 
+{% if this.displayListType.isCardGrid %}
+    <twig:modal id="sort_modal">
+        <twig:block name="title">Trier</twig:block>
+
+        {% set sortType = outerScope.this.sortType %}
+
+        {{ form_start(sortType) }}
+        <div class="d-flex mb-2">
+            <div class="flex-grow-1 me-1">
+                {{ form_widget(sortType.field) }}
+            </div>
+            <div class="flex-shrink-1">
+                {{ form_widget(sortType.direction) }}
+            </div>
+        </div>
+        <twig:button additionalClasses="btn-auto" submit>
+            <twig:icon :icon="Icon.sort" />
+            Trier
+        </twig:button>
+
+        {{ form_end(sortType) }}
+    </twig:modal>
+{% endif %}
+
 {% if this.hasFilterType %}
     <twig:modal :id="this.filterModalId">
         <twig:block name="title"><twig:icon :icon="Icon.filter" /> Filtrer</twig:block>

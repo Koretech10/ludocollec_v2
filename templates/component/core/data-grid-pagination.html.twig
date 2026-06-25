@@ -1,16 +1,25 @@
 <div class="data-grid-pagination">
     <div class="data-grid-pagination-element">
-        {% if this.hasFilterType %}
-            {% if this.isFiltered %}
-                <twig:button :modalTarget="this.filterModalId">
-                    <twig:icon :icon="Icon.filter_active" /> Filtrer
-                </twig:button>
-            {% else %}
-                <twig:button outlined :modalTarget="this.filterModalId">
-                    <twig:icon :icon="Icon.filter" /> Filtrer
+        <div class="btn-group">
+            {% if this.hasFilterType %}
+                {% if this.isFiltered %}
+                    <twig:button :modalTarget="this.filterModalId">
+                        <twig:icon :icon="Icon.filter_active" /> Filtrer
+                    </twig:button>
+                {% else %}
+                    <twig:button outlined :modalTarget="this.filterModalId">
+                        <twig:icon :icon="Icon.filter" /> Filtrer
+                    </twig:button>
+                {% endif %}
+            {% endif %}
+
+            {% if this.selectedDisplayListType.isCardGrid %}
+                <twig:button outlined modalTarget="sort_modal">
+                    <twig:icon :icon="Icon.sort" />
+                    Trier
                 </twig:button>
             {% endif %}
-        {% endif %}
+        </div>
     </div>
 
     <div class="data-grid-pagination-element d-flex justify-content-center justify-content-sm-center">

@@ -13,6 +13,7 @@ enum Icon: string
     case log_out = 'box-arrow-left';
     case filter = 'funnel';
     case filter_active = 'funnel-fill';
+    case sort = 'sort-down';
     case cancel = 'x-lg';
 
     /** ICÔNES GÉNÉRIQUES */
