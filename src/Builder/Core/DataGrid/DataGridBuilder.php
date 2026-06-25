@@ -89,8 +89,14 @@ readonly class DataGridBuilder
 
     private function setupSortType(Request $request, DataGridConfig $config, DataGrid $dataGrid): void
     {
+        $defaultField = $config->headers->getForKey($this->getDefaultSortFieldName($config));
+
         $sortType = $this->formFactory->create(
             SortType::class,
+            [
+                'field' => $defaultField,
+                'direction' => $this->getDefaultSortOrder($config),
+            ],
             options: ['headers' => $config->headers]
         );
         $sortType->handleRequest($request);
