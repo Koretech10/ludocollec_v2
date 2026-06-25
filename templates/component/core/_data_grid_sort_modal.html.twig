@@ -1,0 +1,21 @@
+{# @var sort_type Symfony\Component\Form\FormView #}
+
+<twig:modal id="sort_modal">
+    <twig:block name="title">Trier</twig:block>
+
+    {{ form_start(sort_type) }}
+    <div class="d-flex mb-2">
+        <div class="flex-grow-1 me-1">
+            {{ form_widget(sort_type.field) }}
+        </div>
+        <div class="flex-shrink-1">
+            {{ form_widget(sort_type.direction) }}
+        </div>
+    </div>
+    <twig:button additionalClasses="btn-auto" submit>
+        <twig:icon :icon="Icon.sort" />
+        Trier
+    </twig:button>
+
+    {{ form_end(sort_type) }}
+</twig:modal>

@@ -10,27 +10,7 @@
 {{ knp_pagination_rel_links(this.pager) }}
 
 {% if this.displayListType.isCardGrid %}
-    <twig:modal id="sort_modal">
-        <twig:block name="title">Trier</twig:block>
-
-        {% set sortType = outerScope.this.sortType %}
-
-        {{ form_start(sortType) }}
-        <div class="d-flex mb-2">
-            <div class="flex-grow-1 me-1">
-                {{ form_widget(sortType.field) }}
-            </div>
-            <div class="flex-shrink-1">
-                {{ form_widget(sortType.direction) }}
-            </div>
-        </div>
-        <twig:button additionalClasses="btn-auto" submit>
-            <twig:icon :icon="Icon.sort" />
-            Trier
-        </twig:button>
-
-        {{ form_end(sortType) }}
-    </twig:modal>
+    {% include 'component/core/_data_grid_sort_modal.html.twig' with { sort_type: this.sortType } only %}
 {% endif %}
 
 {% if this.hasFilterType %}
