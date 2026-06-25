@@ -2,11 +2,11 @@
 
 {% block filter_text_widget %}
     {% if compound %}
-        <div class="row gx-2">
-            <div class="col-12 col-sm-5">
+        <div class="d-flex">
+            <div class="flex-shrink-1 me-2">
                 {{ form_widget(form.condition_pattern) }}
             </div>
-            <div class="col-12 col-sm">
+            <div>
                 {{ form_widget(form.text) }}
             </div>
         </div>
