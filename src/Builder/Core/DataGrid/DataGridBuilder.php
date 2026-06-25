@@ -26,18 +26,7 @@ readonly class DataGridBuilder
 
         $dataGrid = new DataGrid($config->headers);
 
-        if (null !== $config->filterType) {
-            $filterType = $this->formFactory->create($config->filterType, options: $config->filterOptions);
-            $filterType->handleRequest($request);
-
-            if ($filterType->isSubmitted() && $filterType->isValid()) {
-                $this->filterBuilderUpdater->addFilterConditions($filterType, $config->queryBuilder);
-
-                $dataGrid->setIsFiltered(true);
-            }
-
-            $dataGrid->setFilterType($filterType->createView());
-        }
+        $this->setupFilterType($request, $config, $dataGrid);
 
         $paginator = $this->paginator->paginate(
             $config->queryBuilder,
@@ -74,5 +63,21 @@ readonly class DataGridBuilder
         }
 
         return $config->defaultSortField;
+    }
+
+    private function setupFilterType(Request $request, DataGridConfig $config, DataGrid $dataGrid): void
+    {
+        if (null !== $config->filterType) {
+            $filterType = $this->formFactory->create($config->filterType, options: $config->filterOptions);
+            $filterType->handleRequest($request);
+
+            if ($filterType->isSubmitted() && $filterType->isValid()) {
+                $this->filterBuilderUpdater->addFilterConditions($filterType, $config->queryBuilder);
+
+                $dataGrid->setIsFiltered(true);
+            }
+
+            $dataGrid->setFilterType($filterType->createView());
+        }
     }
 }
