@@ -15,10 +15,7 @@ class DataGridHeaderCollection extends ArrayCollection
 {
     public function getHeadersWithKey(): self
     {
-        return new self(\array_filter(
-            $this->toArray(),
-            static fn (DataGridHeader $header): bool => null !== $header->key)
-        );
+        return $this->filter(static fn (DataGridHeader $header): bool => null !== $header->key);
     }
 
     /**
