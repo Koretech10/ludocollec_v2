@@ -1,9 +1,15 @@
 <div class="data-grid-pagination">
     <div class="data-grid-pagination-element">
         {% if this.hasFilterType %}
-            <twig:button outlined :modalTarget="this.filterModalId">
-                <twig:icon :icon="Icon.filter" /> Filtrer
-            </twig:button>
+            {% if this.isFiltered %}
+                <twig:button :modalTarget="this.filterModalId">
+                    <twig:icon :icon="Icon.filter_active" /> Filtrer
+                </twig:button>
+            {% else %}
+                <twig:button outlined :modalTarget="this.filterModalId">
+                    <twig:icon :icon="Icon.filter" /> Filtrer
+                </twig:button>
+            {% endif %}
         {% endif %}
     </div>
 

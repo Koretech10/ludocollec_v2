@@ -32,6 +32,8 @@ readonly class DataGridBuilder
 
             if ($filterType->isSubmitted() && $filterType->isValid()) {
                 $this->filterBuilderUpdater->addFilterConditions($filterType, $config->queryBuilder);
+
+                $dataGrid->setIsFiltered(true);
             }
 
             $dataGrid->setFilterType($filterType->createView());

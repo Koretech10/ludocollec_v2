@@ -11,8 +11,8 @@ use Symfony\Component\Form\FormView;
 class DataGrid
 {
     private ?FormView $filterType = null;
-
     private PaginationInterface $pager;
+    private bool $isFiltered = false;
 
     public function __construct(
         public readonly DataGridHeaderCollection $headers,
@@ -37,5 +37,15 @@ class DataGrid
     public function setFilterType(FormView $filterType): void
     {
         $this->filterType = $filterType;
+    }
+
+    public function isFiltered(): bool
+    {
+        return $this->isFiltered;
+    }
+
+    public function setIsFiltered(bool $isFiltered): void
+    {
+        $this->isFiltered = $isFiltered;
     }
 }

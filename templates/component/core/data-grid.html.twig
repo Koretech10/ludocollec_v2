@@ -1,5 +1,10 @@
 {% set pagination %}
-    <twig:data-grid-pagination :pager="this.pager" :filterModalId="this.filterModalId" :hasFilterType="this.hasFilterType" />
+    <twig:data-grid-pagination
+        :pager="this.pager"
+        :filterModalId="this.filterModalId"
+        :hasFilterType="this.hasFilterType"
+        :isFiltered="this.dataGrid.isFiltered"
+    />
 {% endset %}
 
 {{ knp_pagination_rel_links(this.pager) }}
