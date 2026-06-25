@@ -33,8 +33,8 @@ readonly class DataGridBuilder
             $request->query->getInt('page', 1),
             $config->limit,
             [
-                'defaultSortFieldName' => $defaultSortField,
-                'defaultSortDirection' => $config->defaultSortOrder,
+                PaginatorInterface::DEFAULT_SORT_FIELD_NAME => $defaultSortField,
+                PaginatorInterface::DEFAULT_SORT_DIRECTION => \strtolower($config->defaultSortOrder),
             ],
         );
 
