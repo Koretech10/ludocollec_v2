@@ -15,6 +15,7 @@ class DataGridSorting
     private string $route;
     private array $query;
     private ?string $currentField;
+    private string $currentDirection;
 
     public DataGridHeaderCollection $headers;
 
@@ -34,9 +35,13 @@ class DataGridSorting
         /** @var ?string $field */
         $field = $request->query->get('field');
 
+        /** @var string $direction */
+        $direction = $request->query->get('direction', 'asc');
+
         $this->route = $route;
         $this->query = $request->query->all();
         $this->currentField = $field;
+        $this->currentDirection = $direction;
     }
 
     public function getUrl(string $key): string
@@ -45,7 +50,7 @@ class DataGridSorting
             $this->route,
             \array_merge($this->query, [
                 'field' => $key,
-                'direction' => $this->getDirection(),
+                'direction' => $this->getDirection($key),
             ]),
         );
     }
@@ -55,8 +60,17 @@ class DataGridSorting
         return $this->currentField === $key;
     }
 
-    public function getDirection(): string
+    public function getDirection(string $key): string
     {
-        return 'asc';
+        // On inverse la direction du tri si on n'a pas changé de clé.
+        if ($this->isActive($key)) {
+            return match ($this->currentDirection) {
+                'asc' => 'desc',
+                default => 'asc',
+            };
+        }
+
+        // On ne change pas la direction si on change de clé.
+        return $this->currentDirection;
     }
 }
