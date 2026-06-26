@@ -20,6 +20,7 @@
         "doctrine/doctrine-bundle": "^3.2.4",
         "doctrine/doctrine-migrations-bundle": "^4.0.0",
         "doctrine/orm": "^3.6.7",
+        "huluti/breadcrumbs-bundle": "^1.7",
         "knplabs/knp-paginator-bundle": "^6.10",
         "pentatrion/vite-bundle": "^8.2.4",
         "phpdocumentor/reflection-docblock": "^6.0.3",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d69962305f435d13575be1d110dbc6b1",
+    "content-hash": "bf02a4d97a12c8a35b7f9e9b152ad1d1",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -1187,6 +1187,75 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "huluti/breadcrumbs-bundle",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Huluti/BreadcrumbsBundle.git",
+                "reference": "a521bf9ddd25a1df7afc79a3d84985d5ead729b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Huluti/BreadcrumbsBundle/zipball/a521bf9ddd25a1df7afc79a3d84985d5ead729b4",
+                "reference": "a521bf9ddd25a1df7afc79a3d84985d5ead729b4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.2",
+                "symfony/framework-bundle": "^7.4|^8.0",
+                "symfony/property-access": "^7.4|^8.0",
+                "symfony/translation-contracts": "^3.0",
+                "symfony/twig-bundle": "^7.4|^8.0",
+                "twig/twig": "^3.0"
+            },
+            "replace": {
+                "mhujer/breadcrumbs-bundle": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.92",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^11|^12",
+                "rector/rector": "^2.3",
+                "symfony/browser-kit": "^7.4|^8.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Huluti\\BreadcrumbsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hugo Posnic",
+                    "email": "hugo.posnic@protonmail.com"
+                },
+                {
+                    "name": "Rich Sage",
+                    "email": "rich.sage@gmail.com"
+                },
+                {
+                    "name": "Martin Hujer",
+                    "email": "mail@martinhujer.cz"
+                }
+            ],
+            "description": "Breadcrumbs bundle for Symfony",
+            "homepage": "https://github.com/Huluti/BreadcrumbsBundle",
+            "keywords": [
+                "breadcrumbs",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/Huluti/BreadcrumbsBundle/issues",
+                "source": "https://github.com/Huluti/BreadcrumbsBundle/tree/1.7.0"
+            },
+            "time": "2026-03-04T10:27:48+00:00"
         },
         {
             "name": "knplabs/knp-components",
