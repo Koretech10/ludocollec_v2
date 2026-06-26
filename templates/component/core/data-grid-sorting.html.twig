@@ -1,0 +1,16 @@
+<div class="btn-group dropdown">
+    <twig:button dropdownToggle outlined><twig:icon :icon="Icon.sort" /> Trier</twig:button>
+    <ul class="dropdown-menu">
+        {% for header in this.headers %}
+            {# @var header App\Model\Core\DataGrid\DataGridHeader #}
+
+            {% if header.key is not null %}
+                <li>
+                    <a class="dropdown-item" href="{{ this.url(header.key) }}">
+                        {{ header.label }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
