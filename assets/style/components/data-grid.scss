@@ -49,3 +49,16 @@
     max-width: 8rem !important;
     max-height: 8rem !important;
 }
+
+.data-grid-sorting {
+    @extend .btn-group;
+    @extend .dropdown;
+
+    .btn:active, .show {
+        color: colors.get-color('light');
+    }
+
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: colors.get-color('secondary');
+    }
+}
