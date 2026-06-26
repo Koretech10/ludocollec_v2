@@ -86,9 +86,6 @@
             "./bin/phpunit"
         ]
     },
-    "slope-it/breadcrumb-bundle": {
-        "version": "2.1.2"
-    },
     "spiriitlabs/form-filter-bundle": {
         "version": "v12.1.0"
     },
