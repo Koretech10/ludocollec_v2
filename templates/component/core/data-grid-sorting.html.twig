@@ -7,6 +7,16 @@
             {% if header.key is not null %}
                 <li>
                     <a class="dropdown-item {{ this.active(header.key) ? 'active' : '' }}" href="{{ this.url(header.key) }}">
+                        {% if this.active(header.key) %}
+                            {% if 'asc' == this.currentDirection %}
+                                <twig:icon :icon="Icon.sort_asc" />
+                            {% else %}
+                                <twig:icon :icon="Icon.sort_desc" />
+                            {% endif %}
+                        {% else %}
+                            <twig:icon :icon="Icon.sort" />
+                        {% endif %}
+
                         {{ header.label }}
                     </a>
                 </li>

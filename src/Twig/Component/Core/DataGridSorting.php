@@ -60,6 +60,11 @@ class DataGridSorting
         return $this->currentField === $key;
     }
 
+    public function getCurrentDirection(): string
+    {
+        return $this->currentDirection;
+    }
+
     public function getDirection(string $key): string
     {
         // On inverse la direction du tri si on n'a pas changé de clé.
