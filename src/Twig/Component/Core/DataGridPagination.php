@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Component\Core;
 
+use App\Collection\Core\DataGridHeaderCollection;
 use App\Cookie\DisplayListTypeCookie;
 use App\Enum\User\DisplayListType;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -20,6 +21,7 @@ class DataGridPagination
     public string $filterModalId;
     public bool $hasFilterType;
     public bool $isFiltered;
+    public DataGridHeaderCollection $headers;
 
     public function __construct(
         private readonly RequestStack $requestStack,
