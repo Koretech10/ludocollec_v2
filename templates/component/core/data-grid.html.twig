@@ -4,14 +4,11 @@
         :filterModalId="this.filterModalId"
         :hasFilterType="this.hasFilterType"
         :isFiltered="this.dataGrid.isFiltered"
+        :headers="this.headers"
     />
 {% endset %}
 
 {{ knp_pagination_rel_links(this.pager) }}
-
-{% if this.displayListType.isCardGrid %}
-    {% include 'component/core/_data_grid_sort_modal.html.twig' with { sort_type: this.sortType } only %}
-{% endif %}
 
 {% if this.hasFilterType %}
     {% include 'component/core/_data_grid_filter_modal.html.twig' with {

@@ -20,6 +20,7 @@ class Button
     public ?string $additionalAttributes = null;
     public ?string $additionalClasses = null;
     public bool $submit = false;
+    public bool $dropdownToggle = false;
 
     public function getClasses(): string
     {
@@ -29,6 +30,10 @@ class Button
             $classes[] = \sprintf('btn-outline-%s', $this->type->value);
         } else {
             $classes[] = \sprintf('btn-%s', $this->type->value);
+        }
+
+        if ($this->dropdownToggle) {
+            $classes[] = 'dropdown-toggle';
         }
 
         return \sprintf(' class="%s" ', \implode(' ', $classes));
@@ -45,6 +50,10 @@ class Button
             $this->setupModal();
         }
 
+        if ($this->dropdownToggle) {
+            $this->setupDropdown();
+        }
+
         return \sprintf('%s %s', \implode(' ', $this->attributes), $this->additionalAttributes);
     }
 
@@ -57,5 +66,10 @@ class Button
     {
         $this->attributes[] = 'data-bs-toggle="modal"';
         $this->attributes[] = \sprintf('data-bs-target="#%s"', $this->modalTarget);
+    }
+
+    public function setupDropdown(): void
+    {
+        $this->attributes[] = 'data-bs-toggle="dropdown"';
     }
 }

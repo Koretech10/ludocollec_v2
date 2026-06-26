@@ -13,12 +13,7 @@
                 {% endif %}
             {% endif %}
 
-            {% if this.selectedDisplayListType.isCardGrid %}
-                <twig:button outlined modalTarget="sort_modal">
-                    <twig:icon :icon="Icon.sort" />
-                    Trier
-                </twig:button>
-            {% endif %}
+            <twig:data-grid-sorting :headers="this.headers" />
         </div>
     </div>
 
