@@ -1,0 +1,2 @@
+huluti_breadcrumbs:
+    viewTemplate: 'layout/breadcrumb.html.twig'
