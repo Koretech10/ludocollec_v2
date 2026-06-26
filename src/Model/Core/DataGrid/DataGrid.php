@@ -13,7 +13,6 @@ class DataGrid
     private PaginationInterface $pager;
     private ?FormView $filterType = null;
     private bool $isFiltered = false;
-    private FormView $sortType;
 
     public function __construct(
         public readonly DataGridHeaderCollection $headers,
@@ -48,15 +47,5 @@ class DataGrid
     public function setIsFiltered(bool $isFiltered): void
     {
         $this->isFiltered = $isFiltered;
-    }
-
-    public function getSortType(): FormView
-    {
-        return $this->sortType;
-    }
-
-    public function setSortType(FormView $sortType): void
-    {
-        $this->sortType = $sortType;
     }
 }

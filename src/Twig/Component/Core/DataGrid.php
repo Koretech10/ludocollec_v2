@@ -76,9 +76,4 @@ class DataGrid
 
         $this->displayListType = DisplayListType::from($displayListCookie);
     }
-
-    public function getSortType(): FormView
-    {
-        return $this->dataGrid->getSortType();
-    }
 }

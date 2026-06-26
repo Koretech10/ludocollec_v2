@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Builder\Core\DataGrid;
 
-use App\Form\Core\SortType;
 use App\Model\Core\DataGrid\DataGrid;
 use App\Model\Core\DataGrid\DataGridConfig;
 use Knp\Component\Pager\PaginatorInterface;
@@ -26,8 +25,6 @@ readonly class DataGridBuilder
         $dataGrid = new DataGrid($config->headers);
 
         $this->setupFilterType($request, $config, $dataGrid);
-
-        $this->setupSortType($request, $config, $dataGrid);
 
         $paginator = $this->paginator->paginate(
             $config->queryBuilder,
@@ -85,22 +82,5 @@ readonly class DataGridBuilder
 
             $dataGrid->setFilterType($filterType->createView());
         }
-    }
-
-    private function setupSortType(Request $request, DataGridConfig $config, DataGrid $dataGrid): void
-    {
-        $defaultField = $config->headers->getForKey($this->getDefaultSortFieldName($config));
-
-        $sortType = $this->formFactory->create(
-            SortType::class,
-            [
-                'field' => $defaultField,
-                'direction' => $this->getDefaultSortOrder($config),
-            ],
-            options: ['headers' => $config->headers]
-        );
-        $sortType->handleRequest($request);
-
-        $dataGrid->setSortType($sortType->createView());
     }
 }
