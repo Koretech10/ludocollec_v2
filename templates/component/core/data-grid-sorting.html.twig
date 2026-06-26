@@ -6,7 +6,7 @@
 
             {% if header.key is not null %}
                 <li>
-                    <a class="dropdown-item" href="{{ this.url(header.key) }}">
+                    <a class="dropdown-item {{ this.active(header.key) ? 'active' : '' }}" href="{{ this.url(header.key) }}">
                         {{ header.label }}
                     </a>
                 </li>

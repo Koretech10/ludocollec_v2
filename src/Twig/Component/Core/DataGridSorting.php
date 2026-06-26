@@ -14,6 +14,7 @@ class DataGridSorting
 {
     private string $route;
     private array $query;
+    private ?string $currentField;
 
     public DataGridHeaderCollection $headers;
 
@@ -30,8 +31,12 @@ class DataGridSorting
         /** @var string $route */
         $route = $request->attributes->get('_route');
 
+        /** @var ?string $field */
+        $field = $request->query->get('field');
+
         $this->route = $route;
         $this->query = $request->query->all();
+        $this->currentField = $field;
     }
 
     public function getUrl(string $key): string
@@ -43,6 +48,11 @@ class DataGridSorting
                 'direction' => $this->getDirection(),
             ]),
         );
+    }
+
+    public function isActive(string $key): bool
+    {
+        return $this->currentField === $key;
     }
 
     public function getDirection(): string
