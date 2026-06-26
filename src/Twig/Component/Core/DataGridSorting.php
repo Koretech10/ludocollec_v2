@@ -51,6 +51,7 @@ class DataGridSorting
             \array_merge($this->query, [
                 'field' => $key,
                 'direction' => $this->getDirection($key),
+                'page' => 1,
             ]),
         );
     }
