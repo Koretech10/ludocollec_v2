@@ -10,14 +10,14 @@ use App\Form\Toy\Filter\ToyFilterType;
 use App\Model\Core\DataGrid\DataGridConfig;
 use App\Model\Core\DataGrid\DataGridHeader;
 use App\Repository\Toy\ToyRepository;
-use SlopeIt\BreadcrumbBundle\Attribute\Breadcrumb;
+use Huluti\BreadcrumbsBundle\Attribute\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/toy')]
-#[Breadcrumb(['label' => 'Jouets vidéo', 'route' => 'toy.list'])]
+#[Breadcrumb(text: 'Jouets vidéo', route: 'toy.list')]
 class ToyController extends AbstractController
 {
     public function __construct(

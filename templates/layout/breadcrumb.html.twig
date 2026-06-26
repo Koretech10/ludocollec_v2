@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        {% if not slope_it_is_breadcrumb_empty() %}
+        {% if wo_breadcrumbs()|length > 0 %}
             <li class="breadcrumb-item">
                 <a href="/">Accueil</a>
             </li>
@@ -10,16 +10,16 @@
             </li>
         {% endif %}
 
-        {% for item in items %}
-            {# @var item SlopeIt\BreadcrumbBundle\Model\ProcessedBreadcrumbItem #}
+        {% for item in breadcrumbs %}
+            {# @var item Huluti\BreadcrumbsBundle\Model\SingleBreadcrumb #}
 
             {% if not loop.last %}
                 <li class="breadcrumb-item">
-                    <a href="{{ item.url }}">{{ item.translatedLabel }}</a>
+                    <a href="{{ item.url }}">{{ item.text }}</a>
                 </li>
             {% else %}
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ item.translatedLabel }}
+                    {{ item.text }}
                 </li>
             {% endif %}
         {% endfor %}
