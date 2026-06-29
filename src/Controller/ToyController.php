@@ -44,6 +44,7 @@ class ToyController extends AbstractController
 
         return $this->render('toy/list.html.twig', [
             'data_grid' => $dataGrid,
+            'title' => 'Jouets vidéo',
         ]);
     }
 }
