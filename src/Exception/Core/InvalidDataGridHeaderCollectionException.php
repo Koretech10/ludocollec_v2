@@ -24,6 +24,6 @@ class InvalidDataGridHeaderCollectionException extends \Exception
 
     public static function defaultSortHasNoKey(string $label): self
     {
-        return new self(\sprintf('Le tri par défaut « %s » n’a pas clé.', $label));
+        return new self(\sprintf('Le tri par défaut « %s » n’a pas de clé.', $label));
     }
 }
