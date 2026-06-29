@@ -35,9 +35,8 @@ class ToyController extends AbstractController
                 new DataGridHeader('Nom', 'toy.name'),
                 new DataGridHeader('Série', 'series.name'),
                 new DataGridHeader('Fabricant', 'manufacturer.name'),
-                new DataGridHeader('Sortie', 'toy.releaseDate'),
+                new DataGridHeader('Sortie', 'toy.releaseDate', true),
             ]),
-            defaultSortField: 'toy.releaseDate',
             filterType: ToyFilterType::class,
         );
 
