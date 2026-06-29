@@ -20,6 +20,7 @@ security:
                 login_path: security.login
                 check_path: security.login
                 enable_csrf: true
+            user_checker: App\Security\UserChecker
             logout:
                 path: security.logout
                 # where to redirect after logout

@@ -148,4 +148,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->displayListType = $displayListType;
     }
+
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
 }
