@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Collection\Core;
 
-use App\Exception\Core\DataGridHeaderNotFoundException;
+use App\Exception\Core\InvalidDataGridHeaderCollectionException;
 use App\Model\Core\DataGrid\DataGridHeader;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -13,27 +13,35 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class DataGridHeaderCollection extends ArrayCollection
 {
-    public function getHeadersWithKey(): self
+    /**
+     * @return array<int, string>
+     */
+    public function getLabels(): array
     {
-        return $this->filter(static fn (DataGridHeader $header): bool => null !== $header->key);
+        return \array_map(static fn (DataGridHeader $header): string => $header->label, $this->toArray());
     }
 
     /**
-     * @throws DataGridHeaderNotFoundException
+     * @throws InvalidDataGridHeaderCollectionException
      */
-    public function getForKey(string $key): DataGridHeader
+    public function getDefaultSortKey(): string
     {
-        /** @var DataGridHeader|false $header */
-        $header = $this->filter(
-            static function (DataGridHeader $header) use ($key): bool {
-                return $header->key === $key;
-            }
-        )->first();
+        $defaultSortHeaders = $this->filter(static fn (DataGridHeader $header): bool => true === $header->defaultSort);
 
-        if (false === $header) {
-            throw DataGridHeaderNotFoundException::forKey($key);
+        if ($defaultSortHeaders->isEmpty()) {
+            throw InvalidDataGridHeaderCollectionException::noDefaultSort();
         }
 
-        return $header;
+        if (1 < $defaultSortHeaders->count()) {
+            throw InvalidDataGridHeaderCollectionException::hasMultipleDefaultSort($defaultSortHeaders->getLabels());
+        }
+
+        $defaultSortHeader = $defaultSortHeaders->first();
+
+        if (null === $defaultSortHeader->key) {
+            throw InvalidDataGridHeaderCollectionException::defaultSortHasNoKey($defaultSortHeader->label);
+        }
+
+        return $defaultSortHeader->key;
     }
 }
