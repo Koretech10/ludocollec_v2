@@ -16,4 +16,14 @@ trait Creatable
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTime $creationDate;
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function getCreationDate(): ?\DateTime
+    {
+        return $this->creationDate;
+    }
 }
