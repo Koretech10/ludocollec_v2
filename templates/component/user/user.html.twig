@@ -1,0 +1,5 @@
+{%- if this.user is not null -%}
+    <a href="#ToDo">{{- this.getText() -}}</a> {# ToDo Remplacer le lien par la fiche de contribution d'un utilisateur #}
+{%- else -%}
+    <span>{{- this.getText() -}}</span>
+{%- endif -%}
