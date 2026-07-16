@@ -1,0 +1,24 @@
+@use "@/style/legacy_vendors/bootstrap";
+@use "@/style/colors";
+
+a {
+    @extend .text-decoration-none;
+
+    color: colors.get-color('primary');
+
+    &:hover {
+        color: colors.get-color('primary', 300);
+    }
+}
+
+.stats {
+    margin-bottom: 1rem;
+
+    .stats-header {
+        @extend .d-block;
+
+        margin-bottom: 1rem;
+        border-bottom: 1px solid lightgray;
+    }
+}
+

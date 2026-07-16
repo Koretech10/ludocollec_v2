@@ -17,6 +17,8 @@ enum Icon: string
     case sort_asc = 'sort-down';
     case sort_desc = 'sort-up';
     case cancel = 'x-lg';
+    case add = 'plus-lg';
+    case validate = 'check-lg';
 
     /** ICÔNES GÉNÉRIQUES */
     case hall_of_fame = 'heart-fill';
@@ -32,6 +34,8 @@ enum Icon: string
     case list = 'file-text-fill';
     case arrow_left = 'arrow-left';
     case arrow_right = 'arrow-right';
+    case info = 'info-circle-fill';
+    case journal = 'journal-text';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';
