@@ -6,12 +6,19 @@
     <twig:block name="header"><h5>{{ entity.title }}</h5></twig:block>
 
     <div class="row gy-0 gx-5 gx-sm-2">
-        <div class="col-4">
-            <twig:entity-image :entity="entity" classes="data-grid-card-image d-block mx-auto" noBorder />
-        </div>
+        {% if content is not empty %}
+            <div class="col-4">
+                <twig:entity-image :entity="entity" classes="data-grid-card-image d-block mx-auto" noBorder />
+            </div>
 
-        <div class="col">
-            {{ content }}
-        </div>
+            <div class="col">
+                {{ content }}
+            </div>
+        {% else %}
+            <div class="mx-auto">
+                <twig:entity-image :entity="entity" classes="data-grid-card-image d-block mx-auto" noBorder />
+            </div>
+        {% endif %}
+
     </div>
 </twig:card>
