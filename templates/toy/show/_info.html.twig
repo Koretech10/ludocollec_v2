@@ -1,0 +1,13 @@
+{# @var toy \App\Entity\Toy\Toy #}
+
+<twig:card>
+    <twig:block name="header"><twig:icon :icon="Icon.info" /> Informations</twig:block>
+
+    {% set series = toy.series %}
+    {% set brand = series.brand %}
+
+    <twig:info label="Nom">{{ toy.name }}</twig:info>
+    <twig:info label="Série">{{ series.name }}</twig:info>
+    <twig:info label="Marque">{{ brand.label }}</twig:info>
+    <twig:info label="Date de sortie"><twig:date :date="toy.releaseDate" /></twig:info>
+</twig:card>

@@ -1,0 +1,41 @@
+{# @var user \App\Entity\User\User #}
+{# @var toy \App\Entity\Toy\Toy #}
+{# @var collection_toy_entries_count int #}
+{# @var wishlist_toy_entries_count int #}
+{# @var user_collection_toy_entries_count int|null #}
+{# @var user_wishlist_toy_entries_count int|null #}
+
+<twig:card contentClass="row">
+    <twig:block name="header"><twig:icon :icon="Icon.journal" /> Statistiques</twig:block>
+
+    <twig:stats>
+        <twig:block name="header"><twig:icon :icon="Icon.collection" /> Ajouté en collection</twig:block>
+
+        <twig:info label="Total">{{ collection_toy_entries_count }}</twig:info>
+        {% if user is not null %}<twig:info label="Vous">{{ user_collection_toy_entries_count }}</twig:info>{% endif %}
+    </twig:stats>
+
+    <twig:stats>
+        <twig:block name="header"><twig:icon :icon="Icon.wishlist" /> Ajouté en wishlist</twig:block>
+
+        <twig:info label="Total">{{ wishlist_toy_entries_count }}</twig:info>
+        {% if user is not null %}<twig:info label="Vous">{{ user_wishlist_toy_entries_count }}</twig:info>{% endif %}
+    </twig:stats>
+
+    <twig:stats>
+        <twig:block name="header"><twig:icon :icon="Icon.add" /> Création</twig:block>
+
+        <twig:info label="Par"><twig:user :user="toy.createdBy" /></twig:info>
+        <twig:info label="Le"><twig:date :date="toy.creationDate" nullMessage="??/??/????" /></twig:info>
+    </twig:stats>
+
+    {% if not toy.new %}
+        <twig:stats>
+            <twig:block name="header"><twig:icon :icon="Icon.validate" /> Validation</twig:block>
+
+            <twig:info label="Par"><twig:user :user="toy.validatedBy" /></twig:info>
+            <twig:info label="Le"><twig:date :date="toy.validationDate" nullMessage="??/??/????" /></twig:info>
+
+        </twig:stats>
+    {% endif %}
+</twig:card>
