@@ -8,6 +8,7 @@ use App\Entity\Toy\Toy;
 use App\Entity\User\User;
 use App\Presenter\Presenter;
 use App\Repository\Collection\ToyEntryRepository as CollectionToyEntryRepository;
+use App\Repository\Toy\ToyRepository;
 use App\Repository\Wishlist\ToyEntryRepository as WishlistToyEntryRepository;
 
 readonly class ShowToyPresenter implements Presenter
@@ -15,6 +16,7 @@ readonly class ShowToyPresenter implements Presenter
     public function __construct(
         private CollectionToyEntryRepository $collectionToyEntryRepository,
         private WishlistToyEntryRepository $wishlistToyEntryRepository,
+        private ToyRepository $toyRepository,
     ) {
     }
 
@@ -38,6 +40,16 @@ readonly class ShowToyPresenter implements Presenter
             'wishlist_toy_entries_count' => $this->wishlistToyEntryRepository->countForToy($toy),
             'user_collection_toy_entries_count' => $userCollectionToyEntriesCount,
             'user_wishlist_toy_entries_count' => $userWishlistToyEntriesCount,
+            'similar_toys' => $this->getSimilarToys($toy),
         ]);
+    }
+
+    private function getSimilarToys(Toy $toy): array
+    {
+        $similarToys = $this->toyRepository->findSimilarToys($toy);
+
+        \shuffle($similarToys);
+
+        return \array_slice($similarToys, 0, 5);
     }
 }

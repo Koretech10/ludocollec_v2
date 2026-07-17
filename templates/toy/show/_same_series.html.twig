@@ -1,0 +1,13 @@
+{# @var similar_toys \App\Entity\Toy\Toy[] #}
+
+<twig:card>
+    <twig:block name="header"><twig:icon :icon="Icon.similar" /> De la même série</twig:block>
+
+    <div class="row g-2">
+        {% for toy in similar_toys %}
+            <div class="col-12 col-sm">
+                <twig:entity-card cardClass="h-100" :entity="toy" />
+            </div>
+        {% endfor %}
+    </div>
+</twig:card>

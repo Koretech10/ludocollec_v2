@@ -4,17 +4,18 @@
 {# @var wishlist_toy_entries_count int #}
 {# @var user_collection_toy_entries_count int|null #}
 {# @var user_wishlist_toy_entries_count int|null #}
+{# @var similar_toys \App\Entity\Toy\Toy[] #}
 
 {% extends 'base.html.twig' %}
 
 {% block body %}
     <div class="row">
         <div class="col-12 mb-2 col-sm-3">
-            {% include 'toy/show/_image.html.twig' with { toy: toy } only %}
+            {% include 'toy/show/_image.html.twig' with { toy } only %}
         </div>
 
         <div class="col-12 mb-2 col-sm-5">
-            {% include 'toy/show/_info.html.twig' with { toy: toy } only %}
+            {% include 'toy/show/_info.html.twig' with { toy } only %}
         </div>
 
         <div class="col-12 mb-2 col-sm-4">
@@ -27,5 +28,9 @@
                 user_wishlist_toy_entries_count,
             } only %}
         </div>
+    </div>
+
+    <div>
+        {% include 'toy/show/_same_series.html.twig' with { similar_toys } only %}
     </div>
 {% endblock %}

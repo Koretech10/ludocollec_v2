@@ -36,6 +36,7 @@ enum Icon: string
     case arrow_right = 'arrow-right';
     case info = 'info-circle-fill';
     case journal = 'journal-text';
+    case similar = 'files';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';
