@@ -93,6 +93,9 @@ $color-steps: (
     950: -32.4%
 );
 
+$darken-link-step: 700;
+$lighten-link-step: 300;
+
 @function shade($color, $percentage) {
     @return color.adjust($color, $lightness: $percentage);
 }
@@ -115,6 +118,16 @@ $color-steps: (
     @return shade($value, $percentage);
 }
 
+@function get-color-from-value($searched-value) {
+    @each $color, $value in $colors {
+        @if $value == $searched-value {
+            @return $color;
+        }
+    }
+
+    @error 'La valeur « #{$searched-value} » n’existe pas dans $colors';
+}
+
 @function get-foreground-for-background($background-color) {
     $light: get-color('light');
     $dark: get-color('dark');
@@ -132,8 +145,17 @@ $color-steps: (
 
 @each $color, $value in $colors {
     .bg-#{$color} {
+        $foreground-color-value: get-foreground-for-background($value);
+        $foreground-color-name: get-color-from-value($foreground-color-value);
+
         background-color: $value;
-        color: get-foreground-for-background($value);
+        color: $foreground-color-value;
+
+        a:hover, a:active {
+            $step: if($foreground-color-name == 'light', $darken-link-step, $lighten-link-step);
+
+            color: get-color($foreground-color-name, $step);
+        }
     }
 
     .border-#{$color} {

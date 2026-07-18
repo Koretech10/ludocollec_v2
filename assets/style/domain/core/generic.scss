@@ -7,7 +7,7 @@ a {
     color: colors.get-color('primary');
 
     &:hover {
-        color: colors.get-color('primary', 300);
+        color: colors.get-color('primary', colors.$darken-link-step);
     }
 }
 
