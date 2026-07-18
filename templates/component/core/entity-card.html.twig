@@ -3,7 +3,7 @@
 {%- endset -%}
 
 <twig:card :cardClass="cardClass" :headerClass="headerClass" :contentClass="contentClass" :footerClass="footerClass">
-    <twig:block name="header"><h5>{{ entity.title }}</h5></twig:block>
+    <twig:block name="header"><a class="h5" href="{{ outerScope.this.getShowPath() }}">{{ entity.title }}</a></twig:block>
 
     <div class="row gy-0 gx-5 gx-sm-2">
         {% if content is not empty %}

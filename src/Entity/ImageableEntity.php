@@ -9,4 +9,6 @@ interface ImageableEntity
     public function getId(): int;
 
     public function title(): string;
+
+    public function getShowRoute(): string;
 }

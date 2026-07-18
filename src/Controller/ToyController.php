@@ -50,8 +50,8 @@ class ToyController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{toy}', name: 'toy.show')]
-    #[Breadcrumb(text: '{toy.title}', route: 'toy.show', parameters: ['toy' => '{toy.id}'])]
+    #[Route('/show/{id}', name: 'toy.show')]
+    #[Breadcrumb(text: '{toy.title}', route: 'toy.show', parameters: ['id' => '{toy.id}'])]
     public function show(Toy $toy, ShowToyPresenter $presenter): Response
     {
         return $this->render('toy/show.html.twig', $presenter->getParameters([
