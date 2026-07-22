@@ -50,6 +50,6 @@ readonly class ShowToyPresenter implements Presenter
 
         \shuffle($similarToys);
 
-        return \array_slice($similarToys, 0, 5);
+        return \array_slice($similarToys, 0, 4);
     }
 }
