@@ -57,6 +57,7 @@ class ToyController extends AbstractController
         return $this->render('toy/show.html.twig', $presenter->getParameters([
             'toy' => $toy,
             'title' => $toy->title(),
+            'content_title' => $toy->title(),
             'user' => $this->getUser(),
         ]));
     }

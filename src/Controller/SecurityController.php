@@ -23,6 +23,7 @@ class SecurityController extends AbstractController
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'form' => $form->createView(),
             'title' => 'Connexion',
+            'content_title' => 'Connexion',
         ]);
     }
 
