@@ -1,0 +1,7 @@
+<span
+    data-bs-toggle="tooltip"
+    data-bs-title="{{ title }}"
+    {% if direction is not null %}data-bs-placement="{{ direction.value }}"{% endif %}
+>
+    {%- block content -%}{%- endblock -%}
+</span>
