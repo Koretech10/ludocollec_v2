@@ -5,33 +5,29 @@ declare(strict_types=1);
 namespace App\Twig\Component\Core;
 
 use App\Collection\Core\DataGridHeaderCollection;
-use App\Cookie\DisplayListTypeCookie;
 use App\Enum\User\DisplayListType;
 use App\Model\Core\DataGrid\DataGrid as DataGridModel;
+use App\Query\Core\GetDisplayListTypeQuery;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Messenger\HandleTrait;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
-use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsTwigComponent(name: 'data-grid')]
 class DataGrid
 {
+    use HandleTrait;
+
     private string $filterModalId = 'filter_modal';
-    private DisplayListType $displayListType;
 
     public DataGridModel $dataGrid;
     public bool $hideActions = false;
 
     public function __construct(
-        private readonly RequestStack $requestStack,
+        MessageBusInterface $queryBus,
     ) {
-    }
-
-    #[PostMount]
-    public function postMount(): void
-    {
-        $this->setDisplayListType();
+        $this->messageBus = $queryBus;
     }
 
     public function getPager(): PaginationInterface
@@ -51,7 +47,8 @@ class DataGrid
 
     public function getDisplayListType(): DisplayListType
     {
-        return $this->displayListType;
+        /** @var DisplayListType */
+        return $this->handle(new GetDisplayListTypeQuery());
     }
 
     public function getFilterType(): ?FormView
@@ -62,18 +59,5 @@ class DataGrid
     public function hasFilterType(): bool
     {
         return null !== $this->dataGrid->getFilterType();
-    }
-
-    private function setDisplayListType(): void
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        if (null === $request) {
-            return;
-        }
-
-        $displayListCookie = $request->cookies->getInt(DisplayListTypeCookie::DISPLAY_LIST_COOKIE_NAME);
-
-        $this->displayListType = DisplayListType::from($displayListCookie);
     }
 }
