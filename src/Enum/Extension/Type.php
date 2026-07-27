@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Extension;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Type: int implements LabeledEnum
+enum Type: int implements HasLabel
 {
     case ADD_ON = 1;
     case COSMETICS = 2;

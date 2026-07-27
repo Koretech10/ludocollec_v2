@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Toy;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Brand: int implements LabeledEnum
+enum Brand: int implements HasLabel
 {
     case AMIIBO = 1;
     case SKYLANDERS = 2;

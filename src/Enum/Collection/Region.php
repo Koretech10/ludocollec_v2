@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Collection;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Region: int implements LabeledEnum
+enum Region: int implements HasLabel
 {
     case ASIA = 1;
     case NTSC_J = 2;
