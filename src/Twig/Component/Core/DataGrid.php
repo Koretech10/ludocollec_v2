@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsTwigComponent(name: 'data-grid')]
 class DataGrid
@@ -20,6 +21,7 @@ class DataGrid
     use HandleTrait;
 
     private string $filterModalId = 'filter_modal';
+    private DisplayListType $displayListType;
 
     public DataGridModel $dataGrid;
     public bool $hideActions = false;
@@ -28,6 +30,15 @@ class DataGrid
         MessageBusInterface $queryBus,
     ) {
         $this->messageBus = $queryBus;
+    }
+
+    #[PostMount]
+    public function postMount(): void
+    {
+        /** @var DisplayListType $displayListType */
+        $displayListType = $this->handle(new GetDisplayListTypeQuery());
+
+        $this->displayListType = $displayListType;
     }
 
     public function getPager(): PaginationInterface
@@ -47,8 +58,7 @@ class DataGrid
 
     public function getDisplayListType(): DisplayListType
     {
-        /** @var DisplayListType */
-        return $this->handle(new GetDisplayListTypeQuery());
+        return $this->displayListType;
     }
 
     public function getFilterType(): ?FormView
