@@ -1,6 +1,7 @@
 framework:
     messenger:
-        default_bus: messenger.bus.default
+        default_bus: message.bus
 
         buses:
-            messenger.bus.default: []
+            message.bus: ~
+            query.bus: ~
