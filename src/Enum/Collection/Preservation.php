@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Collection;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Preservation: int implements LabeledEnum
+enum Preservation: int implements HasLabel
 {
     case NEW = 1;
     case LIKE_NEW = 2;

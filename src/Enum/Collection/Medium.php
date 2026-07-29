@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Collection;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Medium: int implements LabeledEnum
+enum Medium: int implements HasLabel
 {
     case UNSPECIFIED = 0;
     case CARTRIDGE = 4;

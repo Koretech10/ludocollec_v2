@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Console;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Type: int implements LabeledEnum
+enum Type: int implements HasLabel
 {
     case HOME = 1;
     case HANDHELD = 2;

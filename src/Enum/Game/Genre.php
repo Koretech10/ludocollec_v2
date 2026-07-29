@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum\Game;
 
-use App\Enum\Core\LabeledEnum;
+use App\Enum\Core\HasLabel;
 
-enum Genre: int implements LabeledEnum
+enum Genre: int implements HasLabel
 {
     // Action
     case ACTION__ACTION_ADVENTURE = 8;

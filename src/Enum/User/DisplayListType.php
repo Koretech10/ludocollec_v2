@@ -4,11 +4,18 @@ declare(strict_types=1);
 
 namespace App\Enum\User;
 
-enum DisplayListType: int
+use App\Enum\Core\HasDefault;
+
+enum DisplayListType: int implements HasDefault
 {
     case CARD_GRID = 1;
     case IMAGED_TABLE = 2;
     case TEXT_TABLE = 3;
+
+    public static function default(): self
+    {
+        return self::CARD_GRID;
+    }
 
     public function isTable(): bool
     {
@@ -28,5 +35,12 @@ enum DisplayListType: int
     public function isTextTable(): bool
     {
         return self::TEXT_TABLE === $this;
+    }
+
+    public static function fromCookie(int $value): self
+    {
+        $type = self::tryFrom($value);
+
+        return $type ?? self::default();
     }
 }

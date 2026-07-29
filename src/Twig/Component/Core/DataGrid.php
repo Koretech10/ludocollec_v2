@@ -5,18 +5,21 @@ declare(strict_types=1);
 namespace App\Twig\Component\Core;
 
 use App\Collection\Core\DataGridHeaderCollection;
-use App\Cookie\DisplayListTypeCookie;
 use App\Enum\User\DisplayListType;
 use App\Model\Core\DataGrid\DataGrid as DataGridModel;
+use App\Query\Core\GetDisplayListTypeQuery;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Messenger\HandleTrait;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsTwigComponent(name: 'data-grid')]
 class DataGrid
 {
+    use HandleTrait;
+
     private string $filterModalId = 'filter_modal';
     private DisplayListType $displayListType;
 
@@ -24,14 +27,18 @@ class DataGrid
     public bool $hideActions = false;
 
     public function __construct(
-        private readonly RequestStack $requestStack,
+        MessageBusInterface $queryBus,
     ) {
+        $this->messageBus = $queryBus;
     }
 
     #[PostMount]
     public function postMount(): void
     {
-        $this->setDisplayListType();
+        /** @var DisplayListType $displayListType */
+        $displayListType = $this->handle(new GetDisplayListTypeQuery());
+
+        $this->displayListType = $displayListType;
     }
 
     public function getPager(): PaginationInterface
@@ -62,18 +69,5 @@ class DataGrid
     public function hasFilterType(): bool
     {
         return null !== $this->dataGrid->getFilterType();
-    }
-
-    private function setDisplayListType(): void
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        if (null === $request) {
-            return;
-        }
-
-        $displayListCookie = $request->cookies->getInt(DisplayListTypeCookie::DISPLAY_LIST_COOKIE_NAME);
-
-        $this->displayListType = DisplayListType::from($displayListCookie);
     }
 }
