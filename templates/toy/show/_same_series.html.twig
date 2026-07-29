@@ -6,7 +6,7 @@
     <div class="row row-cols-1 row-cols-sm-4 g-2">
         {% for toy in similar_toys %}
             <div class="col-12 col-sm">
-                <twig:entity-card cardClass="h-100" :entity="toy" />
+                <twig:entity-card cardClass="h-100" :entity="toy" truncateSize="20" />
             </div>
         {% endfor %}
     </div>
