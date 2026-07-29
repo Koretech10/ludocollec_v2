@@ -13,6 +13,8 @@ class StaticController extends AbstractController
     #[Route('/', name: 'home')]
     public function home(): Response
     {
-        return $this->render('static/home.html.twig');
+        return $this->render('static/home.html.twig', [
+            'title' => 'Accueil',
+        ]);
     }
 }

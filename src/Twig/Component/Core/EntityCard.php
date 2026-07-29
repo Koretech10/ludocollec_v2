@@ -6,6 +6,7 @@ namespace App\Twig\Component\Core;
 
 use App\Entity\ImageableEntity;
 use App\Util\Core\ClassNameExtractor;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
@@ -13,10 +14,21 @@ use Symfony\UX\TwigComponent\Attribute\PostMount;
 class EntityCard extends Card
 {
     public ImageableEntity $entity;
+    public int $truncateSize = 30;
+
+    public function __construct(
+        private readonly UrlGeneratorInterface $urlGenerator,
+    ) {
+    }
 
     #[PostMount]
     public function postMount(): void
     {
         $this->headerClass .= \sprintf(' bg-%s', \strtolower(ClassNameExtractor::getClassBaseName($this->entity::class)));
+    }
+
+    public function getShowPath(): string
+    {
+        return $this->urlGenerator->generate($this->entity->getShowRoute(), ['id' => $this->entity->getId()]);
     }
 }

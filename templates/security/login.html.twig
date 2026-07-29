@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
-
 {% block body %}
     {% if error is not null %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security')|raw }}</div>

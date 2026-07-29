@@ -3,3 +3,4 @@ twig_component:
     defaults:
         # Namespace & directory for components
         App\Twig\Component\Core\: 'component/core'
+        App\Twig\Component\User\: 'component'

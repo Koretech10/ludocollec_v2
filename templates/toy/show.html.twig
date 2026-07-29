@@ -1,0 +1,40 @@
+{# @var user \App\Entity\User\User #}
+{# @var toy \App\Entity\Toy\Toy #}
+{# @var collection_toy_entries_count int #}
+{# @var wishlist_toy_entries_count int #}
+{# @var user_collection_toy_entries_count int|null #}
+{# @var user_wishlist_toy_entries_count int|null #}
+{# @var similar_toys \App\Entity\Toy\Toy[] #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row g-2">
+        <div class="col-12 col-sm-3">
+            {% include 'toy/show/_image.html.twig' with { toy } only %}
+        </div>
+
+        <div class="col-12 col-sm">
+            <div class="row g-2">
+                <div class="col-12 col-sm-7">
+                    {% include 'toy/show/_info.html.twig' with { toy } only %}
+                </div>
+
+                <div class="col-12 col-sm-5">
+                    {% include 'toy/show/_stats.html.twig' with {
+                        user,
+                        toy,
+                        collection_toy_entries_count,
+                        wishlist_toy_entries_count,
+                        user_collection_toy_entries_count,
+                        user_wishlist_toy_entries_count,
+                    } only %}
+                </div>
+
+                <div class="col-12">
+                    {% include 'toy/show/_same_series.html.twig' with { similar_toys } only %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

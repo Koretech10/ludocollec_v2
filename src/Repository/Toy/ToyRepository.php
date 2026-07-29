@@ -28,4 +28,22 @@ class ToyRepository extends ServiceEntityRepository
             ->addOrderBy('toy.name')
         ;
     }
+
+    /**
+     * @return list<Toy>
+     */
+    public function findSimilarToys(Toy $toy): array
+    {
+        /** @var list<Toy> $toys */
+        $toys = $this->createQueryBuilder('toy')
+            ->where('toy.series = :series')
+            ->setParameter('series', $toy->getSeries())
+            ->andWhere('toy != :toy')
+            ->setParameter('toy', $toy)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $toys;
+    }
 }

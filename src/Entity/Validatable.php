@@ -16,4 +16,14 @@ trait Validatable
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTime $validationDate;
+
+    public function getValidatedBy(): ?User
+    {
+        return $this->validatedBy;
+    }
+
+    public function getValidationDate(): ?\DateTime
+    {
+        return $this->validationDate;
+    }
 }

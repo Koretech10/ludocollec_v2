@@ -75,4 +75,9 @@ class Toy implements ImageableEntity
     {
         return $this->isNew;
     }
+
+    public function getShowRoute(): string
+    {
+        return 'toy.show';
+    }
 }

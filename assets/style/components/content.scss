@@ -66,8 +66,14 @@ body {
             }
         }
 
+        .content-title {
+            @extend .mt-3;
+
+            color: colors.get-color('primary', 950);
+        }
+
         .main-body {
-            @extend .mt-4;
+            @extend .my-4;
         }
     }
 

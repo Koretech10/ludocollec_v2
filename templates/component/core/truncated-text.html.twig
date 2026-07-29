@@ -1,0 +1,5 @@
+{%- if this.text|length <= this.size -%}
+    {{- this.text -}}
+{% else %}
+    <twig:tooltip :title="this.text" :direction="this.direction">{{- outerScope.this.text|u.truncate(size, '[…]', true) -}}</twig:tooltip>
+{% endif %}

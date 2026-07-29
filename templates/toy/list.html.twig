@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jouets vidéo{% endblock %}
-
 {% block body %}
     <twig:data-grid :dataGrid="data_grid">
         <twig:block name="card_body">
@@ -17,7 +15,9 @@
             {% set toy = item %}
             {# @var toy \App\Entity\Toy\Toy #}
 
-            <td>{{ toy.name }}</td>
+            <td>
+                <a href="{{ path('toy.show', { id: toy.id }) }}">{{ toy.name }}</a>
+            </td>
             <td>{{ toy.series.name }} ({{ toy.series.brand.label }})</td>
             <td>{{ toy.manufacturer.name }}</td>
             <td><twig:date :date="toy.releaseDate" /></td>
