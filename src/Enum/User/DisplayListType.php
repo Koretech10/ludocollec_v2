@@ -39,10 +39,8 @@ enum DisplayListType: int implements HasDefault
 
     public static function fromCookie(int $value): self
     {
-        if (null !== ($type = self::tryFrom($value))) {
-            return $type;
-        }
+        $type = self::tryFrom($value);
 
-        return self::default();
+        return $type ?? self::default();
     }
 }
