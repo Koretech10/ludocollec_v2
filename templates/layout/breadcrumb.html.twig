@@ -15,11 +15,13 @@
 
             {% if not loop.last %}
                 <li class="breadcrumb-item">
-                    <a href="{{ item.url }}">{{ item.text }}</a>
+                    <a href="{{ item.url }}">
+                        <twig:truncated-text :text="item.text" size="30" />
+                    </a>
                 </li>
             {% else %}
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ item.text }}
+                    <twig:truncated-text :text="item.text" size="30" />
                 </li>
             {% endif %}
         {% endfor %}
