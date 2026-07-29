@@ -14,6 +14,7 @@ use Symfony\UX\TwigComponent\Attribute\PostMount;
 class EntityCard extends Card
 {
     public ImageableEntity $entity;
+    public int $truncateSize = 30;
 
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,
