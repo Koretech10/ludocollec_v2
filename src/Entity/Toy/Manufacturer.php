@@ -22,6 +22,11 @@ class Manufacturer
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isNew;
 
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
     public function getId(): int
     {
         return $this->id;

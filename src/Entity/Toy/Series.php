@@ -26,6 +26,11 @@ class Series
     #[ORM\Column]
     private bool $isNew;
 
+    public function __toString(): string
+    {
+        return $this->getNameAndBrand();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -44,5 +49,10 @@ class Series
     public function isNew(): bool
     {
         return $this->isNew;
+    }
+
+    public function getNameAndBrand(): string
+    {
+        return \sprintf('%s (%s)', $this->getName(), $this->brand->label());
     }
 }

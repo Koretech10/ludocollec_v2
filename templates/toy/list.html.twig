@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block action_bar %}
+    <twig:button
+        :type="Type.PRIMARY"
+        :href="path('toy.create')"
+        outlined
+    >
+        <twig:icon :icon="Icon.add" /> Nouveau jouet vidéo
+    </twig:button>
+{% endblock %}
+
 {% block body %}
     <twig:data-grid :dataGrid="data_grid">
         <twig:block name="card_body">
