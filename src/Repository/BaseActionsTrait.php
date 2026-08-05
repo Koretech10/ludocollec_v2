@@ -25,6 +25,15 @@ trait BaseActionsTrait
     /**
      * @param T $entity
      */
+    public function persistAndFlush($entity): void
+    {
+        $this->persist($entity);
+        $this->flush();
+    }
+
+    /**
+     * @param T $entity
+     */
     public function remove($entity): void
     {
         $this->getEntityManager()->remove($entity);
