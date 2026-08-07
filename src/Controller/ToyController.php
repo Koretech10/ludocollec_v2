@@ -30,6 +30,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class ToyController extends AbstractController
 {
     use CommandHandlerTrait;
+    use FlashTrait;
 
     public function __construct(
         private readonly ToyRepository $toyRepository,
@@ -86,7 +87,7 @@ class ToyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $id = $this->handleCommandAndGetId($command);
 
-            // ToDo SuccessFlash
+            $this->addSuccessFlash('Jouet vidéo créé avec succès.');
 
             return $this->redirectToRoute('toy.show', ['id' => $id]);
         }
