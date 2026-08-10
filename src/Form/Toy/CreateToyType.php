@@ -42,6 +42,9 @@ class CreateToyType extends AbstractType
             'label' => 'Image du jouet vidéo',
             'help' => 'Taille maximale : 2 Mo',
             'required' => false,
+            'attr' => [
+                'data-ludocollec-target' => 'image-input',
+            ],
         ]);
 
         $builder->add('submit', SubmitType::class, [

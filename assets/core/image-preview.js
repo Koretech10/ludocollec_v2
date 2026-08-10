@@ -1,6 +1,6 @@
 function handleImagePreview() {
-    const imageInput = document.getElementById("create_toy_image");
-    const imagePreview = document.getElementById("image-preview");
+    const imageInput = document.querySelector('[data-ludocollec-target="image-input"]');
+    const imagePreview = document.querySelector('[data-ludocollec-target="image-preview"]');
 
     if (imageInput && imagePreview) {
         previewImage(imageInput, imagePreview);
