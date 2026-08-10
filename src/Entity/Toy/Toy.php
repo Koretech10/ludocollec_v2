@@ -7,11 +7,12 @@ namespace App\Entity\Toy;
 use App\Entity\Creatable;
 use App\Entity\ImageableEntity;
 use App\Entity\Lockable;
+use App\Entity\User\User;
 use App\Entity\Validatable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(readOnly: true)]
+#[ORM\Entity]
 #[ORM\Table(name: 'toys')]
 class Toy implements ImageableEntity
 {
@@ -40,6 +41,22 @@ class Toy implements ImageableEntity
 
     #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isNew;
+
+    public function __construct(
+        string $name,
+        Manufacturer $manufacturer,
+        Series $series,
+        \DateTime $releaseDate,
+        User $author,
+    ) {
+        $this->name = $name;
+        $this->manufacturer = $manufacturer;
+        $this->series = $series;
+        $this->releaseDate = $releaseDate;
+        $this->isNew = true;
+        $this->createdBy = $author;
+        $this->creationDate = new \DateTime();
+    }
 
     public function title(): string
     {

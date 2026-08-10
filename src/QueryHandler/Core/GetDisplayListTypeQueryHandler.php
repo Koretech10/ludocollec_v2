@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace App\QueryHandler\Core;
 
 use App\Cookie\DisplayListTypeCookie;
-use App\Enum\Core\MessengerBus;
 use App\Enum\User\DisplayListType;
 use App\Query\Core\GetDisplayListTypeQuery;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-#[AsMessageHandler(bus: MessengerBus::QUERY->value)]
+#[AsMessageHandler]
 readonly class GetDisplayListTypeQueryHandler
 {
     public function __construct(

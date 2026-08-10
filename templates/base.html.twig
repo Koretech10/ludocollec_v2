@@ -33,6 +33,16 @@
                     <div class="main-body">
                         {% block body %}{% endblock %}
                     </div>
+
+                    <div class="toast-container">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <twig:toast :typeValue="label">
+                                    {{- message -}}
+                                </twig:toast>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
                 </main>
 
                 <footer class="row">

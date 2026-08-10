@@ -1,0 +1,46 @@
+@use "../legacy_vendors/bootstrap";
+
+.toast-container {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include bootstrap.media-breakpoint-up(sm) {
+        top: 1rem;
+        right: 1rem;
+        left: auto;
+        transform: none;
+    }
+
+    .toast {
+        .toast-body {
+            @extend .d-flex;
+            @extend .align-items-center;
+            @extend .px-0;
+            @extend .py-1;
+
+            font-size: 15px;
+
+            .toast-icon {
+                @extend .h4;
+                @extend .px-2;
+            }
+        }
+
+        .toast-progress {
+            background-color: black;
+            opacity: 25%;
+            height: 5px;
+            animation: shrinkProgress 5s linear forwards;
+        }
+    }
+}
+
+@keyframes shrinkProgress {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
