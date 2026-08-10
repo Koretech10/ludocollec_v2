@@ -13,7 +13,7 @@ function initializeTooltip(event) {
 function initializeFlashToasts() {
     const flashToastElements = document.querySelectorAll(".toast-flash");
 
-    [...flashToastElements].map((flashToastElement) => {
+    [...flashToastElements].forEach((flashToastElement) => {
         const flashToast = new Toast(flashToastElement);
         flashToast.show();
     });
