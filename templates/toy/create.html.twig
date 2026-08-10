@@ -2,7 +2,13 @@
 
 {% block body %}
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-sm-3">
+            <twig:card cardClass="h-100">
+                <img id="image-preview" class="img-fluid mx-auto" src="{{ asset('images/app/none.jpg') }}" />
+            </twig:card>
+        </div>
+
+        <div class="col-12 col-sm">
             <twig:card>
                 {{ form(form) }}
             </twig:card>

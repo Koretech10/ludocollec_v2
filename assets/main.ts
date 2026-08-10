@@ -1,5 +1,6 @@
 import "@/style/main.scss";
 import { Tooltip, Toast } from "bootstrap";
+import "./core/image-preview.js";
 
 function initializeTooltip(event: Event) {
     const eventTarget = event.target;
