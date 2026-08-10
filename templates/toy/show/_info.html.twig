@@ -5,9 +5,11 @@
 
     {% set series = toy.series %}
     {% set brand = series.brand %}
+    {% set manufacturer = toy.manufacturer %}
 
     <twig:info label="Nom">{{ toy.name }}</twig:info>
     <twig:info label="Série">{{ series.name }}</twig:info>
     <twig:info label="Marque">{{ brand.label }}</twig:info>
+    <twig:info label="Fabricant">{{ manufacturer.name }}</twig:info>
     <twig:info label="Date de sortie"><twig:date :date="toy.releaseDate" /></twig:info>
 </twig:card>
