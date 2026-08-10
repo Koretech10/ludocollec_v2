@@ -24,6 +24,7 @@ class EntityCard extends Card
     #[PostMount]
     public function postMount(): void
     {
+        $this->headerClass .= ' position-relative'; // Bloque le stretched-link sur le header uniquement
         $this->headerClass .= \sprintf(' bg-%s', \strtolower(ClassNameExtractor::getClassBaseName($this->entity::class)));
     }
 
