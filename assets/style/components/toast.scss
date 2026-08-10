@@ -1,8 +1,6 @@
 @use "../legacy_vendors/bootstrap";
 
 .toast-container {
-    @extend .toast-container;
-
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
