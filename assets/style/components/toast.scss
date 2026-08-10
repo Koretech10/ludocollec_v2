@@ -14,7 +14,17 @@
 
     .toast {
         .toast-body {
+            @extend .d-flex;
+            @extend .align-items-center;
+            @extend .px-0;
+            @extend .py-1;
+
             font-size: 15px;
+
+            .toast-icon {
+                @extend .h4;
+                @extend .px-2;
+            }
         }
 
         .toast-progress {

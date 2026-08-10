@@ -37,6 +37,8 @@ enum Icon: string
     case info = 'info-circle-fill';
     case journal = 'journal-text';
     case similar = 'files';
+    case warning = 'exclamation-triangle-fill';
+    case danger = 'x-octagon-fill';
 
     /** ICÔNES EXTERNES */
     case twitter_x = 'twitter-x';
