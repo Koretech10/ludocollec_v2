@@ -34,7 +34,7 @@
                         {% block body %}{% endblock %}
                     </div>
 
-                    <div class="toast-flash-container">
+                    <div class="toast-container">
                         {% for label, messages in app.flashes %}
                             {% for message in messages %}
                                 <twig:toast :typeValue="label">

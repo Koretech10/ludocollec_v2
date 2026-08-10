@@ -10,12 +10,12 @@ function initializeTooltip(event) {
     }
 }
 
-function initializeFlashToasts() {
-    const flashToastElements = document.querySelectorAll(".toast-flash");
+function initializeToasts() {
+    const toastElements = document.querySelectorAll(".toast");
 
-    [...flashToastElements].forEach((flashToastElement) => {
-        const flashToast = new Toast(flashToastElement);
-        flashToast.show();
+    [...toastElements].forEach((toastElement) => {
+        const toast = new Toast(toastElement);
+        toast.show();
     });
 }
 
@@ -23,5 +23,5 @@ function initializeFlashToasts() {
 document.addEventListener("mouseover", initializeTooltip);
 document.addEventListener("focusin", initializeTooltip);
 
-// Initialise les Toast des Flash
-document.addEventListener("DOMContentLoaded", initializeFlashToasts);
+// Initialise les Toasts
+document.addEventListener("DOMContentLoaded", initializeToasts);
