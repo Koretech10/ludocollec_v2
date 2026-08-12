@@ -1,10 +1,16 @@
-import "./style/main.scss";
+import "@/style/main.scss";
 import { Tooltip, Toast } from "bootstrap";
 
-function initializeTooltip(event) {
-    const target = event.target.closest('[data-bs-toggle="tooltip"]');
+function initializeTooltip(event: Event) {
+    const eventTarget = event.target;
 
-    if (target && !Tooltip.getInstance(target)) {
+    if (!(eventTarget instanceof HTMLElement)) {
+        return;
+    }
+
+    const target = eventTarget.closest('[data-bs-toggle="tooltip"]');
+
+    if (null !== target && !Tooltip.getInstance(target)) {
         const tooltip = new Tooltip(target);
         tooltip.show();
     }
