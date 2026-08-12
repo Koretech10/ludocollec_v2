@@ -19,6 +19,7 @@
             "@/*": ["./assets/*"]
         },
         "types": ["vite/client"],
+
         // Emit
         "noEmit": true,
 
