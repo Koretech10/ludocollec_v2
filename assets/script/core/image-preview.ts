@@ -1,23 +1,13 @@
 function handleImagePreview() {
-    const imageInput = document.querySelector(
-        '[data-ludocollec-target="image-input"]',
-    );
-    const imagePreview = document.querySelector(
-        '[data-ludocollec-target="image-preview"]',
-    );
+    const imageInput = document.querySelector('[data-ludocollec-target="image-input"]');
+    const imagePreview = document.querySelector('[data-ludocollec-target="image-preview"]');
 
-    if (
-        imageInput instanceof HTMLInputElement &&
-        imagePreview instanceof HTMLImageElement
-    ) {
+    if (imageInput instanceof HTMLInputElement && imagePreview instanceof HTMLImageElement) {
         previewImage(imageInput, imagePreview);
     }
 }
 
-function previewImage(
-    imageInput: HTMLInputElement,
-    imagePreview: HTMLImageElement,
-): void {
+function previewImage(imageInput: HTMLInputElement, imagePreview: HTMLImageElement): void {
     const originalSrc = imagePreview.getAttribute("src");
 
     if (null === originalSrc) {
