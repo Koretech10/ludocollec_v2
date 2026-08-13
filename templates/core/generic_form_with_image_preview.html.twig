@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-3">
+            <twig:card cardClass="h-100" contentClass="d-flex align-items-center">
+                <img data-ludocollec-target="image-preview" class="img-fluid mx-auto" src="{{ asset('images/app/none.jpg') }}" />
+            </twig:card>
+        </div>
+
+        <div class="col-12 col-sm">
+            <twig:card>
+                {{ form(form) }}
+            </twig:card>
+        </div>
+    </div>
+{% endblock %}
