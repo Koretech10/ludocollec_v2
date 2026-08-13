@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import symfonyPlugin from "vite-plugin-symfony";
 import path from "node:path";
+import checker from "vite-plugin-checker";
 
 export default defineConfig({
     resolve: {
@@ -10,11 +11,14 @@ export default defineConfig({
     },
     plugins: [
         symfonyPlugin(),
+        checker({
+            typescript: true,
+        }),
     ],
     build: {
         rollupOptions: {
             input: {
-                app: "./assets/main.js"
+                app: "./assets/main.ts"
             },
         }
     },

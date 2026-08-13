@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        // @see https://www.typescriptlang.org/tsconfig/
+
+        // Type Checking
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+
+        // Modules
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "paths": {
+            "@/*": ["./assets/*"]
+        },
+        "types": ["vite/client"],
+
+        // Emit
+        "noEmit": true,
+
+        // Interop Constraints
+        "isolatedModules": true,
+
+        // Language and Environment
+        "target": "ESNext",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    },
+    "include": ["assets/**/*.ts", "assets/**/*.d.ts"]
+}
