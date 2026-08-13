@@ -25,6 +25,6 @@
       "symfony php ./vendor/bin/phpstan analyse -c config/checkers/phpstan.neon"
     ],
     "templates/**/*.twig": "symfony console lint:twig",
-    "assets/*": "prettier --write --ignore-unknown"
+    "assets/**/*": "prettier --write --ignore-unknown"
   }
 }
