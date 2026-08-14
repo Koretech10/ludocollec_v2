@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Builder\Core\DataGrid\DataGridBuilder;
+use App\Collection\Core\DataGridActionCollection;
 use App\Collection\Core\DataGridHeaderCollection;
 use App\Command\Toy\CreateToyCommand;
 use App\CommandHandler\CommandHandlerTrait;
@@ -12,6 +13,7 @@ use App\Entity\Toy\Toy;
 use App\Entity\User\User;
 use App\Form\Toy\CreateToyType;
 use App\Form\Toy\Filter\ToyFilterType;
+use App\Model\Core\DataGrid\DataGridAction;
 use App\Model\Core\DataGrid\DataGridConfig;
 use App\Model\Core\DataGrid\DataGridHeader;
 use App\Presenter\Toy\ShowToyPresenter;
@@ -50,6 +52,11 @@ class ToyController extends AbstractController
                 new DataGridHeader('Série', 'series.name'),
                 new DataGridHeader('Fabricant', 'manufacturer.name'),
                 new DataGridHeader('Sortie', 'toy.releaseDate', true),
+            ]),
+            actions: new DataGridActionCollection([
+                DataGridAction::consultAction('toy.show', [
+                    'id' => static fn (Toy $toy): int => $toy->getId(),
+                ]),
             ]),
             filterType: ToyFilterType::class,
         );

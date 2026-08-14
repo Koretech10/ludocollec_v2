@@ -26,7 +26,7 @@ readonly class DataGridBuilder
      */
     public function build(DataGridConfig $config, Request $request): DataGrid
     {
-        $dataGrid = new DataGrid($config->headers);
+        $dataGrid = new DataGrid($config->headers, $config->actions);
 
         $this->setupFilterType($request, $config, $dataGrid);
 

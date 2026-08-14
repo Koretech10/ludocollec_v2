@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\Core\DataGrid;
 
+use App\Collection\Core\DataGridActionCollection;
 use App\Collection\Core\DataGridHeaderCollection;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\Form\FormView;
@@ -16,6 +17,7 @@ class DataGrid
 
     public function __construct(
         public readonly DataGridHeaderCollection $headers,
+        public readonly DataGridActionCollection $actions,
     ) {
     }
 
