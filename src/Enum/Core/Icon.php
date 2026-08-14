@@ -19,6 +19,7 @@ enum Icon: string
     case cancel = 'x-lg';
     case add = 'plus-lg';
     case validate = 'check-lg';
+    case show = 'eye-fill';
 
     /** ICÔNES GÉNÉRIQUES */
     case hall_of_fame = 'heart-fill';
