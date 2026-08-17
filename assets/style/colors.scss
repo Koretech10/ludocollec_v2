@@ -160,8 +160,19 @@ $lighten-link-step: 300;
 
         &:active,
         &:hover,
-        &:focus {
-            color: get-foreground-for-background($value) !important;
+        &:focus,
+        &:link,
+        &.show,
+        &.active {
+            color: get-foreground-for-background($value);
+        }
+    }
+
+    .dropdown-item-#{$color} {
+        &.active,
+        &:active {
+            background-color: $value;
+            color: get-foreground-for-background($value);
         }
     }
 }
