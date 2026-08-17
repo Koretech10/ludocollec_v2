@@ -12,4 +12,5 @@ class Dropdown
 {
     public Type $type = Type::SECONDARY;
     public bool $outlined = false;
+    public ?iterable $items = null;
 }

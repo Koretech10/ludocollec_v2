@@ -2,10 +2,21 @@
     {% block dropdown_toggle %}{% endblock %}
 {% endset %}
 
+{% if this.items is null %}
+    {# Cela permet d'afficher du contenu statique dans le bloc `content` quand il n'y a pas d'objets à itérer #}
+    {% set items = [null] %}
+{% else %}
+    {% set items = this.items %}
+{% endif %}
+
 <div class="dropdown btn-group">
     <twig:button dropdownToggle :type="this.type" :outlined="this.outlined">{{ dropdown_toggle }}</twig:button>
 
     <ul class="dropdown-menu">
-        {% block content %}{% endblock %}
+        {% for item in items %}
+            <li>
+                {% block content %}{% endblock %}
+            </li>
+        {% endfor %}
     </ul>
 </div>
