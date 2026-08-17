@@ -1,13 +1,12 @@
-@use 'sass:map';
-@use 'sass:color';
-@use 'sass:math';
-@use 'legacy_vendors/bootstrap';
+@use "sass:map";
+@use "sass:color";
+@use "sass:math";
+@use "legacy_vendors/bootstrap";
 
 $colors: (
     ////////////////////////
     // COULEURS BOOTSTRAP //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     primary: bootstrap.$primary,
     secondary: bootstrap.$secondary,
     success: bootstrap.$success,
@@ -18,11 +17,9 @@ $colors: (
     dark: bootstrap.$dark,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     ///////////////////////
     // COULEURS D'ENTITÉ //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     game: #28a745,
     extension: #b000ff,
     console: #ff8000,
@@ -30,11 +27,9 @@ $colors: (
     toy: #dc3545,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     /////////////////////////
     // COULEURS COMPOSANTS //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     sidebar: #334f80,
     sidebar-link: #a5d1ff,
     footer: #2a4068,
@@ -44,11 +39,9 @@ $colors: (
     table-header: #b7c7e3,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     ///////////////////////
     // COULEURS EXTERNES //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     twitter-x: #ffffff,
     youtube: #ff0000,
     twitch: #9146ff,
@@ -56,26 +49,20 @@ $colors: (
     github: #fafafa,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     ///////////////////////////
     // COULEURS UTILISATEURS //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     vip: #ff2f48,
     moderator: #ff8533,
     administrator: #ffe033,
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     ///////////////////////
     // COULEURS DIVERSES //
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     "purple": #7a00b3,
     "orange": #ff8000,
-    "gold": #ffdf00,
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    "gold": #ffdf00 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 );
 
 $color-steps: (
@@ -103,11 +90,11 @@ $lighten-link-step: 300;
 @function get-brightness($color) {
     @return (
         calc(
-            (color.channel($color, "red") * 0.299) +
-            (color.channel($color, "green") * 0.587) +
-            (color.channel($color, "blue") * 0.114) /
-            255
-        ) * 100%
+                (color.channel($color, "red") * 0.299) +
+                    (color.channel($color, "green") * 0.587) +
+                    (color.channel($color, "blue") * 0.114) / 255
+            ) *
+            100%
     );
 }
 
@@ -129,17 +116,18 @@ $lighten-link-step: 300;
 }
 
 @function get-foreground-for-background($background-color) {
-    $light: get-color('light');
-    $dark: get-color('dark');
+    $light: get-color("light");
+    $dark: get-color("dark");
 
     $background-brightness: get-brightness($background-color);
     $light-brightness: get-brightness($light);
     $dark-brightness: get-brightness($dark);
 
     @return if(
-        math.abs($background-brightness - $light-brightness) > math.abs($background-brightness - $dark-brightness),
+        math.abs($background-brightness - $light-brightness) >
+            math.abs($background-brightness - $dark-brightness),
         $light,
-        $dark,
+        $dark
     );
 }
 
@@ -151,8 +139,13 @@ $lighten-link-step: 300;
         background-color: $value;
         color: $foreground-color-value;
 
-        a:hover, a:active {
-            $step: if($foreground-color-name == 'light', $darken-link-step, $lighten-link-step);
+        a:hover,
+        a:active {
+            $step: if(
+                $foreground-color-name == "light",
+                $darken-link-step,
+                $lighten-link-step
+            );
 
             color: get-color($foreground-color-name, $step);
         }
@@ -160,5 +153,15 @@ $lighten-link-step: 300;
 
     .border-#{$color} {
         border-color: $value;
+    }
+
+    .btn-outline-#{$color} {
+        color: $value;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: get-foreground-for-background($value) !important;
+        }
     }
 }
