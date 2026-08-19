@@ -7,7 +7,6 @@
         {% set key = header.key %}
 
         {% if key is not null %}
-            {% set isActive = outerScope.this.active(key) %}
             {% set href = outerScope.this.url(key) %}
             {% set icon = outerScope.this.icon(key) %}
 
@@ -17,4 +16,13 @@
                 {{ header.label }}
             </twig:dropdown:item>
         {% endif %}
+</twig:dropdown>
+
+<twig:dropdown outlined>
+    <twig:block name="dropdown_toggle">Test</twig:block>
+
+    <twig:dropdown:item href="#">Toto</twig:dropdown:item>
+    <twig:dropdown:item href="#">Toto</twig:dropdown:item>
+    <twig:dropdown:item href="#">Toto</twig:dropdown:item>
+    <twig:dropdown:item href="#">Toto</twig:dropdown:item>
 </twig:dropdown>
