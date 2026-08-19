@@ -4,21 +4,15 @@
     {% set header = item %}
         {# @var header App\Model\Core\DataGrid\DataGridHeader #}
 
-        {% if header.key is not null %}
-            {% set isActive = outerScope.this.active(header.key) %}
-            {% set currentDirection = outerScope.this.currentDirection %}
-            {% set href = outerScope.this.url(header.key) %}
+        {% set key = header.key %}
+
+        {% if key is not null %}
+            {% set isActive = outerScope.this.active(key) %}
+            {% set href = outerScope.this.url(key) %}
+            {% set icon = outerScope.this.icon(key) %}
 
             <twig:dropdown:item :href="href" :active="isActive">
-                {% if isActive %}
-                    {% if 'asc' == currentDirection %}
-                        <twig:icon :icon="Icon.sort_asc" />
-                    {% else %}
-                        <twig:icon :icon="Icon.sort_desc" />
-                    {% endif %}
-                {% else %}
-                    <twig:icon :icon="Icon.sort" />
-                {% endif %}
+                <twig:icon :icon="icon" />
 
                 {{ header.label }}
             </twig:dropdown:item>
