@@ -173,7 +173,6 @@ $lighten-link-step: 300;
         &:active,
         &:hover,
         &:focus,
-        &:link,
         &.show,
         &.active {
             color: get-foreground-for-background($value);
