@@ -1,26 +1,19 @@
-<div class="data-grid-sorting">
-    <twig:button dropdownToggle outlined><twig:icon :icon="Icon.sort" /> Trier</twig:button>
-    <ul class="dropdown-menu">
-        {% for header in this.headers %}
-            {# @var header App\Model\Core\DataGrid\DataGridHeader #}
+<twig:dropdown outlined :items="this.headers">
+    <twig:block name="dropdown_toggle"><twig:icon :icon="Icon.sort" /> Trier</twig:block>
 
-            {% if header.key is not null %}
-                <li>
-                    <a class="dropdown-item {{ this.active(header.key) ? 'active' : '' }}" href="{{ this.url(header.key) }}">
-                        {% if this.active(header.key) %}
-                            {% if 'asc' == this.currentDirection %}
-                                <twig:icon :icon="Icon.sort_asc" />
-                            {% else %}
-                                <twig:icon :icon="Icon.sort_desc" />
-                            {% endif %}
-                        {% else %}
-                            <twig:icon :icon="Icon.sort" />
-                        {% endif %}
+    {% set header = item %}
+        {# @var header App\Model\Core\DataGrid\DataGridHeader #}
 
-                        {{ header.label }}
-                    </a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+        {% set key = header.key %}
+
+        {% if key is not null %}
+            {% set href = outerScope.this.url(key) %}
+            {% set icon = outerScope.this.icon(key) %}
+
+            <twig:dropdown:item :href="href" :active="isActive">
+                <twig:icon :icon="icon" />
+
+                {{ header.label }}
+            </twig:dropdown:item>
+        {% endif %}
+</twig:dropdown>

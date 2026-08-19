@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Twig\Component\Core;
 
 use App\Collection\Core\DataGridHeaderCollection;
+use App\Enum\Core\Icon;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
@@ -78,5 +79,17 @@ class DataGridSorting
 
         // On ne change pas la direction si on change de clé.
         return $this->currentDirection;
+    }
+
+    public function getIcon(string $key): Icon
+    {
+        if (!$this->isActive($key)) {
+            return Icon::sort;
+        }
+
+        return 'asc' === $this->currentDirection ?
+            Icon::sort_asc :
+            Icon::sort_desc
+        ;
     }
 }

@@ -1,7 +1,7 @@
-@use 'sass:map';
-@use 'sass:color';
-@use 'sass:math';
-@use 'legacy_vendors/bootstrap';
+@use "sass:map";
+@use "sass:color";
+@use "sass:math";
+@use "legacy_vendors/bootstrap";
 
 $colors: (
     ////////////////////////
@@ -105,8 +105,8 @@ $lighten-link-step: 300;
         calc(
             (color.channel($color, "red") * 0.299) +
             (color.channel($color, "green") * 0.587) +
-            (color.channel($color, "blue") * 0.114) /
-            255
+            (color.channel($color, "blue") * 0.114)
+            / 255
         ) * 100%
     );
 }
@@ -129,8 +129,8 @@ $lighten-link-step: 300;
 }
 
 @function get-foreground-for-background($background-color) {
-    $light: get-color('light');
-    $dark: get-color('dark');
+    $light: get-color("light");
+    $dark: get-color("dark");
 
     $background-brightness: get-brightness($background-color);
     $light-brightness: get-brightness($light);
@@ -139,7 +139,7 @@ $lighten-link-step: 300;
     @return if(
         math.abs($background-brightness - $light-brightness) > math.abs($background-brightness - $dark-brightness),
         $light,
-        $dark,
+        $dark
     );
 }
 
@@ -151,8 +151,13 @@ $lighten-link-step: 300;
         background-color: $value;
         color: $foreground-color-value;
 
-        a:hover, a:active {
-            $step: if($foreground-color-name == 'light', $darken-link-step, $lighten-link-step);
+        a:hover,
+        a:active {
+            $step: if(
+                $foreground-color-name == "light",
+                $darken-link-step,
+                $lighten-link-step
+            );
 
             color: get-color($foreground-color-name, $step);
         }
@@ -160,5 +165,25 @@ $lighten-link-step: 300;
 
     .border-#{$color} {
         border-color: $value;
+    }
+
+    .btn-outline-#{$color} {
+        color: $value;
+
+        &:active,
+        &:hover,
+        &:focus,
+        &.show,
+        &.active {
+            color: get-foreground-for-background($value);
+        }
+    }
+
+    .dropdown-item-#{$color} {
+        &.active,
+        &:active {
+            background-color: $value;
+            color: get-foreground-for-background($value);
+        }
     }
 }
