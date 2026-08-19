@@ -12,5 +12,7 @@ class Dropdown
 {
     public Type $type = Type::SECONDARY;
     public bool $outlined = false;
-    public ?iterable $items = null;
+    // Avoir un tableau avec null par défaut permet d'afficher du contenu statique dans le bloc `content`
+    // quand il n'y a pas d'objets à itérer.
+    public iterable $items = [null];
 }
