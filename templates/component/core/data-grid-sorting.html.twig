@@ -7,6 +7,7 @@
         {% set key = header.key %}
 
         {% if key is not null %}
+            {% set isActive = outerScope.this.isActive(key) %}
             {% set href = outerScope.this.url(key) %}
             {% set icon = outerScope.this.icon(key) %}
 
