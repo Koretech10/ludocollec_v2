@@ -1,0 +1,14 @@
+{% if this.actions.showableActions(this.item) %}
+    <twig:dropdown outlined>
+        <twig:block name="dropdown_toggle"><twig:icon :icon="Icon.actions" /></twig:block>
+
+        {% for action in outerScope.this.actions %}
+            {% if action.canShow(outerScope.this.item) %}
+                <twig:dropdown:item :type="this.type" href="{{ outerScope.this.getActionHref(action) }}">
+                    {% if action.icon is not null %}<twig:icon :icon="action.icon" />{% endif %}
+                    {{ action.label }}
+                </twig:dropdown:item>
+            {% endif %}
+        {% endfor %}
+    </twig:dropdown>
+{% endif %}
