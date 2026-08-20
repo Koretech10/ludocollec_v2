@@ -20,6 +20,7 @@ enum Icon: string
     case add = 'plus-lg';
     case validate = 'check-lg';
     case show = 'eye-fill';
+    case actions = 'three-dots';
 
     /** ICÔNES GÉNÉRIQUES */
     case hall_of_fame = 'heart-fill';
