@@ -1,5 +1,5 @@
 {% if this.actions.showableActions(this.item) %}
-    <twig:dropdown outlined>
+    <twig:dropdown outlined slimToggle>
         <twig:block name="dropdown_toggle"><twig:icon :icon="Icon.actions" /></twig:block>
 
         {% for action in outerScope.this.actions %}
