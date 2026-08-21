@@ -24,6 +24,21 @@ class SeriesAutocompleteType extends AjaxAutocompleteType
             'query_builder' => static function (SeriesRepository $repository) {
                 return $repository->findAllQueryBuilder();
             },
+            'options_as_html' => true,
+            'choice_label' => function (Series $series): string {
+                return $this->getTemplatedChoiceLabel($series);
+            },
+        ]);
+    }
+
+    public function getTemplatedChoiceLabel(object $choice): string
+    {
+        /** @var Series $series */
+        $series = $choice;
+
+        return $this->twig->render('toy/type/series_autocomplete_type.html.twig', [
+            'series' => $series->getName(),
+            'brand' => $series->getBrand()->label(),
         ]);
     }
 }

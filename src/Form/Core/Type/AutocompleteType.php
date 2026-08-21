@@ -6,9 +6,15 @@ namespace App\Form\Core\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 abstract class AutocompleteType extends AbstractType
 {
+    public function __construct(
+        protected readonly Environment $twig,
+    ) {
+    }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -18,5 +24,10 @@ abstract class AutocompleteType extends AbstractType
                 ],
             ],
         ]);
+    }
+
+    public function getTemplatedChoiceLabel(object $choice): string
+    {
+        return '';
     }
 }
