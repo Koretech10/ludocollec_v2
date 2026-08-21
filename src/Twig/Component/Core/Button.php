@@ -71,5 +71,6 @@ class Button
     public function setupDropdown(): void
     {
         $this->attributes[] = 'data-bs-toggle="dropdown"';
+        $this->attributes[] = 'data-bs-popper-config=\'{"strategy":"fixed"}\'';
     }
 }

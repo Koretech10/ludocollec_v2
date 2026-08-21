@@ -1,0 +1,14 @@
+{% set actions = this.actions.getShowableActions(this.item) %}
+
+{% if not actions.isEmpty() %}
+    <twig:dropdown outlined slimToggle>
+        <twig:block name="dropdown_toggle"><twig:icon :icon="Icon.actions" /></twig:block>
+
+        {% for action in actions %}
+            <twig:dropdown:item :type="this.type" href="{{ outerScope.this.getActionHref(action) }}">
+                {% if action.icon is not null %}<twig:icon :icon="action.icon" />{% endif %}
+                {{ action.label }}
+            </twig:dropdown:item>
+        {% endfor %}
+    </twig:dropdown>
+{% endif %}

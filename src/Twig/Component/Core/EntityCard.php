@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Component\Core;
 
+use App\Collection\Core\DataGridActionCollection;
 use App\Entity\ImageableEntity;
 use App\Util\Core\ClassNameExtractor;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -15,6 +16,7 @@ class EntityCard extends Card
 {
     public ImageableEntity $entity;
     public int $truncateSize = 30;
+    public ?DataGridActionCollection $actions = null;
 
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,

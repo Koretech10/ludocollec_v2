@@ -3,7 +3,7 @@
 {% endset %}
 
 <div class="dropdown btn-group">
-    <twig:button dropdownToggle :type="this.type" :outlined="this.outlined">{{ dropdown_toggle }}</twig:button>
+    <twig:button dropdownToggle :type="this.type" :outlined="this.outlined" :additionalClasses="this.getToggleButtonClasses()">{{ dropdown_toggle }}</twig:button>
 
     <ul class="dropdown-menu">
         {% for item in items %}

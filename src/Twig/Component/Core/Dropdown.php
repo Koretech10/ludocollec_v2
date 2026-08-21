@@ -15,4 +15,14 @@ class Dropdown
     // Avoir un tableau avec null par défaut permet d'afficher du contenu statique dans le bloc `content`
     // quand il n'y a pas d'objets à itérer.
     public iterable $items = [null];
+    public bool $slimToggle = false;
+
+    public function getToggleButtonClasses(): string
+    {
+        if ($this->slimToggle) {
+            return 'dropdown-toggle-slim';
+        }
+
+        return '';
+    }
 }

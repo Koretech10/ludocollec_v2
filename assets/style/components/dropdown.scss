@@ -1,0 +1,7 @@
+@use "@/style/legacy_vendors/bootstrap";
+
+.dropdown-toggle-slim {
+    &:after {
+        content: none !important; // Retire la flèche vers le bas
+    }
+}
