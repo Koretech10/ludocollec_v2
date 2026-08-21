@@ -19,8 +19,6 @@ readonly class DataGridAction
         private array $routeParameters = [], // Paramètres à passer à la route de l'action
         /** @var bool|\Closure(T): bool $show */
         private bool|\Closure $show = true, // Condition pour afficher l'action (calculée à partir d'un Voter ou un IsGranted)
-        public bool $confirm = false, // Affiche une pop-up pour confirmer l'action
-        public string $confirmMessage = '', // Message de la pop-up de confirmation
         public ?Icon $icon = null, // Icône à afficher pour l'action
         public ?Type $type = null, // Applique la couleur du Type au texte de l'action
     ) {
