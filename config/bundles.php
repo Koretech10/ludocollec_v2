@@ -16,4 +16,5 @@ return [
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Spiriit\Bundle\FormFilterBundle\SpiriitFormFilterBundle::class => ['all' => true],
     Huluti\BreadcrumbsBundle\HulutiBreadcrumbsBundle::class => ['all' => true],
+    Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
 ];

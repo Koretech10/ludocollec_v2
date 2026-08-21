@@ -11,7 +11,7 @@ export default defineConfig({
     },
     plugins: [
         symfonyPlugin({
-            stimulus: '@/stimulus/controllers.json'
+            stimulus: './assets/stimulus/controllers.json'
         }),
         checker({
             typescript: true,
