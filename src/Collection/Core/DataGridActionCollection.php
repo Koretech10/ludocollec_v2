@@ -12,12 +12,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class DataGridActionCollection extends ArrayCollection
 {
-    public function hasShowableActions(object $item): bool
+    public function getShowableActions(object $item): self
     {
-        return !$this->filter(
+        return $this->filter(
             static function (DataGridAction $action) use ($item): bool {
                 return true === $action->canShow($item);
             }
-        )->isEmpty();
+        );
     }
 }
