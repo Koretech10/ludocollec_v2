@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@hotwired/stimulus':
+        specifier: ^3.2.2
+        version: 3.2.2
       '@types/bootstrap':
         specifier: ^5.2.11
         version: 5.2.11
@@ -219,6 +222,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@hotwired/stimulus@3.2.2':
+    resolution: {integrity: sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==}
 
   '@napi-rs/wasm-runtime@1.1.6':
     resolution: {integrity: sha512-ZLv/JdUfkvOy9eCnnBaGfiO+XimbjebAeO+MRQqD/B+FR1tnRN0tpKSJHRbE8sFfS6aqsXZ67TQjfwfsxULVbg==}
@@ -1125,6 +1131,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.7':
     optional: true
+
+  '@hotwired/stimulus@3.2.2': {}
 
   '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
     dependencies:
