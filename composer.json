@@ -15,8 +15,8 @@
     "require": {
         "php": ">=8.4",
         "ext-ctype": "*",
-        "ext-iconv": "*",
         "ext-gd": "*",
+        "ext-iconv": "*",
         "doctrine/dbal": "^4.4.3",
         "doctrine/doctrine-bundle": "^3.2.4",
         "doctrine/doctrine-migrations-bundle": "^4.0.0",
@@ -108,6 +108,9 @@
         "symfony": {
             "allow-contrib": false,
             "require": "8.1.*"
+        },
+        "symfony/flex": {
+            "synchronize_package_json": false
         }
     },
     "require-dev": {
