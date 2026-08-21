@@ -9,14 +9,23 @@
         </a>
     </twig:block>
 
+    {% set actions = outerScope.this.actions %}
+    {% set entity = outerScope.this.entity %}
+
     <div class="row gy-0 gx-5 gx-sm-2">
         {% if content is not empty %}
-            <div class="col-4">
+            <div class="col-4 mx-auto d-flex align-items-center">
                 <twig:entity-image :entity="entity" classes="data-grid-card-image d-block mx-auto" noBorder />
             </div>
 
             <div class="col">
                 {{ content }}
+
+                {% if actions is not null %}
+                    <div class="mt-3 d-flex flex-row-reverse">
+                        <twig:data-grid-actions :actions="actions" :item="entity" />
+                    </div>
+                {% endif %}
             </div>
         {% else %}
             <div class="mx-auto">

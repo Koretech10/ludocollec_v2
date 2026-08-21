@@ -30,7 +30,7 @@
             {%- endset -%}
 
             <div class="col">
-                <twig:entity-card cardClass="h-100" :entity="item">
+                <twig:entity-card cardClass="h-100" :entity="item" :actions="this.dataGrid.actions">
                     {{ card_body }}
                 </twig:entity-card>
             </div>
