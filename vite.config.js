@@ -10,7 +10,9 @@ export default defineConfig({
         ],
     },
     plugins: [
-        symfonyPlugin(),
+        symfonyPlugin({
+            stimulus: '@/stimulus/controllers.json'
+        }),
         checker({
             typescript: true,
         }),
