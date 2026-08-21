@@ -6,9 +6,9 @@ namespace App\Form\Toy;
 
 use App\Command\Toy\CreateToyCommand;
 use App\Entity\Toy\Manufacturer;
-use App\Entity\Toy\Series;
 use App\Form\Core\Type\EntityAutocompleteType;
 use App\Form\Core\Type\PreviewableImageType;
+use App\Form\Toy\Type\SeriesAutocompleteType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -24,10 +24,7 @@ class CreateToyType extends AbstractType
             'label' => 'Nom du jouet vidéo',
         ]);
 
-        $builder->add('series', EntityAutocompleteType::class, [
-            'label' => 'Série',
-            'class' => Series::class,
-        ]);
+        $builder->add('series', SeriesAutocompleteType::class);
 
         $builder->add('manufacturer', EntityAutocompleteType::class, [
             'label' => 'Fabricant',

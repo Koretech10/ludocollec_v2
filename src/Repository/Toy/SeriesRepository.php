@@ -7,6 +7,7 @@ namespace App\Repository\Toy;
 use App\Entity\Toy\Series;
 use App\Repository\BaseActionsTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 class SeriesRepository extends ServiceEntityRepository
@@ -17,5 +18,12 @@ class SeriesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Series::class);
+    }
+
+    public function findAllQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('series')
+            ->orderBy('series.name', 'ASC')
+        ;
     }
 }
