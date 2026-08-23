@@ -9,6 +9,8 @@ use App\Entity\Toy\Manufacturer;
 use App\Form\Core\Type\EntityAutocompleteType;
 use App\Form\Core\Type\PreviewableImageType;
 use App\Form\Toy\Type\SeriesAutocompleteType;
+use App\Repository\Toy\ManufacturerRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,6 +31,9 @@ class CreateToyType extends AbstractType
         $builder->add('manufacturer', EntityAutocompleteType::class, [
             'label' => 'Fabricant',
             'class' => Manufacturer::class,
+            'query_builder' => static function (ManufacturerRepository $repository): QueryBuilder {
+                return $repository->findAllQueryBuilder();
+            },
         ]);
 
         $builder->add('releaseDate', DateType::class, [
