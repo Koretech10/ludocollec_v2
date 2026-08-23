@@ -43,7 +43,11 @@ abstract class AutocompleteType extends AbstractType
 
     public function getTemplatedChoiceLabel(object $choice): string
     {
-        return '';
+        if ('' === $this::CHOICE_TEMPLATE) {
+            return '';
+        }
+
+        throw new \BadMethodCallException('La méthode « getTemplatedChoiceLabel() » doit être implémentée si « CHOICE_TEMPLATE » n’est pas vide.');
     }
 
     /**
