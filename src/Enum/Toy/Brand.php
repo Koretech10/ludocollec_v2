@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace App\Enum\Toy;
 
 use App\Enum\Core\HasLabel;
+use App\Enum\Core\SearchableLabel;
 
 enum Brand: int implements HasLabel
 {
+    use SearchableLabel;
+
     case AMIIBO = 1;
     case SKYLANDERS = 2;
     case DISNEY_INFINITY = 3;

@@ -29,6 +29,9 @@
         // Language and Environment
         "target": "ESNext",
         "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+        // Completeness
+        "skipLibCheck": true,
     },
     "include": ["assets/**/*.ts", "assets/**/*.d.ts"]
 }

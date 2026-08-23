@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Entity\Toy;
 
+use App\Repository\Toy\ManufacturerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(readOnly: true)]
+#[ORM\Entity(repositoryClass: ManufacturerRepository::class, readOnly: true)]
 #[ORM\Table(name: 'toy_manufacturers')]
 class Manufacturer
 {
