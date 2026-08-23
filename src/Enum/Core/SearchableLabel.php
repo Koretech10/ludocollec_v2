@@ -22,8 +22,6 @@ trait SearchableLabel
 
     public static function findValuesForLabel(string $label): array
     {
-        $cases = self::searchForLabel($label);
-
-        return \array_map(static fn (\BackedEnum $enum) => $enum->value, $cases);
+        return \array_map(static fn (\BackedEnum $enum) => $enum->value, self::searchForLabel($label));
     }
 }
