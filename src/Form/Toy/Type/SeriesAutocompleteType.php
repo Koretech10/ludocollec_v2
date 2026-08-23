@@ -15,6 +15,8 @@ use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 #[AsEntityAutocompleteField]
 class SeriesAutocompleteType extends AjaxAutocompleteType
 {
+    protected const string TEMPLATE = 'toy/type/series_autocomplete_type.html.twig';
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
@@ -46,10 +48,6 @@ class SeriesAutocompleteType extends AjaxAutocompleteType
 
                 $qb->andWhere($or);
             },
-            'options_as_html' => true,
-            'choice_label' => function (Series $series): string {
-                return $this->getTemplatedChoiceLabel($series);
-            },
         ]);
     }
 
@@ -58,7 +56,7 @@ class SeriesAutocompleteType extends AjaxAutocompleteType
         /** @var Series $series */
         $series = $choice;
 
-        return $this->twig->render('toy/type/series_autocomplete_type.html.twig', [
+        return $this->renderTemplate([
             'series' => $series->getName(),
             'brand' => $series->getBrand()->label(),
         ]);
