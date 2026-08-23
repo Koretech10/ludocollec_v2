@@ -15,7 +15,7 @@ use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 #[AsEntityAutocompleteField]
 class SeriesAutocompleteType extends AjaxAutocompleteType
 {
-    protected const string TEMPLATE = 'toy/type/series_autocomplete_type.html.twig';
+    protected const string CHOICE_TEMPLATE = 'toy/type/series_autocomplete_type.html.twig';
 
     public function configureOptions(OptionsResolver $resolver): void
     {

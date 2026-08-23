@@ -11,7 +11,7 @@ use Twig\Environment;
 
 abstract class AutocompleteType extends AbstractType
 {
-    protected const string TEMPLATE = '';
+    protected const string CHOICE_TEMPLATE = '';
 
     public function __construct(
         protected readonly Environment $twig,
@@ -28,7 +28,7 @@ abstract class AutocompleteType extends AbstractType
             ],
         ]);
 
-        if ('' !== $this::TEMPLATE) {
+        if ('' !== $this::CHOICE_TEMPLATE) {
             $resolver->setDefaults([
                 'options_as_html' => true,
                 'choice_label' => $this->getTemplatedChoiceLabel(...),
@@ -51,6 +51,6 @@ abstract class AutocompleteType extends AbstractType
      */
     protected function renderTemplate(array $parameters): string
     {
-        return $this->twig->render($this::TEMPLATE, $parameters);
+        return $this->twig->render($this::CHOICE_TEMPLATE, $parameters);
     }
 }
