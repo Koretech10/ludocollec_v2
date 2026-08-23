@@ -26,3 +26,16 @@
         }
     }
 }
+
+form {
+    &:after {
+        content: "* Champ obligatoire";
+        color: colors.get-color('danger');
+        font-style: italic;
+    }
+
+    .required:not(.ts-wrapper):after {
+        content: " *";
+        color: colors.get-color('danger');
+    }
+}
