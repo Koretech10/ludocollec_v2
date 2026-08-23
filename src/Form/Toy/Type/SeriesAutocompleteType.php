@@ -40,10 +40,10 @@ class SeriesAutocompleteType extends AjaxAutocompleteType
                 );
                 $qb->setParameter('query', \sprintf('%%%s%%', $query));
 
-                $brands = Brand::searchFromLabel($query);
-                if ([] !== $brands) {
+                $brandsValues = Brand::findValuesForLabel($query);
+                if ([] !== $brandsValues) {
                     $or->add($qb->expr()->in(\sprintf('%s.brand', $rootAlias), ':brands'));
-                    $qb->setParameter('brands', \array_map(static fn (Brand $brand): int => $brand->value, $brands));
+                    $qb->setParameter('brands', $brandsValues);
                 }
 
                 $qb->andWhere($or);
