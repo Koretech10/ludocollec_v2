@@ -57,8 +57,8 @@ class SeriesAutocompleteType extends AjaxAutocompleteType
         $series = $choice;
 
         return $this->renderTemplate([
-            'series' => $series->getName(),
-            'brand' => $series->getBrand()->label(),
+            'series' => $series,
+            'brand' => $series->getBrand(),
         ]);
     }
 }

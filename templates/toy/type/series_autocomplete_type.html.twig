@@ -1,8 +1,6 @@
-{# @var series string #}
-{# @var brand string #}
+{# @var series App\Entity\Toy\Series #}
+{# @var brand App\Enum\Toy\Brand #}
 
-<div class="m-2">
-    <div class="fw-bold">{{ series }}</div>
-    <hr />
-    <div class="">{{ brand }}</div>
+<div>
+    {{ series.name }} <twig:badge>{{ brand.label }}</twig:badge>
 </div>
