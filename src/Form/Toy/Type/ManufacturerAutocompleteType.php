@@ -42,4 +42,11 @@ class ManufacturerAutocompleteType extends AjaxAutocompleteType
             'placeholder' => 'Sélectionner un fabricant',
         ]);
     }
+
+    protected function addTomSelectOptions(): array
+    {
+        return [
+            'create' => true,
+        ];
+    }
 }
