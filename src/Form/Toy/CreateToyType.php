@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace App\Form\Toy;
 
 use App\Command\Toy\CreateToyCommand;
-use App\Entity\Toy\Manufacturer;
-use App\Form\Core\Type\EntityAutocompleteType;
 use App\Form\Core\Type\PreviewableImageType;
+use App\Form\Toy\Type\ManufacturerAutocompleteType;
 use App\Form\Toy\Type\SeriesAutocompleteType;
-use App\Repository\Toy\ManufacturerRepository;
-use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,13 +25,7 @@ class CreateToyType extends AbstractType
 
         $builder->add('series', SeriesAutocompleteType::class);
 
-        $builder->add('manufacturer', EntityAutocompleteType::class, [
-            'label' => 'Fabricant',
-            'class' => Manufacturer::class,
-            'query_builder' => static function (ManufacturerRepository $repository): QueryBuilder {
-                return $repository->findAllQueryBuilder();
-            },
-        ]);
+        $builder->add('manufacturer', ManufacturerAutocompleteType::class);
 
         $builder->add('releaseDate', DateType::class, [
             'label' => 'Date de première sortie',
