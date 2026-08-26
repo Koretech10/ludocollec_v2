@@ -22,6 +22,7 @@ abstract class AutocompleteType extends AbstractType
     {
         $resolver->setDefaults([
             'tom_select_options' => [
+                'create' => true, // ToDo Pour tester, à passer dans le Type enfant
                 'plugins' => [
                     'dropdown_input',
                 ],
