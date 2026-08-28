@@ -37,6 +37,6 @@ abstract class AutocompleteEntityCreatedSubscriber implements EventSubscriberInt
     // Vérifie si l'entité est déjà présente en base pour savoir s'il faut la créer ou non.
     abstract protected function handleEntity(string $data): bool;
 
-    // Créer l'entité à partir de la donnée du champ.
+    // Créer l'entité à partir de la donnée du champ et retourne son ID.
     abstract protected function persistEntity(string $data): string;
 }
