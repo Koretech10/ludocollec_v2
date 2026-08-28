@@ -21,11 +21,7 @@ abstract class AutocompleteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'tom_select_options' => [
-                'plugins' => [
-                    'dropdown_input',
-                ],
-            ],
+            'tom_select_options' => $this->getTomSelectOptions(),
         ]);
 
         if ('' !== $this::CHOICE_TEMPLATE) {
@@ -56,5 +52,29 @@ abstract class AutocompleteType extends AbstractType
     protected function renderTemplate(array $parameters): string
     {
         return $this->twig->render($this::CHOICE_TEMPLATE, $parameters);
+    }
+
+    private function getTomSelectOptions(): array
+    {
+        $options = ['plugins' => $this->getTomSelectPlugins()];
+
+        return \array_merge($options, $this->addTomSelectOptions());
+    }
+
+    protected function addTomSelectOptions(): array
+    {
+        return [];
+    }
+
+    private function getTomSelectPlugins(): array
+    {
+        $plugins = ['dropdown_input'];
+
+        return \array_merge($plugins, $this->addTomSelectPlugins());
+    }
+
+    protected function addTomSelectPlugins(): array
+    {
+        return [];
     }
 }

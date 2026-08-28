@@ -8,7 +8,7 @@ use App\Repository\Toy\ManufacturerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ManufacturerRepository::class, readOnly: true)]
+#[ORM\Entity(repositoryClass: ManufacturerRepository::class)]
 #[ORM\Table(name: 'toy_manufacturers')]
 class Manufacturer
 {
@@ -21,7 +21,13 @@ class Manufacturer
     private string $name;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $isNew;
+    private bool $isNew = true;
+
+    public function __construct(
+        string $name,
+    ) {
+        $this->name = $name;
+    }
 
     public function __toString(): string
     {

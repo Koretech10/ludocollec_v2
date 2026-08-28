@@ -10,6 +10,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @method Manufacturer|null findOneById(string|int $id)
+ */
 class ManufacturerRepository extends ServiceEntityRepository
 {
     /** @use BaseActionsTrait<Manufacturer> */
