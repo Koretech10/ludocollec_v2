@@ -21,13 +21,12 @@ class Manufacturer
     private string $name;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private bool $isNew;
+    private bool $isNew = true;
 
     public function __construct(
         string $name,
     ) {
         $this->name = $name;
-        $this->isNew = true;
     }
 
     public function __toString(): string
