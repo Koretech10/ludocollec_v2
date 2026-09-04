@@ -1,1 +1,17 @@
 {% extends 'core/generic_form_with_image_preview.html.twig' %}
+
+{% block action_bar %}
+    <twig:button :type="Type.PRIMARY" modalTarget="toy:live-type:create-series" outlined>
+        <twig:icon :icon="Icon.add" />
+        Ajouter une série
+    </twig:button>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <twig:modal id="toy:live-type:create-series">
+        <twig:block name="title">Ajouter une série</twig:block>
+        <twig:toy:live-type:create-series />
+    </twig:modal>
+{% endblock %}

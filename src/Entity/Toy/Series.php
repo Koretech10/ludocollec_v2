@@ -9,7 +9,7 @@ use App\Repository\Toy\SeriesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: SeriesRepository::class, readOnly: true)]
+#[ORM\Entity(repositoryClass: SeriesRepository::class)]
 #[ORM\Table(name: 'toy_series')]
 class Series
 {
@@ -25,7 +25,15 @@ class Series
     private string $name;
 
     #[ORM\Column]
-    private bool $isNew;
+    private bool $isNew = true;
+
+    public function __construct(
+        string $name,
+        Brand $brand,
+    ) {
+        $this->name = $name;
+        $this->brand = $brand;
+    }
 
     public function __toString(): string
     {

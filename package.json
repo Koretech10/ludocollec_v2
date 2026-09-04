@@ -3,6 +3,7 @@
   "devDependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@symfony/ux-autocomplete": "^2.36.2",
+    "@symfony/ux-live-component": "^2.36.2",
     "@types/bootstrap": "^5.2.11",
     "@types/node": "^26.2.0",
     "bootstrap": "^5.3.8",

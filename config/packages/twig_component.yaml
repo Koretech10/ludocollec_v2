@@ -4,3 +4,4 @@ twig_component:
         # Namespace & directory for components
         App\Twig\Component\Core\: 'component/core'
         App\Twig\Component\User\: 'component'
+        App\Twig\Component\Toy\: 'component'
