@@ -1,4 +1,4 @@
-import { Tooltip, Toast } from "bootstrap";
+import { Tooltip, Toast, Modal } from "bootstrap";
 
 function initializeTooltip(event: Event) {
     const eventTarget = event.target;
@@ -24,9 +24,32 @@ function initializeToasts() {
     });
 }
 
+function closeModal(event: Event) {
+    if (!(event instanceof CustomEvent)) {
+        return;
+    }
+
+    const modalElement = document.getElementById(event.detail.id);
+
+    if (null === modalElement) {
+        return;
+    }
+
+    const modal = Modal.getInstance(modalElement);
+
+    if (null === modal) {
+        return;
+    }
+
+    modal.hide();
+}
+
 // Initialise le tooltip survolé/cliqué
 document.addEventListener("mouseover", initializeTooltip);
 document.addEventListener("focusin", initializeTooltip);
 
 // Initialise les Toasts
 document.addEventListener("DOMContentLoaded", initializeToasts);
+
+// Ferme la modal lorsqu'un Live Component émet l'événement `modal:close`
+document.addEventListener("modal:close", closeModal);
