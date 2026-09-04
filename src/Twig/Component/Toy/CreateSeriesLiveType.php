@@ -9,6 +9,7 @@ use App\Form\Toy\CreateSeriesType;
 use App\Twig\Component\LiveEventDispatcherTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
@@ -21,6 +22,11 @@ final class CreateSeriesLiveType extends AbstractController
     use ComponentWithFormTrait;
     use LiveEventDispatcherTrait;
 
+    public function __construct(
+        private readonly MessageBusInterface $commandBus,
+    ) {
+    }
+
     protected function instantiateForm(): FormInterface
     {
         return $this->createForm(CreateSeriesType::class, new CreateSeriesCommand());
@@ -31,8 +37,15 @@ final class CreateSeriesLiveType extends AbstractController
     {
         $this->submitForm();
 
-        // HANDLER
+        /** @var CreateSeriesCommand $command */
+        $command = $this->getForm()->getData();
+
+        $this->commandBus->dispatch($command);
+
+        // FLASH
 
         $this->dispatchCloseModalEvent('toy:live-type:create-series');
+
+        $this->resetForm();
     }
 }
