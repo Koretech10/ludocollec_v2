@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Twig\Component\Toy;
 
 use App\Command\Toy\CreateSeriesCommand;
+use App\Controller\FlashTrait;
 use App\Form\Toy\CreateSeriesType;
 use App\Twig\Component\LiveEventDispatcherTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +22,7 @@ final class CreateSeriesLiveType extends AbstractController
     use DefaultActionTrait;
     use ComponentWithFormTrait;
     use LiveEventDispatcherTrait;
+    use FlashTrait;
 
     public function __construct(
         private readonly MessageBusInterface $commandBus,
@@ -42,7 +44,7 @@ final class CreateSeriesLiveType extends AbstractController
 
         $this->commandBus->dispatch($command);
 
-        // FLASH
+        $this->addSuccessFlash('Série de jouet vidéo créée avec succès.');
 
         $this->dispatchCloseModalEvent('toy:live-type:create-series');
 
