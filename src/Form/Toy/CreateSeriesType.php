@@ -6,8 +6,8 @@ namespace App\Form\Toy;
 
 use App\Command\Toy\CreateSeriesCommand;
 use App\Enum\Toy\Brand;
+use App\Form\Core\Type\EnumAutocompleteType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,10 +21,9 @@ class CreateSeriesType extends AbstractType
             'label' => 'Nom',
         ]);
 
-        $builder->add('brand', EnumType::class, [
+        $builder->add('brand', EnumAutocompleteType::class, [
             'label' => 'Marque',
             'class' => Brand::class,
-            'choice_label' => 'label',
         ]);
 
         $builder->add('submit', SubmitType::class, [
